@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A-Team — Pure Concept</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link id="theme-css" rel="stylesheet" href="/static/css/dark-nostalgia.css">
 <link rel="stylesheet" href="/static/css/switcher.css">
 </head>
@@ -39,8 +39,7 @@
 
 <!-- HERO -->
 <section class="hero">
-
-  <div class="hero-main">
+  <div class="hero-content">
     <div class="hero-top">
       <div class="hero-flag">
         <div class="hero-flag-bar"></div>
@@ -73,33 +72,24 @@
     </div>
   </div>
 
-  <div class="hero-divider"></div>
-
-  <div class="hero-side">
-    <div class="hero-side-top">
-      <div class="side-ghost">AT</div>
-      <span class="side-photo-label">Project photography</span>
+  <div class="hero-stats">
+    <div class="hero-stat">
+      <div class="hero-stat-val">30+</div>
+      <div class="hero-stat-lbl">Years in WA</div>
     </div>
-    <div class="hero-side-stats">
-      <div class="side-stat">
-        <div class="side-stat-val silver">30+</div>
-        <div class="side-stat-lbl">Years in WA</div>
-      </div>
-      <div class="side-stat">
-        <div class="side-stat-val silver">500+</div>
-        <div class="side-stat-lbl">Projects done</div>
-      </div>
-      <div class="side-stat">
-        <div class="side-stat-val red">Free</div>
-        <div class="side-stat-lbl">Estimates</div>
-      </div>
-      <div class="side-stat">
-        <div class="side-stat-val silver">A+</div>
-        <div class="side-stat-lbl">BBB Rating</div>
-      </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">500+</div>
+      <div class="hero-stat-lbl">Projects done</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val accent">Free</div>
+      <div class="hero-stat-lbl">Estimates</div>
+    </div>
+    <div class="hero-stat">
+      <div class="hero-stat-val">A+</div>
+      <div class="hero-stat-lbl">BBB Rating</div>
     </div>
   </div>
-
 </section>
 
 <!-- MARQUEE -->
@@ -166,10 +156,10 @@
     </div>
   </div>
   <div class="cap-grid">
-    <div class="cap-card">
+    <div class="cap-card cap-featured">
       <div class="cap-ghost">01</div>
-      <div class="cap-name">Asphalt<br>Paving</div>
-      <div class="cap-desc">New installation for driveways, parking lots, private roads, and commercial properties across Eastern Washington.</div>
+      <div class="cap-name">Asphalt Paving</div>
+      <div class="cap-desc">New installation for driveways, parking lots, private roads, and commercial properties across Eastern Washington. From base prep through final compaction — one crew, no handoffs.</div>
     </div>
     <div class="cap-card">
       <div class="cap-ghost">02</div>
@@ -204,11 +194,14 @@
 
   <div class="cta-divider"></div>
 
-  <div class="cta-form">
+  <form class="cta-form" action="/estimate" method="POST">
     <div class="cta-form-label">Request a free estimate</div>
-    <input type="text"  placeholder="Name or company">
-    <input type="tel"   placeholder="Phone number">
-    <select>
+    <label for="cta-name" class="sr-only">Name or company</label>
+    <input id="cta-name" name="name" type="text" placeholder="Name or company" autocomplete="name">
+    <label for="cta-phone" class="sr-only">Phone number</label>
+    <input id="cta-phone" name="phone" type="tel" placeholder="Phone number" autocomplete="tel">
+    <label for="cta-type" class="sr-only">Project type</label>
+    <select id="cta-type" name="project_type">
       <option value="" disabled selected>Project type</option>
       <option>Residential driveway</option>
       <option>Commercial parking lot</option>
@@ -216,12 +209,13 @@
       <option>Striping &amp; marking</option>
       <option>Other</option>
     </select>
-    <textarea placeholder="Brief description of the job"></textarea>
+    <label for="cta-desc" class="sr-only">Brief description of the job</label>
+    <textarea id="cta-desc" name="description" placeholder="Brief description of the job"></textarea>
     <div class="cta-submit">
-      <button class="cta-submit-btn" type="button">Send request</button>
-      <button class="cta-submit-arrow" type="button">›</button>
+      <button class="cta-submit-btn" type="submit">Send request</button>
+      <button class="cta-submit-arrow" type="submit" aria-label="Submit">›</button>
     </div>
-  </div>
+  </form>
 </section>
 
 <!-- FOOTER -->
@@ -258,6 +252,13 @@
         link.href = '/static/css/light-nostalgia.css';
         icon.innerHTML = '&#9728;';
     }
+    var headline = document.querySelector('.hero-headline');
+    function replayPunch() {
+        var spans = headline.querySelectorAll('.line-1, .line-2, .line-3');
+        spans.forEach(function(s) { s.style.animation = 'none'; });
+        headline.offsetHeight; /* force reflow */
+        spans.forEach(function(s) { s.style.animation = ''; });
+    }
     btn.addEventListener('click', function() {
         var isLight = link.href.indexOf('light') !== -1;
         if (isLight) {
@@ -269,6 +270,7 @@
             icon.innerHTML = '\u2600';
             localStorage.setItem('nostalgia-mode', 'light');
         }
+        replayPunch();
     });
 })();
 </script>
