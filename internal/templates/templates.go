@@ -23,6 +23,7 @@ var Concepts = []struct {
 	Slug  string
 	Label string
 }{
+	{"placard", "Placard"},
 	{"dark-nostalgia", "Dark Nostalgia"},
 	{"clean-industrial", "Clean Industrial"},
 	{"editorial-bold", "Editorial Bold"},

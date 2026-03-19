@@ -17,7 +17,7 @@ func New(tmpl *templates.Templates) *Handlers {
 }
 
 const conceptCookie = "concept"
-const defaultConcept = "dark-nostalgia"
+const defaultConcept = "placard"
 
 func getConcept(r *http.Request) string {
 	c, err := r.Cookie(conceptCookie)
