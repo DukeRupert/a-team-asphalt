@@ -14,7 +14,7 @@ type Templates struct {
 
 // PageData is the data passed to every page template.
 type PageData struct {
-	Concept     string // "dark-nostalgia", "clean-industrial", "editorial-bold"
+	Concept     string // "placard"
 	CurrentPage string
 }
 
@@ -24,9 +24,6 @@ var Concepts = []struct {
 	Label string
 }{
 	{"placard", "Placard"},
-	{"dark-nostalgia", "Dark Nostalgia"},
-	{"clean-industrial", "Clean Industrial"},
-	{"editorial-bold", "Editorial Bold"},
 }
 
 // Load parses each concept directory into a template set.
@@ -43,11 +40,7 @@ func Load(dir string) (*Templates, error) {
 			return nil, fmt.Errorf("no templates found for concept %q at %s", c.Slug, pattern)
 		}
 
-		// Parse the shared switcher partial first, then concept files
-		switcher := filepath.Join(dir, "switcher.html")
-		allFiles := append([]string{switcher}, files...)
-
-		t, err := template.ParseFiles(allFiles...)
+		t, err := template.ParseFiles(files...)
 		if err != nil {
 			return nil, fmt.Errorf("parse concept %q: %w", c.Slug, err)
 		}

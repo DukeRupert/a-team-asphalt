@@ -4,84 +4,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A-Team Asphalt Co. — Sumner, WA</title>
+<title>A-Team Asphalt — Puyallup, WA | Paving, Sealcoating &amp; Site Work</title>
+<meta name="description" content="Licensed asphalt paving contractor in Puyallup, WA. Driveways, parking lots, sealcoating, grading & site work. Owner on every job since 2015. Free estimates: (253) 365-1283.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
-<link id="theme-css" rel="stylesheet" href="/static/css/placard.css">
-<link rel="stylesheet" href="/static/css/switcher.css">
+<link rel="stylesheet" href="/static/css/placard.css">
+<link rel="preload" as="image" type="image/webp" href="/static/img/hero-driveway.webp">
+
 </head>
 <body>
 
+<a href="#main" class="skip-link">Skip to content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main">
   <a href="#" class="nav-logo-block">
     <div class="nav-wordmark">
-      <span class="nav-wordmark-name">A-Team Asphalt Co.</span>
-      <span class="nav-wordmark-lic">Lic. #TEAMAAL855JE</span>
+      <span class="nav-wordmark-name">A-Team Asphalt</span>
+      <span class="nav-wordmark-lic">Lic. #TEAMAAL855J1</span>
     </div>
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#">Our Work</a></li>
-    <li><a href="#">About</a></li>
-    <li><a href="#">Service Area</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-end">
-    <a href="tel:+12533651288" class="nav-phone">(253) 365-1288</a>
+    <a href="tel:+12533651283" class="nav-phone">(253) 365-1283</a>
     <a href="#contact" class="nav-cta">Get Estimate</a>
   </div>
-  <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Toggle menu">
+  <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
     <span></span><span></span><span></span>
   </button>
+  <div class="nav-mobile-menu" id="nav-menu" aria-hidden="true">
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+    <a href="tel:+12533651283" class="nav-mobile-phone">(253) 365-1283</a>
+    <a href="#contact" class="nav-mobile-cta">Get Estimate</a>
+  </div>
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <div class="hero-inner">
+<section class="hero" id="main">
+  <div class="hero-credentials">
+    <a href="https://secure.lni.wa.gov/verify/Detail.aspx?UBI=603447810" class="hero-credential hero-credential-featured" target="_blank" rel="noopener">
+      <div class="credential-label">WA Contractor License</div>
+      <div class="credential-value">TEAMAAL855J1</div>
+      <span class="sr-only">(opens in new tab)</span>
+    </a>
+    <div class="hero-credential">
+      <div class="credential-label">Insured</div>
+      <div class="credential-value">$2M Policy</div>
+    </div>
+    <div class="hero-credential">
+      <div class="credential-label">Bonded</div>
+      <div class="credential-value">$12,000</div>
+    </div>
+    <a href="https://www.bbb.org/us/wa/sumner/profile/asphalt/a-team-asphalt-llc-1296-1000035436" class="hero-credential" target="_blank" rel="noopener">
+      <div class="credential-label">BBB Rating</div>
+      <div class="credential-value credential-accent">A+</div>
+      <span class="sr-only">(opens in new tab)</span>
+    </a>
+  </div>
+
+  <div class="hero-image-area">
     <div class="hero-content">
       <div class="hero-eyebrow">
-        <span class="eyebrow-badge">Over 20 Years</span>
-        <span class="eyebrow-sep">·</span>
-        <span>Pierce County</span>
-        <span class="eyebrow-sep">·</span>
-        <span>WA Lic. #TEAMAAL855JE</span>
+        <span class="eyebrow-badge">In the trade since '95</span>
+        <span class="eyebrow-sep">&middot;</span>
+        <span>Puyallup, WA</span>
       </div>
 
       <h1 class="hero-headline">
-        A-Team<br>Asphalt Co.
+        <span class="hero-word hero-word-1">A</span><span class="hero-word hero-word-hyphen">-</span><span class="hero-word hero-word-2">Team</span><br>
+        <span class="hero-word hero-word-3">Asphalt</span>
       </h1>
 
       <p class="hero-tagline">"As good as the best, different than the rest"</p>
 
-      <div class="hero-rule"></div>
+      <div class="hero-rule" aria-hidden="true"></div>
 
       <p class="hero-body">
-        Twenty years of <strong>Western Washington asphalt</strong> done right.
-        No middlemen, no shortcuts. The same crew from estimate to final stripe.
+        Second-generation paving in <strong>Western Washington</strong> since 1995.
+        Owner on every job. No middlemen, no shortcuts, no surprises on the invoice.
       </p>
 
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Get a free estimate</a>
         <a href="#services" class="btn-secondary">Our services</a>
-      </div>
-    </div>
-
-    <div class="hero-credential-panel">
-      <div class="credential">
-        <div class="credential-label">Experience</div>
-        <div class="credential-value">20+ Years</div>
-      </div>
-      <div class="credential">
-        <div class="credential-label">Licensed</div>
-        <div class="credential-value">TEAMAAL855JE</div>
-      </div>
-      <div class="credential">
-        <div class="credential-label">Coverage</div>
-        <div class="credential-value">Pierce &amp; King Co.</div>
-      </div>
-      <div class="credential">
-        <div class="credential-label">Estimates</div>
-        <div class="credential-value credential-accent">Always Free</div>
       </div>
     </div>
   </div>
@@ -97,28 +109,106 @@
 
   <div class="services-grid">
     <div class="service-card">
-      <div class="service-eyebrow">01</div>
-      <div class="service-rule"></div>
       <h3 class="service-name">Asphalt Paving</h3>
-      <p class="service-desc">New installation for driveways, parking lots, and commercial properties. From base prep through final compaction — one crew, no handoffs.</p>
+      <p class="service-desc">Driveways, parking lots, and commercial properties. Grading and base prep through final compaction — one crew, no handoffs.</p>
     </div>
     <div class="service-card">
-      <div class="service-eyebrow">02</div>
-      <div class="service-rule"></div>
       <h3 class="service-name">Sealcoating &amp; Repair</h3>
-      <p class="service-desc">Protect what you've already got. We apply two coats because one isn't enough in a Washington winter.</p>
+      <p class="service-desc">Sealcoating, crack filling, and pothole repair. Two coats standard because one isn't enough for a Washington winter.</p>
     </div>
     <div class="service-card">
-      <div class="service-eyebrow">03</div>
-      <div class="service-rule"></div>
-      <h3 class="service-name">Milling &amp; Resurfacing</h3>
-      <p class="service-desc">Pull up the old, lay down the new. Milling and resurfacing without unnecessary full-depth replacement.</p>
+      <h3 class="service-name">Grading &amp; Site Work</h3>
+      <p class="service-desc">Land clearing, grading, sod removal, and rock installation. Your project starts on solid ground.</p>
     </div>
     <div class="service-card">
-      <div class="service-eyebrow">04</div>
-      <div class="service-rule"></div>
-      <h3 class="service-name">Striping &amp; Marking</h3>
-      <p class="service-desc">Parking lot striping, ADA markings, and traffic control pavement marking done clean and straight.</p>
+      <h3 class="service-name">Concrete &amp; Hardscape</h3>
+      <p class="service-desc">Curbing, paver stone walkways, retaining walls, patios, striping, and pressure washing.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section class="manifesto" id="about">
+  <div class="manifesto-inner">
+    <div class="manifesto-header">
+      <div class="section-eyebrow">Who we are</div>
+      <h2 class="manifesto-headline">The Real Deal.</h2>
+    </div>
+    <div class="manifesto-body-area">
+      <blockquote class="manifesto-quote">
+        "I love it when a plan comes together."
+      </blockquote>
+      <div class="manifesto-text">
+        <p>Gary Jorgensen grew up on job sites. Second-generation paver, in the trade since 1995. He founded A-Team Asphalt in Puyallup and has been doing the same thing ever since: <strong>showing up, doing the work right, and never cutting corners on materials or prep.</strong></p>
+        <p>This is a small, owner-operated outfit. Gary personally handles calls, writes estimates, and runs the crew. When we give you a number, that's the number. When we say Tuesday, we mean Tuesday. No sales team, no runaround — just the guy who's going to do the work.</p>
+      </div>
+    </div>
+    <div class="manifesto-credentials">
+      <div class="credential">
+        <div class="credential-label">Owner</div>
+        <div class="credential-value">Gary A. Jorgensen Jr.</div>
+      </div>
+      <div class="credential">
+        <div class="credential-label">Established</div>
+        <div class="credential-value">2015 &middot; Puyallup, WA</div>
+      </div>
+      <div class="credential">
+        <div class="credential-label">Service Area</div>
+        <div class="credential-value">Pierce &amp; King County</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="cta-inner">
+    <div class="cta-header">
+      <div class="section-eyebrow">Get in touch</div>
+      <h2 class="cta-headline">Let's get to work.</h2>
+      <p class="cta-body">Tell us about the job. We'll come look at it, give you a straight number, and tell you when we can start. No pressure, no upsell, no surprises on the invoice.</p>
+    </div>
+
+    <div class="cta-form-panel">
+      <div class="cta-form-label">Request a free estimate</div>
+      <form class="cta-form" id="estimate-form" action="/estimate" method="POST">
+        <div class="form-field">
+          <label for="cta-name">Name or company <span class="required">*</span></label>
+          <input id="cta-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cta-phone">Phone <span class="required">*</span></label>
+            <input id="cta-phone" name="phone" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="form-field">
+            <label for="cta-email">Email</label>
+            <input id="cta-email" name="email" type="email" autocomplete="email">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cta-type">Project type <span class="required">*</span></label>
+          <select id="cta-type" name="project_type" required>
+            <option value="" disabled selected>Select one</option>
+            <option>Asphalt paving</option>
+            <option>Sealcoating / repair</option>
+            <option>Grading / site work</option>
+            <option>Concrete / pavers / hardscape</option>
+            <option>Striping &amp; marking</option>
+            <option>Snow plowing</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="cta-desc">Tell us about the job</label>
+          <textarea id="cta-desc" name="description" rows="5" placeholder="Address, scope, any details that help us give you an accurate number"></textarea>
+        </div>
+        <button class="cta-submit-btn" type="submit">Send request</button>
+      </form>
+      <div class="cta-success" id="form-success" hidden>
+        <div class="cta-success-heading">Request received.</div>
+        <p>Gary will follow up within one business day — usually sooner.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -127,63 +217,76 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-name">A-Team Asphalt Co.</div>
+      <div class="footer-name">A-Team Asphalt</div>
       <div class="footer-tagline">"As good as the best, different than the rest"</div>
     </div>
     <ul class="footer-links">
       <li><a href="#services">Services</a></li>
-      <li><a href="#">Our Work</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Service Area</a></li>
+      <li><a href="#about">About</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="footer-contact">
-      <a href="tel:+12533651288" class="footer-phone">(253) 365-1288</a>
-      <span class="footer-location">Sumner, WA 98390</span>
+      <a href="tel:+12533651283" class="footer-phone">(253) 365-1283</a>
+      <span class="footer-location">Puyallup, WA 98371</span>
     </div>
   </div>
   <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 A-Team Asphalt Co. &middot; WA Lic. #TEAMAAL855JE &middot; Gary A. Jorgensen Jr., Owner</span>
+    <span class="footer-copy">&copy; 2026 A-Team Asphalt, LLC &middot; WA Lic. #TEAMAAL855J1 &middot; UBI #603447810</span>
   </div>
 </footer>
 
-{{template "switcher" .}}
-<button class="mode-toggle" id="mode-toggle" type="button" aria-label="Toggle light/dark mode">
-    <span class="mode-toggle-icon" id="mode-icon">&#9789;</span>
-</button>
+
 <script>
 (function() {
-    var link = document.getElementById('theme-css');
-    var btn = document.getElementById('mode-toggle');
-    var icon = document.getElementById('mode-icon');
-    var stored = localStorage.getItem('placard-mode');
-    if (stored === 'light') {
-        link.href = '/static/css/placard-light.css';
-        icon.innerHTML = '&#9728;';
-    }
-    btn.addEventListener('click', function() {
-        var isLight = link.href.indexOf('light') !== -1;
-        if (isLight) {
-            link.href = '/static/css/placard.css';
-            icon.innerHTML = '\u263D';
-            localStorage.setItem('placard-mode', 'dark');
-        } else {
-            link.href = '/static/css/placard-light.css';
-            icon.innerHTML = '\u2600';
-            localStorage.setItem('placard-mode', 'light');
-        }
-    });
-
     // Mobile nav toggle
     var toggle = document.getElementById('nav-toggle');
-    var navLinks = document.querySelector('.nav-links');
-    var navEnd = document.querySelector('.nav-end');
-    if (toggle) {
+    var menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+        function setMenuState(open) {
+            toggle.classList.toggle('active', open);
+            menu.classList.toggle('open', open);
+            menu.setAttribute('aria-hidden', !open);
+            toggle.setAttribute('aria-expanded', open);
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        }
         toggle.addEventListener('click', function() {
-            toggle.classList.toggle('active');
-            navLinks.classList.toggle('open');
-            navEnd.classList.toggle('open');
+            setMenuState(!menu.classList.contains('open'));
         });
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                setMenuState(false);
+            });
+        });
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                setMenuState(false);
+                toggle.focus();
+            }
+        });
+    }
+
+    // Estimate form
+    var form = document.getElementById('estimate-form');
+    var success = document.getElementById('form-success');
+
+    // Double-submit protection
+    if (form) {
+        form.addEventListener('submit', function() {
+            var btn = form.querySelector('.cta-submit-btn');
+            if (btn.disabled) return false;
+            btn.disabled = true;
+            btn.textContent = 'Sending\u2026';
+        });
+    }
+
+    // Show success state after form submission
+    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+        if (form && success) {
+            form.hidden = true;
+            success.hidden = false;
+        }
+        history.replaceState(null, '', window.location.pathname + '#contact');
     }
 })();
 </script>
