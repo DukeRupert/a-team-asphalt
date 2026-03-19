@@ -1,0 +1,277 @@
+{{define "home"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A-Team — Pure Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,900&family=Barlow:wght@400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link id="theme-css" rel="stylesheet" href="/static/css/dark-nostalgia.css">
+<link rel="stylesheet" href="/static/css/switcher.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo-block">
+    <svg class="nav-mark" viewBox="0 0 28 28" fill="none">
+      <rect width="28" height="28" fill="#CC1A1A"/>
+      <polygon points="14,5 24,22 4,22" fill="none" stroke="#C8C8C8" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="9" y1="17" x2="19" y2="17" stroke="#C8C8C8" stroke-width="2"/>
+    </svg>
+    <div class="nav-wordmark">
+      <span class="nav-wordmark-top">A-Team</span>
+      <span class="nav-wordmark-bottom">Est. 1994</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Our Work</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Service Area</a></li>
+  </ul>
+  <div class="nav-end">
+    <a href="tel:+15095550100" class="nav-contact">(509) 555-0100</a>
+    <a href="#contact" class="nav-primary">Get estimate</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-main">
+    <div class="hero-top">
+      <div class="hero-flag">
+        <div class="hero-flag-bar"></div>
+        <div class="hero-flag-text">Washington State · Licensed · Insured · Since 1994</div>
+      </div>
+
+      <h1 class="hero-headline">
+        <span class="line-1">Built</span>
+        <span class="line-2">to</span>
+        <span class="line-3">Last.</span>
+      </h1>
+    </div>
+
+    <div class="hero-bottom">
+      <div class="hero-divider-rule">
+        <div class="hero-divider-rule-line"></div>
+        <div class="hero-divider-rule-text">Asphalt · Paving · Sealcoating · Striping</div>
+        <div class="hero-divider-rule-line"></div>
+      </div>
+
+      <p class="hero-sub">
+        Thirty years of <strong>Eastern Washington asphalt</strong> done right. No middlemen,
+        no shortcuts. The same crew from estimate to final stripe.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn-red">Get a free estimate</a>
+        <a href="#work"    class="btn-chrome">See our work</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-divider"></div>
+
+  <div class="hero-side">
+    <div class="hero-side-top">
+      <div class="side-ghost">AT</div>
+      <span class="side-photo-label">Project photography</span>
+    </div>
+    <div class="hero-side-stats">
+      <div class="side-stat">
+        <div class="side-stat-val silver">30+</div>
+        <div class="side-stat-lbl">Years in WA</div>
+      </div>
+      <div class="side-stat">
+        <div class="side-stat-val silver">500+</div>
+        <div class="side-stat-lbl">Projects done</div>
+      </div>
+      <div class="side-stat">
+        <div class="side-stat-val red">Free</div>
+        <div class="side-stat-lbl">Estimates</div>
+      </div>
+      <div class="side-stat">
+        <div class="side-stat-val silver">A+</div>
+        <div class="side-stat-lbl">BBB Rating</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-band" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">WA State Licensed</span>
+    <span class="marquee-item">Fully Insured</span>
+    <span class="marquee-item">Free Estimates</span>
+    <span class="marquee-item">Family Owned</span>
+    <span class="marquee-item">30 Years Experience</span>
+    <span class="marquee-item">Eastern Washington</span>
+    <span class="marquee-item">Commercial Paving</span>
+    <span class="marquee-item">Residential Driveways</span>
+    <span class="marquee-item">Sealcoating</span>
+    <span class="marquee-item">Striping &amp; Marking</span>
+    <span class="marquee-item">WA State Licensed</span>
+    <span class="marquee-item">Fully Insured</span>
+    <span class="marquee-item">Free Estimates</span>
+    <span class="marquee-item">Family Owned</span>
+    <span class="marquee-item">30 Years Experience</span>
+    <span class="marquee-item">Eastern Washington</span>
+    <span class="marquee-item">Commercial Paving</span>
+    <span class="marquee-item">Residential Driveways</span>
+    <span class="marquee-item">Sealcoating</span>
+    <span class="marquee-item">Striping &amp; Marking</span>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="manifesto">
+  <div class="manifesto-label-col">
+    <div class="manifesto-eyebrow">Who we are</div>
+    <div class="manifesto-big">
+      The<br>
+      <span class="outline">Real</span><br>
+      Deal.
+    </div>
+    <div class="manifesto-rule"></div>
+  </div>
+  <div class="manifesto-content">
+    <div class="manifesto-quote">"I love it when a plan comes together."</div>
+    <p class="manifesto-body">
+      A-Team Asphalt has been laying down quality pavement across Eastern Washington
+      since 1994. <strong>Same owner. Same crew. Same standards.</strong> We've
+      outlasted a dozen competitors by doing exactly one thing: showing up, doing
+      the work right, and never cutting corners on materials or prep.
+    </p>
+    <p class="manifesto-body">
+      We handle everything from a single-car driveway in Spokane to a full
+      commercial parking complex in the Tri-Cities. When we give you a quote,
+      that's the number. When we say Tuesday, we mean Tuesday.
+    </p>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="capabilities" id="work">
+  <div class="cap-header">
+    <div class="cap-headline">
+      What we<br>build.
+    </div>
+    <div class="cap-sub">
+      Every job handled by our own crew, start to finish. No subcontracting the work you actually hired us for.
+    </div>
+  </div>
+  <div class="cap-grid">
+    <div class="cap-card">
+      <div class="cap-ghost">01</div>
+      <div class="cap-name">Asphalt<br>Paving</div>
+      <div class="cap-desc">New installation for driveways, parking lots, private roads, and commercial properties across Eastern Washington.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-ghost">02</div>
+      <div class="cap-name">Sealcoating<br>&amp; Repair</div>
+      <div class="cap-desc">Protect what you've already got. Sealcoating, crack filling, and pothole repair that actually holds.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-ghost">03</div>
+      <div class="cap-name">Milling &amp;<br>Resurfacing</div>
+      <div class="cap-desc">Pull up the old, lay down the new. Milling and resurfacing without unnecessary full-depth replacement.</div>
+    </div>
+    <div class="cap-card">
+      <div class="cap-ghost">04</div>
+      <div class="cap-name">Striping &amp;<br>Marking</div>
+      <div class="cap-desc">Parking lot striping, ADA markings, and traffic control pavement marking done clean and straight.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="cta-section" id="contact">
+  <div class="cta-left">
+    <div class="cta-eyebrow">Get in touch</div>
+    <h2 class="cta-headline">
+      Let's get<br>
+      <span>to work.</span>
+    </h2>
+    <p class="cta-body">
+      Tell us about the job. We'll come look at it, give you a straight number, and tell you when we can start. No pressure, no upsell, no surprises on the invoice.
+    </p>
+  </div>
+
+  <div class="cta-divider"></div>
+
+  <div class="cta-form">
+    <div class="cta-form-label">Request a free estimate</div>
+    <input type="text"  placeholder="Name or company">
+    <input type="tel"   placeholder="Phone number">
+    <select>
+      <option value="" disabled selected>Project type</option>
+      <option>Residential driveway</option>
+      <option>Commercial parking lot</option>
+      <option>Sealcoating / repair</option>
+      <option>Striping &amp; marking</option>
+      <option>Other</option>
+    </select>
+    <textarea placeholder="Brief description of the job"></textarea>
+    <div class="cta-submit">
+      <button class="cta-submit-btn" type="button">Send request</button>
+      <button class="cta-submit-arrow" type="button">›</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">
+    <svg width="22" height="22" viewBox="0 0 28 28" fill="none">
+      <rect width="28" height="28" fill="#CC1A1A"/>
+      <polygon points="14,5 24,22 4,22" fill="none" stroke="#C8C8C8" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="9" y1="17" x2="19" y2="17" stroke="#C8C8C8" stroke-width="2"/>
+    </svg>
+    <span class="footer-logo-text">A-Team Asphalt</span>
+  </a>
+  <ul class="footer-links">
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Our Work</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Service Area</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <span class="footer-copy">© 2026 A-Team Asphalt · WA Lic. #ATEAMA*123AB · (509) 555-0100</span>
+</footer>
+
+{{template "switcher" .}}
+<button class="mode-toggle" id="mode-toggle" type="button" aria-label="Toggle light/dark mode">
+    <span class="mode-toggle-icon" id="mode-icon">&#9789;</span>
+</button>
+<script>
+(function() {
+    var link = document.getElementById('theme-css');
+    var btn = document.getElementById('mode-toggle');
+    var icon = document.getElementById('mode-icon');
+    var stored = localStorage.getItem('nostalgia-mode');
+    if (stored === 'light') {
+        link.href = '/static/css/light-nostalgia.css';
+        icon.innerHTML = '&#9728;';
+    }
+    btn.addEventListener('click', function() {
+        var isLight = link.href.indexOf('light') !== -1;
+        if (isLight) {
+            link.href = '/static/css/dark-nostalgia.css';
+            icon.innerHTML = '\u263D';
+            localStorage.setItem('nostalgia-mode', 'dark');
+        } else {
+            link.href = '/static/css/light-nostalgia.css';
+            icon.innerHTML = '\u2600';
+            localStorage.setItem('nostalgia-mode', 'light');
+        }
+    });
+})();
+</script>
+</body>
+</html>
+{{end}}

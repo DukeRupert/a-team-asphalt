@@ -1,0 +1,11 @@
+{{define "switcher"}}
+<div class="concept-switcher">
+    <form method="POST" action="/set-concept">
+        <select name="concept" onchange="this.form.submit()">
+            <option value="dark-nostalgia" {{if eq .Concept "dark-nostalgia"}}selected{{end}}>Dark Nostalgia</option>
+            <option value="clean-industrial" {{if eq .Concept "clean-industrial"}}selected{{end}}>Clean Industrial</option>
+            <option value="editorial-bold" {{if eq .Concept "editorial-bold"}}selected{{end}}>Editorial Bold</option>
+        </select>
+    </form>
+</div>
+{{end}}
