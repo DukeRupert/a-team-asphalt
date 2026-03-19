@@ -148,19 +148,29 @@ nav {
   overflow: hidden;
 }
 
-/* diagonal line texture */
+/* blueprint grid texture — light mode's signature pattern */
 .hero::before {
   content: '';
   position: absolute;
   inset: 0;
-  background-image: repeating-linear-gradient(
-    -55deg,
-    transparent,
-    transparent 60px,
-    rgba(15,15,15,0.022) 60px,
-    rgba(15,15,15,0.022) 61px
-  );
+  background-image:
+    linear-gradient(var(--border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  opacity: 0.35;
   pointer-events: none;
+}
+/* corner drafting mark — top right */
+.hero::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-top: 64px solid var(--red);
+  border-left: 64px solid transparent;
+  z-index: 1;
 }
 
 .hero-content {
@@ -494,6 +504,18 @@ nav {
   letter-spacing: -0.02em;
   line-height: 0.9;
   color: var(--black);
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+/* red stamp underline — light mode only */
+.cap-headline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--red);
 }
 .cap-sub {
   font-size: 12px;
@@ -532,9 +554,13 @@ nav {
 }
 .cap-card:hover::before { right: 0; }
 
-/* featured first card */
+/* featured first card — warm tint on light mode */
 .cap-featured {
   border-right: 1px solid var(--border);
+  background: var(--red-pale);
+}
+.cap-featured:hover {
+  background: #FAE8E8;
 }
 .cap-featured .cap-ghost {
   font-size: 120px;
@@ -618,6 +644,17 @@ nav {
   letter-spacing: -0.01em;
   color: var(--black);
   margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.6rem;
+}
+.cta-headline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 48px;
+  height: 3px;
+  background: var(--red);
 }
 .cta-headline span { color: var(--red); }
 .cta-body {
@@ -705,10 +742,22 @@ nav {
 .cta-submit-arrow:hover { background: var(--red); }
 
 /* ── FOOTER ── */
+/* transition band easing into dark footer */
+footer::before {
+  content: '';
+  display: block;
+  height: 48px;
+  background: linear-gradient(var(--surface-dk), var(--black));
+  position: absolute;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+}
 footer {
   background: var(--black);
   border-top: 3px solid var(--red);
   padding: 2.5rem 3.5rem;
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: space-between;
