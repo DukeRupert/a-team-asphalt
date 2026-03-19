@@ -564,7 +564,7 @@ nav {
 }
 .cap-featured .cap-ghost {
   font-size: 120px;
-  color: var(--surface-dk);
+  color: var(--border-dk);
   margin-bottom: 0.5rem;
 }
 .cap-featured .cap-name {
@@ -590,14 +590,14 @@ nav {
   font-family: 'Barlow Condensed', sans-serif;
   font-weight: 900;
   font-size: 64px;
-  color: var(--surface);
+  color: var(--border);
   line-height: 1;
   margin-bottom: 0.25rem;
   letter-spacing: -0.03em;
   transition: color 0.2s;
   user-select: none;
 }
-.cap-card:hover .cap-ghost { color: var(--surface-dk); }
+.cap-card:hover .cap-ghost { color: var(--border-dk); }
 
 .cap-name {
   font-family: 'Barlow Condensed', sans-serif;
