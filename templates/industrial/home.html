@@ -8,10 +8,23 @@
 <meta name="description" content="Licensed asphalt paving contractor in Puyallup, WA. Driveways, parking lots, sealcoating, grading & site work. Owner on every job since 2015. Free estimates: (253) 365-1283.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/css/placard.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/industrial.css" id="theme-dark">
+<link rel="stylesheet" href="/static/css/cool-steel.css" id="theme-light" disabled>
 <link rel="preload" as="image" type="image/webp" href="/static/img/hero-driveway.webp">
 <script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
+<script>
+// Resolve theme before first paint to avoid FOUC
+(function() {
+  var saved = localStorage.getItem('ateam-theme');
+  var prefersDark = !window.matchMedia('(prefers-color-scheme: light)').matches;
+  var useDark = saved ? saved === 'dark' : prefersDark;
+  if (!useDark) {
+    document.getElementById('theme-dark').disabled = true;
+    document.getElementById('theme-light').disabled = false;
+  }
+})();
+</script>
 
 </head>
 <body>
@@ -21,10 +34,7 @@
 <!-- NAV -->
 <nav aria-label="Main">
   <a href="#" class="nav-logo-block">
-    <div class="nav-wordmark">
-      <span class="nav-wordmark-name">A-Team Asphalt</span>
-      <span class="nav-wordmark-lic">Lic. #TEAMAAL855J1</span>
-    </div>
+    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt Co." class="nav-logo-img" width="120" height="auto">
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
@@ -32,8 +42,13 @@
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-end">
+    <button class="nav-mode-switch" id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
+      <span class="mode-label mode-label-dark">Dark</span>
+      <span class="mode-track"><span class="mode-thumb"></span></span>
+      <span class="mode-label mode-label-light">Light</span>
+    </button>
     <a href="tel:+12533651283" class="nav-phone">(253) 365-1283</a>
-    <a href="#contact" class="nav-cta">Get Estimate</a>
+    <a href="#contact" class="nav-cta">Free Estimate</a>
   </div>
   <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
     <span></span><span></span><span></span>
@@ -42,8 +57,13 @@
     <a href="#services">Services</a>
     <a href="#about">About</a>
     <a href="#contact">Contact</a>
+    <button class="nav-mobile-mode-switch" id="theme-toggle-mobile" type="button" aria-label="Toggle light/dark mode">
+      <span class="mode-label mode-label-dark">Dark</span>
+      <span class="mode-track"><span class="mode-thumb"></span></span>
+      <span class="mode-label mode-label-light">Light</span>
+    </button>
     <a href="tel:+12533651283" class="nav-mobile-phone">(253) 365-1283</a>
-    <a href="#contact" class="nav-mobile-cta">Get Estimate</a>
+    <a href="#contact" class="nav-mobile-cta">Free Estimate</a>
   </div>
 </nav>
 
@@ -100,6 +120,8 @@
   </div>
 </section>
 
+<div class="swoop-divider" aria-hidden="true"></div>
+
 <!-- SERVICES -->
 <section class="services" id="services">
   <div class="services-header">
@@ -127,6 +149,36 @@
     </div>
   </div>
 </section>
+
+<!-- CHROME STATS — light mode signature element -->
+<section class="chrome-plate" aria-label="Company stats">
+  <div class="chrome-plate-inner">
+    <div class="chrome-plate-label">By the numbers</div>
+    <div class="chrome-plate-content">
+      <div class="chrome-stat">
+        <div class="chrome-stat-num">30<span>+</span></div>
+        <div class="chrome-stat-label">Years in the trade</div>
+      </div>
+      <div class="chrome-divider" aria-hidden="true"></div>
+      <div class="chrome-stat">
+        <div class="chrome-stat-num">500<span>+</span></div>
+        <div class="chrome-stat-label">Jobs completed</div>
+      </div>
+      <div class="chrome-divider" aria-hidden="true"></div>
+      <div class="chrome-stat">
+        <div class="chrome-stat-num">A<span>+</span></div>
+        <div class="chrome-stat-label">BBB Rating</div>
+      </div>
+      <div class="chrome-divider" aria-hidden="true"></div>
+      <div class="chrome-stat">
+        <div class="chrome-stat-num">100<span>%</span></div>
+        <div class="chrome-stat-label">Licensed &amp; insured</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
 
 <!-- MANIFESTO -->
 <section class="manifesto" id="about">
@@ -161,6 +213,8 @@
   </div>
 </section>
 
+<div class="swoop-divider" aria-hidden="true"></div>
+
 <!-- CTA / CONTACT -->
 <section class="cta-section" id="contact">
   <div class="cta-inner">
@@ -173,7 +227,7 @@
     <div class="cta-form-panel">
       <div class="cta-form-label">Request a free estimate</div>
       <form class="cta-form" id="estimate-form" action="/estimate" method="POST">
-        <input type="hidden" name="redirect" value="/placard">
+        <input type="hidden" name="redirect" value="/">
         <div class="form-field">
           <label for="cta-name">Name or company <span class="required">*</span></label>
           <input id="cta-name" name="name" type="text" autocomplete="name" required>
@@ -219,7 +273,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <div class="footer-name">A-Team Asphalt</div>
+      <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt Co." class="footer-logo-img" width="140" height="auto">
       <div class="footer-tagline">"As good as the best, different than the rest"</div>
     </div>
     <ul class="footer-links">
@@ -240,6 +294,62 @@
 
 <script>
 (function() {
+    // Theme switching
+    var darkSheet = document.getElementById('theme-dark');
+    var lightSheet = document.getElementById('theme-light');
+
+    function isDark() {
+      return !darkSheet.disabled;
+    }
+
+    function setTheme(dark) {
+      darkSheet.disabled = !dark;
+      lightSheet.disabled = dark;
+      localStorage.setItem('ateam-theme', dark ? 'dark' : 'light');
+      // Update toggle active states
+      document.querySelectorAll('.mode-label-dark').forEach(function(el) {
+        el.classList.toggle('mode-label-active', dark);
+      });
+      document.querySelectorAll('.mode-label-light').forEach(function(el) {
+        el.classList.toggle('mode-label-active', !dark);
+      });
+    }
+
+    // Set initial active states without toggling sheets (already set by head script)
+    var dark = isDark();
+    document.querySelectorAll('.mode-label-dark').forEach(function(el) {
+      el.classList.toggle('mode-label-active', dark);
+    });
+    document.querySelectorAll('.mode-label-light').forEach(function(el) {
+      el.classList.toggle('mode-label-active', !dark);
+    });
+
+    // Bind both toggle buttons
+    document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setTheme(!isDark());
+      });
+    });
+
+    // Chrome plate scroll-driven gradient shift (light mode only)
+    var plate = document.querySelector('.chrome-plate');
+    if (plate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(function() {
+                    var rect = plate.getBoundingClientRect();
+                    var vh = window.innerHeight;
+                    var progress = 1 - (rect.bottom / (vh + rect.height));
+                    progress = Math.max(0, Math.min(1, progress));
+                    plate.style.backgroundPosition = (progress * 100) + '% 0%';
+                    ticking = false;
+                });
+            }
+        }, { passive: true });
+    }
+
     // Mobile nav toggle
     var toggle = document.getElementById('nav-toggle');
     var menu = document.getElementById('nav-menu');
@@ -259,7 +369,6 @@
                 setMenuState(false);
             });
         });
-        // Close on Escape
         document.addEventListener('keydown', function(e) {
             if (e.key === 'Escape' && menu.classList.contains('open')) {
                 setMenuState(false);
@@ -272,7 +381,6 @@
     var form = document.getElementById('estimate-form');
     var success = document.getElementById('form-success');
 
-    // Double-submit protection
     if (form) {
         form.addEventListener('submit', function() {
             var btn = form.querySelector('.cta-submit-btn');
@@ -282,7 +390,6 @@
         });
     }
 
-    // Show success state after form submission
     if (new URLSearchParams(window.location.search).get('submitted') === '1') {
         if (form && success) {
             form.hidden = true;

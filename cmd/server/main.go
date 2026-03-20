@@ -42,11 +42,12 @@ func main() {
 	// Form handlers
 	mux.HandleFunc("POST /estimate", h.Estimate)
 
-	// Pages — all concepts are single-page designs for now
+	// Pages — industrial is the primary landing page
 	mux.HandleFunc("GET /{$}", h.Home)
 	mux.HandleFunc("GET /about", h.About)
 	mux.HandleFunc("GET /services", h.Services)
 	mux.HandleFunc("GET /contact", h.Contact)
+	mux.HandleFunc("GET /placard", h.Placard)
 
 	fmt.Printf("Server starting on http://localhost:%s\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, mux))

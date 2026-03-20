@@ -20,15 +20,19 @@ func New(tmpl *templates.Templates, m *mailer.Mailer) *Handlers {
 	return &Handlers{tmpl: tmpl, mailer: m}
 }
 
-func (h *Handlers) render(w http.ResponseWriter, r *http.Request, page string) {
+func (h *Handlers) renderConcept(w http.ResponseWriter, r *http.Request, concept, page string) {
 	data := templates.PageData{
-		Concept:     "placard",
+		Concept:     concept,
 		CurrentPage: r.URL.Path,
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-	if err := h.tmpl.Render(w, "placard", page, data); err != nil {
+	if err := h.tmpl.Render(w, concept, page, data); err != nil {
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
+}
+
+func (h *Handlers) render(w http.ResponseWriter, r *http.Request, page string) {
+	h.renderConcept(w, r, "industrial", page)
 }
 
 // Home renders the home page.
@@ -49,6 +53,11 @@ func (h *Handlers) Services(w http.ResponseWriter, r *http.Request) {
 // Contact renders the contact page.
 func (h *Handlers) Contact(w http.ResponseWriter, r *http.Request) {
 	h.render(w, r, "home")
+}
+
+// Placard renders the placard concept home page.
+func (h *Handlers) Placard(w http.ResponseWriter, r *http.Request) {
+	h.renderConcept(w, r, "placard", "home")
 }
 
 // Estimate handles the estimate request form submission.
@@ -86,5 +95,10 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	http.Redirect(w, r, "/?submitted=1#contact", http.StatusSeeOther)
+	// Redirect back to the originating page
+	redirect := "/"
+	if dest := r.FormValue("redirect"); dest == "/" || dest == "/placard" {
+		redirect = dest
+	}
+	http.Redirect(w, r, redirect+"?submitted=1#contact", http.StatusSeeOther)
 }
