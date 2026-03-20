@@ -413,6 +413,7 @@ var order = []Service{
 		},
 		ContactType: "Grading / site work",
 		PhotoDesc:   "Excavator removing old asphalt, broken pavement being loaded into a dump truck. Cleared site with clean edges visible.",
+		PhotoURL:    "/static/img/site-work-800.webp",
 	},
 	{
 		Slug:        "grading",
@@ -439,6 +440,7 @@ var order = []Service{
 		},
 		ContactType: "Grading / site work",
 		PhotoDesc:   "Skid-steer or grader working on exposed earth, establishing grade. Laser level or string lines visible. Prepared subgrade surface.",
+		PhotoURL:    "/static/img/site-work-800.webp",
 	},
 	{
 		Slug:        "base-work",
@@ -465,6 +467,7 @@ var order = []Service{
 		},
 		ContactType: "Grading / site work",
 		PhotoDesc:   "Crushed rock base being spread and compacted. Vibratory roller or plate compactor on gravel surface. Prepared base ready for paving.",
+		PhotoURL:    "/static/img/site-work-800.webp",
 	},
 
 	// ── 04 · STRIPING, SIGNAGE & SAFETY ──
@@ -494,6 +497,7 @@ var order = []Service{
 		},
 		ContactType: "Striping & marking",
 		PhotoDesc:   "Freshly striped parking lot — crisp white or yellow lines on dark asphalt, ADA-blue handicap stalls visible. Clean geometric composition.",
+		PhotoURL:    "/static/img/striped-lot-800.webp",
 	},
 	{
 		Slug:        "bollards",
@@ -519,6 +523,7 @@ var order = []Service{
 		},
 		ContactType: "Striping & marking",
 		PhotoDesc:   "Yellow-painted steel bollards in front of a commercial storefront or parking structure. Clean installation, fresh paint.",
+		PhotoURL:    "/static/img/striped-lot-800.webp",
 	},
 	{
 		Slug:        "signage",
@@ -544,6 +549,7 @@ var order = []Service{
 		},
 		ContactType: "Striping & marking",
 		PhotoDesc:   "Handicap parking sign properly installed on a post in a freshly paved and striped commercial lot.",
+		PhotoURL:    "/static/img/striped-lot-800.webp",
 	},
 
 	// ── 05 · YEAR-ROUND ──
@@ -573,5 +579,6 @@ var order = []Service{
 		},
 		ContactType: "Snow plowing",
 		PhotoDesc:   "Plow truck clearing a commercial parking lot in early morning light. Heavy wet PNW snow, headlights on, cleared lanes visible.",
+		PhotoURL:    "/static/img/snow-removal-800.webp",
 	},
 }
