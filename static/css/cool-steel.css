@@ -711,25 +711,17 @@ a.hero-credential .credential-label::after {
   color: var(--steel-800);
   letter-spacing: var(--track-display);
   line-height: 1;
-  margin-bottom: 0.75rem;
 }
 
-.services-sub {
-  font-size: var(--type-small);
-  color: var(--steel-400);
-  max-width: 480px;
-  line-height: 1.7;
-}
-
-/* Service cards — light mode: white cards with subtle borders */
+/* Asymmetric grid: featured left, 3 stacked right */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: repeat(3, auto);
   gap: 1px;
   background: var(--steel-200);
   border: 1px solid var(--steel-200);
-  border-radius: 4px;
-  overflow: hidden;
+  clip-path: var(--clip-btn-lg);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
 }
 
@@ -739,10 +731,13 @@ a.hero-credential .credential-label::after {
   position: relative;
   transition: background 0.2s;
   overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }
 .service-card:hover { background: var(--steel-50); }
 
-/* Swoop accent triangle — visible by default in light mode */
+/* Swoop accent triangle */
 .service-card::before {
   content: '';
   position: absolute;
@@ -752,17 +747,46 @@ a.hero-credential .credential-label::after {
   height: 48px;
   background: var(--red);
   clip-path: polygon(60% 0%, 100% 0%, 100% 40%);
-  opacity: 0.15;
+  opacity: 0.12;
   transition: opacity 0.25s ease;
 }
-.service-card:hover::before { opacity: 0.7; }
+.service-card:hover::before { opacity: 0.6; }
+
+/* Featured card */
+.service-card-featured {
+  grid-row: 1 / 4;
+  grid-column: 1;
+  padding: 2.5rem 2.25rem;
+  border-left: 3px solid var(--red);
+}
+
+.service-card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 8vw, 96px);
+  color: var(--red);
+  opacity: 0.1;
+  line-height: 0.8;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.service-card-featured .service-name {
+  font-size: clamp(28px, 3.5vw, 36px);
+  margin-bottom: 1rem;
+}
+
+.service-card-featured .service-desc {
+  font-size: var(--type-body);
+  max-width: 400px;
+  flex: 1;
+}
 
 .service-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   color: var(--steel-800);
   letter-spacing: 0.04em;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
   line-height: 1.1;
 }
 
@@ -770,7 +794,49 @@ a.hero-credential .credential-label::after {
   font-size: 14px;
   color: var(--steel-400);
   line-height: 1.7;
+  flex: 1;
 }
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--red);
+  transition: color 0.15s;
+}
+.service-link::after {
+  content: ' →';
+  margin-left: 0.4em;
+  transition: margin-left 0.15s;
+}
+.service-card:hover .service-link { color: var(--red-hover); }
+.service-card:hover .service-link::after { margin-left: 0.7em; }
+
+.services-footer {
+  margin-top: 2rem;
+  text-align: right;
+}
+.services-all-link {
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-nav);
+  font-weight: 600;
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  color: var(--steel-400);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.services-all-link:hover { color: var(--steel-900); }
+.services-all-link::after {
+  content: ' →';
+  transition: margin-left 0.15s;
+}
+.services-all-link:hover::after { margin-left: 0.3em; }
 
 /* ── TRUST BAR — light mode ── */
 .trust-bar {
@@ -1790,7 +1856,14 @@ button:focus:not(:focus-visible) {
   }
 
   .services-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    clip-path: none;
+  }
+  .service-card-featured {
+    grid-row: auto;
+    grid-column: auto;
+    border-left: 3px solid var(--red);
   }
 
   .trust-bar-inner {
@@ -1863,9 +1936,6 @@ button:focus:not(:focus-visible) {
     border-right: none;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
 
   .manifesto-credentials {
     flex-direction: column;

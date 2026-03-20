@@ -677,25 +677,17 @@ a.hero-credential .credential-label::after {
   color: var(--white);
   letter-spacing: var(--track-display);
   line-height: 1;
-  margin-bottom: 0.75rem;
 }
 
-.services-sub {
-  font-size: var(--type-small);
-  color: var(--silver);
-  max-width: 480px;
-  line-height: 1.7;
-}
-
-/* Service cards — industrial style */
+/* Asymmetric grid: featured card left (60%), 3 stacked cards right (40%) */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: repeat(3, auto);
   gap: 1px;
   background: var(--border-lt);
   border: 1px solid var(--border-lt);
-  border-radius: 4px;
-  overflow: hidden;
+  clip-path: var(--clip-btn-lg);
 }
 
 .service-card {
@@ -704,8 +696,11 @@ a.hero-credential .credential-label::after {
   position: relative;
   transition: background 0.2s;
   overflow: hidden;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
 }
-.service-card:hover { background: rgba(200, 16, 46, 0.03); }
+.service-card:hover { background: rgba(200, 16, 46, 0.04); }
 
 /* Swoop accent triangle */
 .service-card::before {
@@ -722,13 +717,41 @@ a.hero-credential .credential-label::after {
 }
 .service-card:hover::before { opacity: 0.5; }
 
+/* Featured card — spans full left column */
+.service-card-featured {
+  grid-row: 1 / 4;
+  grid-column: 1;
+  padding: 2.5rem 2.25rem;
+  border-left: 3px solid var(--red);
+}
+
+.service-card-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(64px, 8vw, 96px);
+  color: var(--red);
+  opacity: 0.15;
+  line-height: 0.8;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.03em;
+}
+
+.service-card-featured .service-name {
+  font-size: clamp(28px, 3.5vw, 36px);
+  margin-bottom: 1rem;
+}
+
+.service-card-featured .service-desc {
+  font-size: var(--type-body);
+  max-width: 400px;
+  flex: 1;
+}
 
 .service-name {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   color: var(--white);
   letter-spacing: 0.04em;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.5rem;
   line-height: 1.1;
 }
 
@@ -736,7 +759,50 @@ a.hero-credential .credential-label::after {
   font-size: 14px;
   color: var(--silver);
   line-height: 1.7;
+  flex: 1;
 }
+
+.service-link {
+  display: inline-flex;
+  align-items: center;
+  margin-top: 1rem;
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--red);
+  transition: color 0.15s;
+}
+.service-link::after {
+  content: ' →';
+  margin-left: 0.4em;
+  transition: margin-left 0.15s;
+}
+.service-card:hover .service-link { color: var(--red-hover); }
+.service-card:hover .service-link::after { margin-left: 0.7em; }
+
+/* "See all services" footer */
+.services-footer {
+  margin-top: 2rem;
+  text-align: right;
+}
+.services-all-link {
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-nav);
+  font-weight: 600;
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.services-all-link:hover { color: var(--white); }
+.services-all-link::after {
+  content: ' →';
+  transition: margin-left 0.15s;
+}
+.services-all-link:hover::after { margin-left: 0.3em; }
 
 /* ── SERVICE AREA ── */
 .service-area {
@@ -1627,7 +1693,16 @@ button:focus:not(:focus-visible) {
   }
 
   .services-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+  }
+  .service-card-featured {
+    grid-row: auto;
+    grid-column: auto;
+    border-left: 3px solid var(--red);
+  }
+  .services-grid {
+    clip-path: none;
   }
 
   .manifesto-inner {
@@ -1691,9 +1766,7 @@ button:focus:not(:focus-visible) {
     border-right: none;
   }
 
-  .services-grid {
-    grid-template-columns: 1fr;
-  }
+
 
 
 
