@@ -217,6 +217,25 @@
         history.replaceState(null, '', window.location.pathname);
     }
 
+    // Trust bar — chrome highlight tracks scroll position
+    var trustBar = document.getElementById('trust-bar');
+    if (trustBar && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      var ticking = false;
+      window.addEventListener('scroll', function() {
+        if (!ticking) {
+          requestAnimationFrame(function() {
+            var rect = trustBar.getBoundingClientRect();
+            var vh = window.innerHeight;
+            var progress = 1 - (rect.top + rect.height) / (vh + rect.height);
+            progress = Math.max(0, Math.min(1, progress));
+            trustBar.style.backgroundPosition = (100 - progress * 100) + '% 0%';
+            ticking = false;
+          });
+          ticking = true;
+        }
+      }, { passive: true });
+    }
+
     // For those who look under the hood
     console.log('%cA-Team Asphalt', 'font-size:20px;font-weight:bold;color:#C8102E;font-family:sans-serif');
     console.log('If you have a paving problem, if no one else can help,\nand if you can find them... maybe you can hire the A-Team.\n\nBuilt by Firefly Software — https://fireflysoftware.dev');
