@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Team Asphalt Co. — Brand Reference</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Blacks — barely warm undertone, like real asphalt */
+    --black:   #121110;
+    --asphalt: #1B1A18;
+    --charcoal:#2F2D2B;
+    /* Brand red */
+    --red:     #C8102E;
+    --red-dark:#9E0B22;
+    --red-glow: rgba(200, 16, 46, 0.15);
+    /* Silver — slight cool-warm split for metallic feel */
+    --silver-glow: rgba(184, 188, 194, 0.12);
+    --silver:  #B8BCC2;
+    --chrome:  #DFE1E4;
+    --white:   #F4F3F1;
+    --gap: 2.5rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--asphalt);
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* ─── ASPHALT TEXTURE OVERLAY ─── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 4rem 2rem 8rem; }
+
+  /* ─── HEADER ─── */
+  .brand-header {
+    position: relative;
+    padding: 3.5rem 0 3rem;
+    border-bottom: 1px solid rgba(184,188,194,0.25);
+    overflow: hidden;
+    margin-bottom: 4rem;
+  }
+
+  /* Star motif echo — silver fill + red outline = brand triad */
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    background: var(--silver);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0.12;
+  }
+  .brand-header::after {
+    content: '';
+    position: absolute;
+    top: 20px; right: 0px;
+    width: 200px; height: 200px;
+    background: transparent;
+    border: 2px solid var(--red);
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+    opacity: 0.12;
+  }
+
+  .header-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+
+  .header-logo {
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+  .header-logo img {
+    height: clamp(80px, 15vw, 130px);
+    width: auto;
+    display: block;
+    /* White-out for dark bg — production needs a proper dark variant with red A */
+    filter: brightness(0) invert(1);
+  }
+
+  .header-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-top: 0.5rem;
+  }
+
+  .header-tagline {
+    margin-top: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    color: var(--silver);
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+  .header-tagline strong { color: var(--white); font-style: normal; }
+
+  /* ─── SECTION HEADERS ─── */
+  .section { margin-bottom: 4rem; }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(184,188,194,0.4), transparent);
+  }
+
+  /* ─── COLOUR SWATCHES ─── */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1rem;
+  }
+
+  .swatch {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .swatch-color {
+    height: 80px;
+    position: relative;
+  }
+
+  /* Chrome effect on silver — metallic gradient */
+  .swatch-color.chrome-swatch {
+    background: linear-gradient(135deg, #7A7E84 0%, var(--chrome) 35%, var(--silver) 50%, #8E929A 65%, #CFD1D5 100%);
+  }
+
+  .swatch-info {
+    background: var(--charcoal);
+    padding: 0.75rem 0.85rem;
+  }
+  .swatch-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.2rem;
+  }
+  .swatch-hex {
+    font-family: 'Source Sans 3', monospace;
+    font-size: 0.7rem;
+    color: var(--silver);
+    letter-spacing: 0.05em;
+  }
+  .swatch-role {
+    font-size: 0.65rem;
+    color: var(--silver);
+    opacity: 0.7;
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+
+  /* ─── SWOOP DIVIDER — red/silver/charcoal tricolor ─── */
+  .swoop-divider {
+    position: relative;
+    height: 3px;
+    margin: 3rem 0;
+    background: var(--charcoal);
+    overflow: visible;
+  }
+  .swoop-divider::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 55%;
+    height: 3px;
+    background: linear-gradient(to right, var(--red) 0%, var(--red-dark) 55%, var(--silver) 55%, var(--silver) 85%, rgba(184,188,194,0.3) 100%);
+  }
+  .swoop-divider::after {
+    content: '';
+    position: absolute;
+    left: 55%;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 14px solid var(--silver);
+  }
+
+  /* ─── TYPOGRAPHY SPECIMENS ─── */
+  .type-specimens { display: flex; flex-direction: column; gap: 2rem; }
+
+  .type-row {
+    border-left: 3px solid var(--charcoal);
+    padding-left: 1.5rem;
+    position: relative;
+  }
+  .type-row.primary-accent { border-left-color: var(--red); }
+  .type-row.secondary-accent { border-left-color: var(--silver); }
+
+  .type-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--silver);
+    opacity: 0.6;
+    margin-bottom: 0.35rem;
+  }
+
+  .specimen-display {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .specimen-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .specimen-subhead {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--silver);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .specimen-body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--chrome);
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  .specimen-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--silver);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── COMPONENTS ─── */
+
+  /* --- CTA Button --- */
+  .component-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) { .component-grid { grid-template-columns: 1fr; } }
+
+  .component-card {
+    background: var(--charcoal);
+    border-radius: 8px;
+    padding: 1.75rem;
+    border: 1px solid rgba(244,243,241,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .component-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--red), transparent);
+  }
+  .component-card.chrome-accent::before {
+    background: linear-gradient(to right, var(--chrome), var(--silver) 40%, transparent);
+  }
+
+  .component-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--silver);
+    opacity: 0.5;
+    margin-bottom: 1.25rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    padding: 0.8rem 1.75rem;
+    font-size: 0.9rem;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary:hover {
+    background: #e01233;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px var(--red-glow), 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--silver);
+    padding: 0.75rem 1.6rem;
+    font-size: 0.9rem;
+    border: 1px solid var(--silver);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-outline:hover {
+    border-color: var(--white);
+    color: var(--white);
+    box-shadow: 0 2px 12px var(--silver-glow);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--red);
+    padding: 0.75rem 0;
+    font-size: 0.85rem;
+    border-bottom: 2px solid var(--red);
+    border-radius: 0;
+  }
+  .btn-ghost.chrome {
+    color: var(--silver);
+    border-bottom-color: var(--silver);
+  }
+  .btn-ghost.chrome:hover { color: var(--chrome); border-bottom-color: var(--chrome); }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+
+  /* Service Badge */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2px;
+  }
+  .badge-red { background: rgba(200,16,46,0.15); color: var(--red); border: 1px solid rgba(200,16,46,0.35); }
+  .badge-silver { background: rgba(184,188,194,0.18); color: var(--chrome); border: 1px solid rgba(184,188,194,0.4); }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+  /* Service Card */
+  .service-card {
+    background: var(--black);
+    border-radius: 6px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255,255,255,0.06);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card .swoop-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: var(--red);
+    clip-path: polygon(60% 0%, 100% 0%, 100% 40%);
+    opacity: 0.6;
+  }
+  .service-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+  }
+  .service-card p {
+    font-size: 0.85rem;
+    color: var(--silver);
+    line-height: 1.6;
+  }
+  .service-card .card-tag {
+    margin-top: 1rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  /* Stat / highlight block */
+  .stat-block {
+    border-top: 3px solid var(--red);
+    padding-top: 1rem;
+    box-shadow: 0 -4px 12px -4px var(--red-glow);
+  }
+  .stat-number {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 3rem;
+    line-height: 1;
+    color: var(--white);
+    letter-spacing: 0.04em;
+  }
+  .stat-number span { color: var(--red); }
+  .stat-block.chrome-stat { border-top-color: var(--silver); box-shadow: 0 -4px 12px -4px rgba(184,188,194,0.12); }
+  .stat-block.chrome-stat .stat-number span { color: var(--silver); }
+  .stat-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--silver);
+    margin-top: 0.25rem;
+  }
+
+  /* Nav bar preview */
+  .nav-preview {
+    background: var(--black);
+    border-radius: 6px;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    grid-column: 1 / -1;
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 2px solid transparent;
+    background-image: linear-gradient(var(--black), var(--black)), linear-gradient(to right, var(--red) 70%, var(--silver) 70%);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+  }
+
+  .nav-brand {
+    display: flex;
+    align-items: center;
+  }
+  .nav-brand img {
+    height: 32px;
+    width: auto;
+    filter: brightness(0) invert(1);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+  .nav-links li a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver);
+    text-decoration: none;
+    transition: color 0.15s;
+  }
+  .nav-links li a:hover { color: var(--chrome); }
+  .nav-links li.active a { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+  .nav-cta:hover {
+    background: #e01233;
+    box-shadow: 0 2px 12px var(--red-glow);
+  }
+
+  .nav-label { padding: 0.6rem 1.5rem; }
+
+  /* Hero preview stripe */
+  .hero-stripe {
+    grid-column: 1 / -1;
+    background: var(--black);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.06);
+    padding: 3rem 2.5rem;
+    position: relative;
+  }
+
+  .hero-stripe::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 45%;
+    background: linear-gradient(135deg, transparent 0%, var(--charcoal) 100%);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  /* Animated red stripe bar */
+  .red-stripe-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(to right,
+      var(--red) 0%,
+      var(--red) 40%,
+      var(--silver) 40%,
+      var(--silver) 60%,
+      var(--charcoal) 60%
+    );
+  }
+
+  .hero-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: clamp(2.25rem, 5.5vw, 4rem);
+    line-height: 0.95;
+    text-transform: uppercase;
+    color: var(--white);
+    letter-spacing: 0.05em;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-title em {
+    font-style: normal;
+    color: var(--red);
+  }
+
+  .hero-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--silver);
+    max-width: 380px;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Form element */
+  .form-preview { display: flex; flex-direction: column; gap: 0.85rem; }
+  .form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+  .form-field label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--silver);
+  }
+  .form-field input, .form-field select {
+    background: var(--black);
+    border: 1px solid rgba(184,188,194,0.3);
+    border-radius: 3px;
+    padding: 0.65rem 0.85rem;
+    color: var(--white);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-field input:focus {
+    border-color: var(--red);
+    box-shadow: 0 0 0 3px var(--red-glow);
+  }
+  .form-field input::placeholder { color: rgba(255,255,255,0.2); }
+
+  /* Testimonial */
+  .testimonial {
+    border-left: 4px solid var(--red);
+    padding: 1.25rem 1.5rem;
+    background: rgba(200,16,46,0.08);
+    border-radius: 0 4px 4px 0;
+  }
+  .testimonial blockquote {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--chrome);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .testimonial cite {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--silver);
+    font-style: normal;
+  }
+  .testimonial cite span { color: var(--red); }
+
+  /* ─── USAGE NOTES ─── */
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) { .usage-grid { grid-template-columns: 1fr; } }
+
+  .usage-card {
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid;
+  }
+  .usage-card.do {
+    background: rgba(0, 180, 80, 0.04);
+    border-color: rgba(0, 180, 80, 0.2);
+  }
+  .usage-card.dont {
+    background: rgba(200,16,46,0.04);
+    border-color: rgba(200,16,46,0.2);
+  }
+  .usage-card .usage-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .usage-card.do .usage-heading { color: #4ade80; }
+  .usage-card.dont .usage-heading { color: var(--red); }
+
+  .usage-card ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .usage-card ul li {
+    font-size: 0.8rem;
+    color: var(--silver);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .usage-card.do ul li::before { content: '✓'; position: absolute; left: 0; color: #4ade80; }
+  .usage-card.dont ul li::before { content: '✕'; position: absolute; left: 0; color: var(--red); }
+
+  /* ─── FOOTER ─── */
+  .brand-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(184,188,194,0.25);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+  }
+  .footer-brand img {
+    height: 36px;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: 0.15;
+  }
+  .footer-note {
+    font-size: 0.7rem;
+    color: var(--charcoal);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── STAR MOTIF ─── */
+  .star-watermark {
+    position: fixed;
+    bottom: -60px;
+    right: -60px;
+    width: 320px;
+    height: 320px;
+    opacity: 0.09;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* Star accent — reusable section background motif from the logo */
+  .star-accent {
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.07;
+  }
+  .star-accent svg {
+    width: 100%;
+    height: 100%;
+  }
+  .star-accent.top-right {
+    top: -30px; right: -30px;
+    width: 180px; height: 180px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Star watermark in bg -->
+<svg class="star-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="100,10 122,78 195,78 137,120 159,188 100,147 41,188 63,120 5,78 78,78" stroke="#B8BCC2" stroke-width="4" fill="none"/>
+</svg>
+
+<div class="page">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="brand-header">
+    <p class="header-eyebrow">Brand Reference — 2025</p>
+    <h1 class="header-logo"><img src="../static/logos/ateam-logo-clean-500w.png" alt="A Team Asphalt Co."></h1>
+    <p class="header-sub">Puyallup, WA</p>
+    <p class="header-tagline"><strong>"I love it when a plan comes together."</strong> — Premium asphalt for residential, commercial &amp; municipal clients.</p>
+  </header>
+
+  <!-- ═══ COLOUR PALETTE ═══ -->
+  <section class="section">
+    <p class="section-label">01 — Colour Palette</p>
+    <div class="swatches">
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#121110;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">The Road</p>
+          <p class="swatch-hex">#121110</p>
+          <p class="swatch-role">Deep backgrounds, hero sections</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1B1A18;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Asphalt Black</p>
+          <p class="swatch-hex">#1B1A18</p>
+          <p class="swatch-role">Primary background / body</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#2F2D2B;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Charcoal</p>
+          <p class="swatch-hex">#2F2D2B</p>
+          <p class="swatch-role">Cards, panels, elevation</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C8102E;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Team Red</p>
+          <p class="swatch-hex">#C8102E</p>
+          <p class="swatch-role">Primary accent, CTA, highlights</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#9E0B22;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Red Dark</p>
+          <p class="swatch-hex">#9E0B22</p>
+          <p class="swatch-role">Hover states, red shadows</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color chrome-swatch"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Chrome Silver</p>
+          <p class="swatch-hex">#B8BCC2</p>
+          <p class="swatch-role">Secondary text, borders, trim</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#DFE1E4;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Polished</p>
+          <p class="swatch-hex">#DFE1E4</p>
+          <p class="swatch-role">Body copy on dark</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ TYPOGRAPHY ═══ -->
+  <section class="section">
+    <p class="section-label">02 — Typography</p>
+    <div class="type-specimens">
+
+      <div class="type-row primary-accent">
+        <p class="type-meta">Display / Oswald 700 — Headlines, Hero, Section Titles</p>
+        <p class="specimen-display">A Team Asphalt Co.</p>
+        <p class="specimen-display" style="font-size:2rem; margin-top:0.5rem; color:var(--silver);">Residential · Commercial · Municipal</p>
+      </div>
+
+      <div class="type-row secondary-accent">
+        <p class="type-meta">Oswald SemiBold — Subheadings, Labels, Nav</p>
+        <p class="specimen-headline">FREE ESTIMATES · PUYALLUP & SURROUNDING AREAS</p>
+      </div>
+
+      <div class="type-row secondary-accent">
+        <p class="type-meta">Oswald Medium — Supporting Subheads</p>
+        <p class="specimen-subhead">Driveways · Parking Lots · Sealcoating · Patching</p>
+      </div>
+
+      <div class="type-row">
+        <p class="type-meta">Source Sans 3 Regular — Body Copy</p>
+        <p class="specimen-body">From residential driveways to full commercial lots, A Team Asphalt Co. brings the same crew, the same standards, and the same commitment every time. We plan it right, and we see it through.</p>
+      </div>
+
+      <div class="type-row">
+        <p class="type-meta">Source Sans 3 Light — Captions, Fine Print</p>
+        <p class="specimen-caption">Licensed &amp; insured · Serving Pierce County and greater Puget Sound · Call for a free estimate</p>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ COMPONENTS ═══ -->
+  <section class="section">
+    <p class="section-label">03 — Components</p>
+    <div class="component-grid">
+
+      <!-- Nav Preview -->
+      <div class="nav-preview">
+        <div class="nav-label"><p class="component-label">Navigation Bar</p></div>
+        <div class="nav-inner">
+          <span class="nav-brand"><img src="../static/logos/ateam-logo-clean-200w.png" alt="A Team Asphalt Co."></span>
+          <ul class="nav-links">
+            <li class="active"><a href="#">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <button class="nav-cta">Free Estimate</button>
+        </div>
+      </div>
+
+      <!-- Hero Preview -->
+      <div class="hero-stripe">
+        <div class="red-stripe-bar"></div>
+        <div class="star-accent top-right"><svg viewBox="0 0 200 200" fill="none"><polygon points="100,10 122,78 195,78 137,120 159,188 100,147 41,188 63,120 5,78 78,78" stroke="#C8102E" stroke-width="4" fill="none"/></svg></div>
+        <p class="hero-eyebrow">Puyallup's Asphalt Crew</p>
+        <h2 class="hero-title">We show up.<br><em>We deliver.</em><br>Every time.</h2>
+        <p class="hero-sub">Residential driveways to full commercial lots — A Team Asphalt Co. plans it right and sees it through.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">Get a Free Estimate</a>
+          <a href="#" class="btn btn-outline">See Our Work</a>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="component-card">
+        <p class="component-label">Buttons &amp; CTAs</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Free Estimate</a>
+          <a href="#" class="btn btn-outline">Our Services</a>
+        </div>
+        <div style="margin-top:1.25rem; display:flex; gap:1.5rem;">
+          <a href="#" class="btn btn-ghost">View All Projects →</a>
+          <a href="#" class="btn btn-ghost chrome">Learn More →</a>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="component-card chrome-accent">
+        <p class="component-label">Service Badges</p>
+        <div class="badge-row">
+          <span class="badge badge-red">Driveways</span>
+          <span class="badge badge-red">Parking Lots</span>
+          <span class="badge badge-silver">Sealcoating</span>
+          <span class="badge badge-silver">Patching</span>
+          <span class="badge badge-red">Commercial</span>
+          <span class="badge badge-silver">Municipal</span>
+        </div>
+      </div>
+
+      <!-- Service Card -->
+      <div class="component-card">
+        <p class="component-label">Service Card</p>
+        <div class="service-card">
+          <div class="swoop-accent"></div>
+          <h3>Parking Lot Paving</h3>
+          <p>Full-depth asphalt installation for commercial and municipal properties. We handle the whole plan — grading, base prep, and finish coat.</p>
+          <p class="card-tag">→ Commercial &amp; Municipal</p>
+        </div>
+      </div>
+
+      <!-- Stats -->
+      <div class="component-card chrome-accent">
+        <p class="component-label">Stats / Highlights</p>
+        <div style="display:flex; gap:2.5rem;">
+          <div class="stat-block">
+            <p class="stat-number">15<span>+</span></p>
+            <p class="stat-label">Years in business</p>
+          </div>
+          <div class="stat-block chrome-stat">
+            <p class="stat-number">500<span>+</span></p>
+            <p class="stat-label">Projects completed</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="component-card">
+        <p class="component-label">Contact / Estimate Form</p>
+        <div class="form-preview">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Smith">
+          </div>
+          <div class="form-field">
+            <label>Service Needed</label>
+            <select><option>Residential Driveway</option><option>Parking Lot</option><option>Sealcoating</option></select>
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(253) 555-0100">
+          </div>
+          <a href="#" class="btn btn-primary" style="margin-top:0.25rem; text-align:center; justify-content:center;">Request Estimate</a>
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="component-card chrome-accent">
+        <p class="component-label">Testimonial</p>
+        <div class="testimonial">
+          <blockquote>"They showed up on time, finished ahead of schedule, and the driveway looks incredible. Best crew we've hired."</blockquote>
+          <cite>— Mark T., <span>Puyallup Homeowner</span></cite>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ USAGE NOTES ═══ -->
+  <section class="section">
+    <p class="section-label">04 — Brand Usage Notes</p>
+    <div class="usage-grid">
+      <div class="usage-card do">
+        <p class="usage-heading">✓ Do</p>
+        <ul>
+          <li>Use Asphalt Black as the primary background — always dark-first</li>
+          <li>Use Team Red for primary CTAs, Chrome Silver for secondary accents — pair them</li>
+          <li>Use Oswald 700 for display headlines, 600/500 for subheads</li>
+          <li>Use the star motif from the logo as a corner or section accent</li>
+          <li>Use the red → silver → charcoal stripe pattern on divider bars</li>
+          <li>Keep the A-Team nod playful but professional — trust-first</li>
+        </ul>
+      </div>
+      <div class="usage-card dont">
+        <p class="usage-heading">✕ Don't</p>
+        <ul>
+          <li>Don't use red as a background fill — accent only</li>
+          <li>Don't use light/white backgrounds — this is a dark brand</li>
+          <li>Don't add a third font family — Oswald + Source Sans 3 only</li>
+          <li>Don't lean so hard into the TV reference it feels campy</li>
+          <li>Don't use rounded buttons — the clipped corners are signature</li>
+          <li>Don't use thin font weights for headlines</li>
+          <li>Don't use the standard logo on dark without inversion — create a white variant with red A</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="brand-footer">
+    <p class="footer-brand"><img src="../static/logos/ateam-logo-clean-200w.png" alt="A Team Asphalt Co."></p>
+    <p class="footer-note">Brand Reference — Firefly Software · Puyallup, WA · 2025</p>
+  </footer>
+
+</div>
+</body>
+</html>

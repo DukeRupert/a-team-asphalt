@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Team Asphalt Co. — Brand Reference (Light)</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    /* Cool Steel Light Palette */
+    --steel-50:   #F4F5F6;  /* page background */
+    --steel-100:  #EAECEE;  /* subtle panels */
+    --steel-200:  #D5D9DD;  /* borders, dividers */
+    --steel-300:  #B0B7BF;  /* placeholder, muted text */
+    --steel-400:  #7E8A96;  /* secondary text */
+    --steel-600:  #3D4850;  /* body text */
+    --steel-800:  #1C2428;  /* headlines */
+    --steel-900:  #0E1517;  /* near-black */
+
+    --red:        #C8102E;
+    --red-dark:   #9E0B22;
+    --red-light:  #F9E5E8;  /* tinted red bg for badges */
+
+    --chrome-shine: linear-gradient(135deg, #C8CDD2 0%, #EAECEE 40%, #D5D9DD 55%, #B8BEC4 75%, #DCDFE2 100%);
+
+    --white: #FFFFFF;
+    --gap: 2.5rem;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: var(--steel-50);
+    color: var(--steel-600);
+    font-family: 'Source Sans 3', sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+
+  /* Subtle steel texture */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .page { position: relative; z-index: 1; max-width: 960px; margin: 0 auto; padding: 4rem 2rem 8rem; }
+
+  /* ─── HEADER ─── */
+  .brand-header {
+    position: relative;
+    padding: 3.5rem 0 3rem;
+    border-bottom: 1px solid var(--steel-200);
+    overflow: hidden;
+    margin-bottom: 4rem;
+  }
+
+  .brand-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -60px;
+    width: 420px; height: 420px;
+    background: var(--red);
+    clip-path: polygon(55% 0%, 100% 0%, 100% 45%, 60% 100%, 0% 100%, 0% 55%);
+    opacity: 0.05;
+  }
+  .brand-header::after {
+    content: '';
+    position: absolute;
+    top: 10px; right: -20px;
+    width: 260px; height: 260px;
+    background: transparent;
+    border: 2px solid var(--red);
+    clip-path: polygon(55% 0%, 100% 0%, 100% 45%, 60% 100%, 0% 100%, 0% 55%);
+    opacity: 0.12;
+  }
+
+  .variant-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--steel-200);
+    border-radius: 100px;
+    padding: 0.25rem 0.85rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-bottom: 1rem;
+  }
+  .variant-pill::before {
+    content: '';
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--red);
+  }
+
+  .header-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+
+  .header-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    line-height: 0.9;
+    color: var(--steel-800);
+    letter-spacing: 0.04em;
+  }
+  .header-logo span { color: var(--red); }
+
+  .header-sub {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: 0.5em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.5rem;
+  }
+
+  .header-tagline {
+    margin-top: 1.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.85rem;
+    color: var(--steel-400);
+    font-style: italic;
+    letter-spacing: 0.05em;
+  }
+  .header-tagline strong { color: var(--steel-800); font-style: normal; }
+
+  /* ─── SECTION HEADERS ─── */
+  .section { margin-bottom: 4rem; }
+
+  .section-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--steel-200), transparent);
+  }
+
+  /* ─── SWATCHES ─── */
+  .swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 1rem;
+  }
+
+  .swatch {
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--steel-200);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .swatch-color { height: 80px; }
+
+  .swatch-color.chrome-swatch {
+    background: var(--chrome-shine);
+  }
+
+  .swatch-info {
+    background: var(--white);
+    padding: 0.75rem 0.85rem;
+  }
+  .swatch-name {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--steel-800);
+    margin-bottom: 0.2rem;
+  }
+  .swatch-hex {
+    font-family: 'Source Sans 3', monospace;
+    font-size: 0.7rem;
+    color: var(--steel-400);
+    letter-spacing: 0.05em;
+  }
+  .swatch-role {
+    font-size: 0.65rem;
+    color: var(--steel-300);
+    margin-top: 0.25rem;
+    font-style: italic;
+  }
+
+  /* ─── SWOOP DIVIDER ─── */
+  .swoop-divider {
+    position: relative;
+    height: 3px;
+    margin: 3rem 0;
+    background: var(--steel-200);
+    overflow: visible;
+  }
+  .swoop-divider::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0;
+    width: 33%;
+    height: 3px;
+    background: linear-gradient(to right, var(--red), var(--red-dark));
+  }
+  .swoop-divider::after {
+    content: '';
+    position: absolute;
+    left: 33%;
+    top: -3px;
+    width: 0; height: 0;
+    border-top: 9px solid transparent;
+    border-bottom: 9px solid transparent;
+    border-left: 14px solid var(--red-dark);
+  }
+
+  /* ─── TYPOGRAPHY ─── */
+  .type-specimens { display: flex; flex-direction: column; gap: 2rem; }
+
+  .type-row {
+    border-left: 3px solid var(--steel-200);
+    padding-left: 1.5rem;
+  }
+  .type-row.primary-accent { border-left-color: var(--red); }
+  .type-row.secondary-accent { border-left-color: var(--steel-300); }
+
+  .type-meta {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--steel-300);
+    margin-bottom: 0.35rem;
+  }
+
+  .specimen-display {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 4rem;
+    line-height: 1;
+    color: var(--steel-800);
+    letter-spacing: 0.05em;
+  }
+
+  .specimen-headline {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--steel-800);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .specimen-subhead {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--steel-400);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+
+  .specimen-body {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--steel-600);
+    line-height: 1.7;
+    max-width: 540px;
+  }
+
+  .specimen-caption {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 300;
+    color: var(--steel-400);
+    letter-spacing: 0.05em;
+  }
+
+  /* ─── COMPONENTS ─── */
+  .component-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) { .component-grid { grid-template-columns: 1fr; } }
+
+  .component-card {
+    background: var(--white);
+    border-radius: 8px;
+    padding: 1.75rem;
+    border: 1px solid var(--steel-200);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+
+  .component-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(to right, var(--red), transparent);
+  }
+
+  .component-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--steel-300);
+    margin-bottom: 1.25rem;
+  }
+
+  /* Buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary {
+    background: var(--red);
+    color: var(--white);
+    padding: 0.8rem 1.75rem;
+    font-size: 0.9rem;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+  }
+  .btn-primary:hover { background: var(--red-dark); transform: translateY(-1px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--steel-600);
+    padding: 0.75rem 1.6rem;
+    font-size: 0.9rem;
+    border: 1.5px solid var(--steel-300);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-outline:hover { border-color: var(--steel-600); color: var(--steel-800); }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--red);
+    padding: 0.75rem 0;
+    font-size: 0.85rem;
+    border-bottom: 2px solid var(--red);
+    border-radius: 0;
+  }
+
+  .btn-row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+
+  /* Badges */
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding: 0.35rem 0.85rem;
+    border-radius: 2px;
+  }
+  .badge-red { background: var(--red-light); color: var(--red); border: 1px solid rgba(200,16,46,0.2); }
+  .badge-steel { background: var(--steel-100); color: var(--steel-600); border: 1px solid var(--steel-200); }
+  .badge-row { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+
+  /* Service Card */
+  .service-card {
+    background: var(--steel-50);
+    border-radius: 6px;
+    padding: 1.5rem;
+    border: 1px solid var(--steel-200);
+    position: relative;
+    overflow: hidden;
+  }
+  .service-card .swoop-accent {
+    position: absolute;
+    top: 0; right: 0;
+    width: 80px; height: 80px;
+    background: var(--red);
+    clip-path: polygon(60% 0%, 100% 0%, 100% 40%);
+    opacity: 0.7;
+  }
+  .service-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.06em;
+    color: var(--steel-800);
+    margin-bottom: 0.4rem;
+  }
+  .service-card p {
+    font-size: 0.85rem;
+    color: var(--steel-400);
+    line-height: 1.6;
+  }
+  .service-card .card-tag {
+    margin-top: 1rem;
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+  }
+
+  /* Stats */
+  .stat-block {
+    border-top: 3px solid var(--red);
+    padding-top: 1rem;
+  }
+  .stat-number {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem;
+    line-height: 1;
+    color: var(--steel-800);
+    letter-spacing: 0.04em;
+  }
+  .stat-number span { color: var(--red); }
+  .stat-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-top: 0.25rem;
+  }
+
+  /* Nav */
+  .nav-preview {
+    background: var(--white);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--steel-200);
+    grid-column: 1 / -1;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.85rem 1.5rem;
+    border-bottom: 2px solid var(--red);
+  }
+
+  .nav-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 0.08em;
+    color: var(--steel-800);
+  }
+  .nav-brand span { color: var(--red); }
+
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links li a {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    text-decoration: none;
+  }
+  .nav-links li.active a { color: var(--red); }
+
+  .nav-cta {
+    background: var(--red);
+    color: var(--white);
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.5rem 1.1rem;
+    border: none;
+    cursor: pointer;
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+
+  .nav-label { padding: 0.6rem 1.5rem; }
+
+  /* Hero — steel plate treatment */
+  .hero-stripe {
+    grid-column: 1 / -1;
+    background: var(--steel-800);
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid var(--steel-200);
+    padding: 3rem 2.5rem;
+    position: relative;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+
+  /* Brushed steel panel on right */
+  .hero-stripe::before {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0; right: 0;
+    width: 45%;
+    background: linear-gradient(135deg, transparent 0%, #232B30 100%);
+    clip-path: polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%);
+  }
+
+  .hero-stripe::after {
+    content: '';
+    position: absolute;
+    right: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 200px; height: 200px;
+    background: transparent;
+    border: 3px solid var(--red);
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+    opacity: 0.15;
+  }
+
+  .red-stripe-bar {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(to right,
+      var(--red) 0%,
+      var(--red) 40%,
+      #6B7280 40%,
+      #6B7280 60%,
+      #3D4850 60%
+    );
+  }
+
+  .hero-eyebrow {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.45em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    line-height: 0.95;
+    color: var(--white);
+    letter-spacing: 0.04em;
+    margin-bottom: 1rem;
+    position: relative; z-index: 1;
+  }
+  .hero-title em { font-style: normal; color: var(--red); }
+
+  .hero-sub {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    color: var(--steel-300);
+    max-width: 380px;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+    position: relative; z-index: 1;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+
+  /* Form */
+  .form-preview { display: flex; flex-direction: column; gap: 0.85rem; }
+  .form-field { display: flex; flex-direction: column; gap: 0.3rem; }
+  .form-field label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-600);
+  }
+  .form-field input, .form-field select {
+    background: var(--steel-50);
+    border: 1px solid var(--steel-200);
+    border-radius: 3px;
+    padding: 0.65rem 0.85rem;
+    color: var(--steel-800);
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+  .form-field input:focus { border-color: var(--red); }
+  .form-field input::placeholder { color: var(--steel-300); }
+
+  /* Testimonial */
+  .testimonial {
+    border-left: 4px solid var(--red);
+    padding: 1.25rem 1.5rem;
+    background: var(--red-light);
+    border-radius: 0 4px 4px 0;
+  }
+  .testimonial blockquote {
+    font-family: 'Source Sans 3', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 300;
+    color: var(--steel-600);
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 0.75rem;
+  }
+  .testimonial cite {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    font-style: normal;
+  }
+  .testimonial cite span { color: var(--red); }
+
+  /* Chrome plate accent block — new for light mode */
+  .chrome-plate {
+    grid-column: 1 / -1;
+    background: var(--chrome-shine);
+    border-radius: 6px;
+    padding: 1.75rem 2rem;
+    border: 1px solid #B8BEC4;
+    position: relative;
+    overflow: hidden;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 2px 6px rgba(0,0,0,0.1);
+  }
+
+  .chrome-plate::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(255,255,255,0.08) 2px,
+      rgba(255,255,255,0.08) 4px
+    );
+  }
+
+  .chrome-plate-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+    margin-bottom: 1rem;
+    position: relative; z-index: 1;
+  }
+
+  .chrome-plate-content {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+    position: relative; z-index: 1;
+  }
+
+  .chrome-stat {
+    text-align: center;
+    min-width: 100px;
+  }
+  .chrome-stat .num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.75rem;
+    line-height: 1;
+    color: var(--steel-800);
+    letter-spacing: 0.04em;
+  }
+  .chrome-stat .num span { color: var(--red); }
+  .chrome-stat .lbl {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--steel-400);
+  }
+  .chrome-divider {
+    width: 1px;
+    height: 60px;
+    background: linear-gradient(to bottom, transparent, #9AA0A6, transparent);
+  }
+
+  /* ─── USAGE NOTES ─── */
+  .usage-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  @media (max-width: 600px) { .usage-grid { grid-template-columns: 1fr; } }
+
+  .usage-card {
+    padding: 1.25rem 1.5rem;
+    border-radius: 6px;
+    border: 1px solid;
+    background: var(--white);
+  }
+  .usage-card.do { border-color: rgba(0,180,80,0.25); }
+  .usage-card.dont { border-color: rgba(200,16,46,0.2); }
+  .usage-card .usage-heading {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .usage-card.do .usage-heading { color: #16a34a; }
+  .usage-card.dont .usage-heading { color: var(--red); }
+
+  .usage-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .usage-card ul li {
+    font-size: 0.8rem;
+    color: var(--steel-600);
+    padding-left: 1rem;
+    position: relative;
+    line-height: 1.5;
+  }
+  .usage-card.do ul li::before { content: '✓'; position: absolute; left: 0; color: #16a34a; }
+  .usage-card.dont ul li::before { content: '✕'; position: absolute; left: 0; color: var(--red); }
+
+  /* ─── DARK / LIGHT COMPARISON ─── */
+  .comparison-strip {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  .comp-dark {
+    background: #1A1A1A;
+    border-radius: 6px;
+    padding: 1.5rem;
+    border: 1px solid #2E2E2E;
+  }
+  .comp-light {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 1.5rem;
+    border: 1px solid var(--steel-200);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+
+  .comp-label {
+    font-family: 'Oswald', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .comp-dark .comp-label { color: rgba(192,192,192,0.5); }
+  .comp-light .comp-label { color: var(--steel-300); }
+
+  .comp-headline {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.75rem;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.4rem;
+  }
+  .comp-dark .comp-headline { color: #F5F5F5; }
+  .comp-light .comp-headline { color: var(--steel-800); }
+
+  .comp-body {
+    font-size: 0.8rem;
+    line-height: 1.55;
+    margin-bottom: 1rem;
+  }
+  .comp-dark .comp-body { color: #C0C0C0; }
+  .comp-light .comp-body { color: var(--steel-400); }
+
+  /* ─── FOOTER ─── */
+  .brand-footer {
+    margin-top: 5rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--steel-200);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 0.08em;
+    color: var(--steel-200);
+  }
+  .footer-brand span { color: rgba(200,16,46,0.3); }
+  .footer-note {
+    font-size: 0.7rem;
+    color: var(--steel-300);
+    letter-spacing: 0.05em;
+  }
+
+  /* Star watermark */
+  .star-watermark {
+    position: fixed;
+    bottom: -80px; right: -80px;
+    width: 360px; height: 360px;
+    opacity: 0.04;
+    pointer-events: none;
+    z-index: 0;
+  }
+</style>
+</head>
+<body>
+
+<svg class="star-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="100,10 122,78 195,78 137,120 159,188 100,147 41,188 63,120 5,78 78,78" stroke="#C8102E" stroke-width="4" fill="none"/>
+</svg>
+
+<div class="page">
+
+  <!-- ═══ HEADER ═══ -->
+  <header class="brand-header">
+    <div class="variant-pill">Cool Steel — Light Mode</div>
+    <p class="header-eyebrow">Brand Reference — 2025</p>
+    <h1 class="header-logo">TE<span>A</span>M</h1>
+    <p class="header-sub">Asphalt Co. &nbsp;·&nbsp; Puyallup, WA</p>
+    <p class="header-tagline"><strong>"I love it when a plan comes together."</strong> — Premium asphalt for residential, commercial &amp; municipal clients.</p>
+  </header>
+
+  <!-- ═══ PALETTE ═══ -->
+  <section class="section">
+    <p class="section-label">01 — Colour Palette</p>
+    <div class="swatches">
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#F4F5F6;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Steel 50</p>
+          <p class="swatch-hex">#F4F5F6</p>
+          <p class="swatch-role">Page background</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#EAECEE;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Steel 100</p>
+          <p class="swatch-hex">#EAECEE</p>
+          <p class="swatch-role">Subtle panels, inputs</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#D5D9DD;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Steel 200</p>
+          <p class="swatch-hex">#D5D9DD</p>
+          <p class="swatch-role">Borders, dividers</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#7E8A96;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Steel 400</p>
+          <p class="swatch-hex">#7E8A96</p>
+          <p class="swatch-role">Secondary text</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#1C2428;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Steel 800</p>
+          <p class="swatch-hex">#1C2428</p>
+          <p class="swatch-role">Headlines, primary text</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color" style="background:#C8102E;"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Team Red</p>
+          <p class="swatch-hex">#C8102E</p>
+          <p class="swatch-role">Primary accent, CTA</p>
+        </div>
+      </div>
+
+      <div class="swatch">
+        <div class="swatch-color chrome-swatch"></div>
+        <div class="swatch-info">
+          <p class="swatch-name">Chrome</p>
+          <p class="swatch-hex">gradient</p>
+          <p class="swatch-role">Feature panels, accents</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ DARK / LIGHT COMPARISON ═══ -->
+  <section class="section">
+    <p class="section-label">02 — Dark vs Light Comparison</p>
+    <div class="comparison-strip">
+      <div class="comp-dark">
+        <p class="comp-label">Dark Mode — Asphalt</p>
+        <p class="comp-headline" style="color:#F5F5F5;">Parking Lot Paving</p>
+        <p class="comp-body" style="color:#C0C0C0;">Full-depth installation for commercial properties. We handle everything from grading to finish coat.</p>
+        <a href="#" class="btn btn-primary" style="font-size:0.75rem; padding:0.6rem 1.25rem;">Get a Quote</a>
+      </div>
+      <div class="comp-light">
+        <p class="comp-label">Light Mode — Cool Steel</p>
+        <p class="comp-headline" style="color:#1C2428;">Parking Lot Paving</p>
+        <p class="comp-body" style="color:#7E8A96;">Full-depth installation for commercial properties. We handle everything from grading to finish coat.</p>
+        <a href="#" class="btn btn-primary" style="font-size:0.75rem; padding:0.6rem 1.25rem;">Get a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ TYPOGRAPHY ═══ -->
+  <section class="section">
+    <p class="section-label">03 — Typography</p>
+    <div class="type-specimens">
+      <div class="type-row primary-accent">
+        <p class="type-meta">Display / Bebas Neue — Headlines, Logo Text, Hero</p>
+        <p class="specimen-display">A TEAM ASPHALT CO.</p>
+      </div>
+      <div class="type-row primary-accent">
+        <p class="type-meta">Bebas Neue — Section Titles</p>
+        <p class="specimen-display" style="font-size:2.25rem;">Residential · Commercial · Municipal</p>
+      </div>
+      <div class="type-row secondary-accent">
+        <p class="type-meta">Oswald SemiBold — Subheadings, Labels, Nav</p>
+        <p class="specimen-headline">FREE ESTIMATES · PUYALLUP & SURROUNDING AREAS</p>
+      </div>
+      <div class="type-row secondary-accent">
+        <p class="type-meta">Oswald Medium — Supporting Subheads</p>
+        <p class="specimen-subhead">Driveways · Parking Lots · Sealcoating · Patching</p>
+      </div>
+      <div class="type-row">
+        <p class="type-meta">Source Sans 3 Regular — Body Copy</p>
+        <p class="specimen-body">From residential driveways to full commercial lots, A Team Asphalt Co. brings the same crew, the same standards, and the same commitment every time. We plan it right, and we see it through.</p>
+      </div>
+      <div class="type-row">
+        <p class="type-meta">Source Sans 3 Light — Captions, Fine Print</p>
+        <p class="specimen-caption">Licensed &amp; insured · Serving Pierce County and greater Puget Sound · Call for a free estimate</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ COMPONENTS ═══ -->
+  <section class="section">
+    <p class="section-label">04 — Components</p>
+    <div class="component-grid">
+
+      <!-- Nav -->
+      <div class="nav-preview">
+        <div class="nav-label"><p class="component-label">Navigation Bar</p></div>
+        <div class="nav-inner">
+          <span class="nav-brand">TE<span>A</span>M Asphalt Co.</span>
+          <ul class="nav-links">
+            <li class="active"><a href="#">Services</a></li>
+            <li><a href="#">Projects</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+          <button class="nav-cta">Free Estimate</button>
+        </div>
+      </div>
+
+      <!-- Hero — stays dark, anchors the brand -->
+      <div class="hero-stripe">
+        <div class="red-stripe-bar"></div>
+        <p class="hero-eyebrow">Puyallup's Asphalt Crew</p>
+        <h2 class="hero-title">We show up.<br><em>We deliver.</em><br>Every time.</h2>
+        <p class="hero-sub">Residential driveways to full commercial lots — planned right, every time.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary">Get a Free Estimate</a>
+          <a href="#" class="btn btn-outline" style="border-color:rgba(255,255,255,0.25); color:#C0C0C0;">See Our Work</a>
+        </div>
+      </div>
+
+      <!-- Chrome plate stats — light mode signature element -->
+      <div class="chrome-plate">
+        <p class="chrome-plate-label">By the numbers</p>
+        <div class="chrome-plate-content">
+          <div class="chrome-stat">
+            <p class="num">15<span>+</span></p>
+            <p class="lbl">Years Active</p>
+          </div>
+          <div class="chrome-divider"></div>
+          <div class="chrome-stat">
+            <p class="num">500<span>+</span></p>
+            <p class="lbl">Jobs Done</p>
+          </div>
+          <div class="chrome-divider"></div>
+          <div class="chrome-stat">
+            <p class="num">3<span>★</span></p>
+            <p class="lbl">Service Types</p>
+          </div>
+          <div class="chrome-divider"></div>
+          <div class="chrome-stat">
+            <p class="num">100<span>%</span></p>
+            <p class="lbl">Insured</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="component-card">
+        <p class="component-label">Buttons &amp; CTAs</p>
+        <div class="btn-row">
+          <a href="#" class="btn btn-primary">Free Estimate</a>
+          <a href="#" class="btn btn-outline">Our Services</a>
+        </div>
+        <br>
+        <a href="#" class="btn btn-ghost">View All Projects →</a>
+      </div>
+
+      <!-- Badges -->
+      <div class="component-card">
+        <p class="component-label">Service Badges</p>
+        <div class="badge-row">
+          <span class="badge badge-red">Driveways</span>
+          <span class="badge badge-red">Parking Lots</span>
+          <span class="badge badge-steel">Sealcoating</span>
+          <span class="badge badge-steel">Patching</span>
+          <span class="badge badge-red">Commercial</span>
+          <span class="badge badge-steel">Municipal</span>
+        </div>
+      </div>
+
+      <!-- Service card -->
+      <div class="component-card" style="padding:0; overflow:hidden;">
+        <p class="component-label" style="padding:1.25rem 1.5rem 0;">Service Card</p>
+        <div class="service-card" style="margin:0.5rem; border-radius:4px;">
+          <div class="swoop-accent"></div>
+          <h3>Parking Lot Paving</h3>
+          <p>Full-depth asphalt installation for commercial and municipal properties. Grading, base prep, and finish coat — we own the whole plan.</p>
+          <p class="card-tag">→ Commercial &amp; Municipal</p>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="component-card">
+        <p class="component-label">Contact / Estimate Form</p>
+        <div class="form-preview">
+          <div class="form-field">
+            <label>Your Name</label>
+            <input type="text" placeholder="John Smith">
+          </div>
+          <div class="form-field">
+            <label>Service Needed</label>
+            <select><option>Residential Driveway</option><option>Parking Lot</option><option>Sealcoating</option></select>
+          </div>
+          <div class="form-field">
+            <label>Phone Number</label>
+            <input type="tel" placeholder="(253) 555-0100">
+          </div>
+          <a href="#" class="btn btn-primary" style="margin-top:0.25rem; justify-content:center;">Request Estimate</a>
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="component-card">
+        <p class="component-label">Testimonial</p>
+        <div class="testimonial">
+          <blockquote>"They showed up on time, finished ahead of schedule, and the driveway looks incredible. Best crew we've hired."</blockquote>
+          <cite>— Mark T., <span>Puyallup Homeowner</span></cite>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="swoop-divider"></div>
+
+  <!-- ═══ USAGE NOTES ═══ -->
+  <section class="section">
+    <p class="section-label">05 — Light Mode Usage Notes</p>
+    <div class="usage-grid">
+      <div class="usage-card do">
+        <p class="usage-heading">✓ Do</p>
+        <ul>
+          <li>Keep hero sections dark — the brand anchors in dark steel</li>
+          <li>Use the chrome gradient panel for stats and feature callouts</li>
+          <li>Steel 50 background with white cards creates clean depth</li>
+          <li>Team Red remains the only warm color — use it as a signal</li>
+          <li>The red corner swoop works well on light service cards</li>
+          <li>Light mode suits content-heavy pages: service listings, blog, about</li>
+        </ul>
+      </div>
+      <div class="usage-card dont">
+        <p class="usage-heading">✕ Don't</p>
+        <ul>
+          <li>Don't go pure white — always use the steel-tinted base</li>
+          <li>Don't soften the red — it should still feel bold, not pastel</li>
+          <li>Don't use the light mode for a full site — hero/CTA stays dark</li>
+          <li>Don't add warm tones (tan, beige, yellow) — keep it industrial</li>
+          <li>Don't use rounded corners or soft shadows — precision only</li>
+          <li>Don't drop the clipped button corners in light mode</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="brand-footer">
+    <p class="footer-brand">TE<span>A</span>M ASPHALT CO.</p>
+    <p class="footer-note">Brand Reference (Light) — Firefly Software · Puyallup, WA · 2025</p>
+  </footer>
+
+</div>
+</body>
+</html>
