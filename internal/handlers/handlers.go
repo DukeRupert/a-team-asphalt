@@ -177,7 +177,12 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 	description := truncate(strings.TrimSpace(r.FormValue("description")), 2000)
 
 	if name == "" || (phone == "" && email == "") {
-		http.Error(w, "Missing required fields", http.StatusBadRequest)
+		// Redirect back with error flag so the form can show an inline message.
+		redirect := "/"
+		if dest := r.FormValue("redirect"); validRedirects[dest] {
+			redirect = dest
+		}
+		http.Redirect(w, r, redirect+"?error=missing", http.StatusSeeOther)
 		return
 	}
 

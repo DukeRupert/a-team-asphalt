@@ -172,12 +172,20 @@
         });
     }
 
-    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+    var params = new URLSearchParams(window.location.search);
+
+    if (params.get('submitted') === '1') {
         if (form && success) {
             form.hidden = true;
             success.hidden = false;
             success.setAttribute('role', 'status');
         }
+        history.replaceState(null, '', window.location.pathname);
+    }
+
+    if (params.get('error') === 'missing') {
+        var errEl = document.getElementById('form-error');
+        if (errEl) { errEl.hidden = false; }
         history.replaceState(null, '', window.location.pathname);
     }
 })();

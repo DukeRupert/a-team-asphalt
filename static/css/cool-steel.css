@@ -1256,6 +1256,19 @@ a.hero-credential .credential-label::after {
   transform: translateY(-1px);
 }
 
+/* Error state */
+.cta-error {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-left: 3px solid var(--red);
+  background: var(--red-light);
+}
+.cta-error p {
+  font-size: var(--type-ui);
+  color: var(--steel-800);
+  line-height: 1.5;
+}
+
 /* Success state */
 .cta-success {
   padding: 2rem 0 0;
@@ -1502,7 +1515,7 @@ a.hero-credential .credential-label::after {
 }
 .contact-hero-sub {
   font-size: var(--type-body);
-  color: var(--steel-300);
+  color: var(--dark-text);
   line-height: 1.6;
   max-width: 480px;
 }
@@ -1526,23 +1539,35 @@ a.hero-credential .credential-label::after {
   flex-direction: column;
   gap: 0.2rem;
   padding: 0 2.5rem;
-  border-right: 1px solid rgba(255,255,255,0.1);
+  border-right: 1px solid var(--dark-border);
 }
 .trust-badge:first-child { padding-left: 0; }
 .trust-badge:last-child { border-right: none; }
+a.trust-badge-link {
+  text-decoration: none;
+  color: inherit;
+  transition: opacity var(--duration-fast);
+}
+a.trust-badge-link:hover { opacity: 0.8; }
+a.trust-badge-link .trust-badge-label::after {
+  content: ' \2197';
+  font-size: 9px;
+  opacity: 0.4;
+}
 .trust-badge-label {
   font-family: 'Oswald', sans-serif;
   font-size: var(--type-label);
   font-weight: 600;
   letter-spacing: var(--track-label);
   text-transform: uppercase;
-  color: var(--steel-400);
+  color: var(--dark-text);
+  opacity: 0.5;
 }
 .trust-badge-value {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 22px;
   color: var(--white);
-  letter-spacing: 0.03em;
+  letter-spacing: var(--track-display);
 }
 .trust-badge-accent {
   color: var(--red);
