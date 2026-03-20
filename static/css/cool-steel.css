@@ -1309,6 +1309,7 @@ a.hero-credential .credential-label::after {
   min-height: 50vh;
   display: flex;
   align-items: flex-end;
+  background-color: var(--dark-bg);
   background: url('/static/img/before-after-asphalt.webp') center / cover no-repeat;
 }
 .about-hero::before {
@@ -1317,9 +1318,9 @@ a.hero-credential .credential-label::after {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(30, 40, 50, 0.95) 0%,
-    rgba(30, 40, 50, 0.7) 40%,
-    rgba(30, 40, 50, 0.4) 100%
+    color-mix(in srgb, var(--dark-bg) 95%, transparent) 0%,
+    color-mix(in srgb, var(--dark-bg) 70%, transparent) 40%,
+    color-mix(in srgb, var(--dark-bg) 40%, transparent) 100%
   );
 }
 .about-hero-inner {
@@ -1360,7 +1361,6 @@ a.hero-credential .credential-label::after {
 }
 .about-team-photo {
   overflow: hidden;
-  border-radius: 4px;
   border: 1px solid var(--steel-200);
 }
 .about-team-photo img {
@@ -1418,9 +1418,9 @@ a.hero-credential .credential-label::after {
   background: var(--steel-50);
   border: 1px solid var(--steel-200);
   border-top: 3px solid var(--red);
-  border-radius: 4px;
   padding: 2rem;
   transition: background 0.2s;
+  clip-path: var(--clip-btn-lg);
 }
 .about-why-card:hover {
   background: var(--steel-100);
@@ -1431,7 +1431,7 @@ a.hero-credential .credential-label::after {
   font-weight: 600;
   color: var(--steel-900);
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: var(--track-display);
   margin-bottom: 1rem;
   line-height: 1.3;
 }
@@ -1439,6 +1439,15 @@ a.hero-credential .credential-label::after {
   font-size: var(--type-body);
   color: var(--steel-600);
   line-height: 1.7;
+}
+.about-why-card p a {
+  color: var(--red);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+.about-why-card p a:hover {
+  color: var(--red-hover);
+  text-decoration: underline;
 }
 
 /* ── CONTACT HERO ── */
@@ -1448,6 +1457,7 @@ a.hero-credential .credential-label::after {
   display: flex;
   flex-direction: column;
   min-height: 45vh;
+  background-color: var(--dark-bg);
   background: url('/static/img/fresh-asphalt-driveway.webp') center / cover no-repeat;
 }
 .contact-hero::before {
@@ -1456,9 +1466,9 @@ a.hero-credential .credential-label::after {
   inset: 0;
   background: linear-gradient(
     to top,
-    rgba(30, 40, 50, 0.98) 0%,
-    rgba(30, 40, 50, 0.8) 40%,
-    rgba(30, 40, 50, 0.5) 100%
+    color-mix(in srgb, var(--dark-bg) 98%, transparent) 0%,
+    color-mix(in srgb, var(--dark-bg) 80%, transparent) 40%,
+    color-mix(in srgb, var(--dark-bg) 50%, transparent) 100%
   );
 }
 .contact-hero-inner {
