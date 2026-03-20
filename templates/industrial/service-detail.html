@@ -22,6 +22,15 @@
 
 <main id="main">
 
+  <!-- BREADCRUMB -->
+  <nav class="sd-breadcrumb" aria-label="Breadcrumb">
+    <ol class="sd-breadcrumb-list">
+      <li><a href="/">Home</a></li>
+      <li><a href="/services">Services</a></li>
+      <li><span aria-current="page">{{.Service.Name}}</span></li>
+    </ol>
+  </nav>
+
   <!-- SERVICE HERO -->
   <!-- {{.Service.PhotoDesc}} -->
   <section class="sd-hero">
@@ -44,7 +53,7 @@
       </div>
       <div class="sd-hero-image">
         {{if .Service.PhotoURL}}
-        <img src="{{.Service.PhotoURL}}" alt="{{.Service.Name}}" class="sd-hero-img" loading="eager" width="800" height="534">
+        <img src="{{.Service.PhotoURL}}" alt="{{.Service.PhotoDesc}}" class="sd-hero-img" loading="eager" width="800" height="534">
         {{else}}
         <div class="svc-image-placeholder" aria-hidden="true"></div>
         {{end}}
@@ -68,7 +77,7 @@
     <div class="sd-includes-inner">
       <div class="sd-includes-header">
         <div class="section-eyebrow">What's Included</div>
-        <h2 class="sd-includes-headline">The full scope.</h2>
+        <h2 class="sd-includes-headline">What our {{.Service.Name}} service covers.</h2>
       </div>
       <ul class="sd-includes-list">
         {{range .Service.Includes}}
@@ -86,7 +95,7 @@
     <div class="sd-process-inner">
       <div class="sd-process-header">
         <div class="section-eyebrow">How We Do It</div>
-        <h2 class="sd-process-headline">Step by step.</h2>
+        <h2 class="sd-process-headline">How {{.Service.Name}} works.</h2>
       </div>
       <div class="sd-process-steps">
         {{range .Service.Process}}
@@ -110,7 +119,7 @@
     <div class="sd-why-inner">
       <div class="sd-why-header">
         <div class="section-eyebrow">Why A-Team</div>
-        <h2 class="sd-why-headline">What sets us apart.</h2>
+        <h2 class="sd-why-headline">Why choose A-Team for {{.Service.Name}}.</h2>
       </div>
       <div class="sd-why-grid">
         {{range .Service.WhyUs}}
@@ -190,6 +199,17 @@
 
 {{template "footer" .}}
 {{template "scripts" .}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Home", "item": "{{.BaseURL}}/"},
+    {"@type": "ListItem", "position": 2, "name": "Services", "item": "{{.BaseURL}}/services"},
+    {"@type": "ListItem", "position": 3, "name": "{{.Service.Name}}"}
+  ]
+}
+</script>
 </body>
 </html>
 {{end}}

@@ -190,17 +190,17 @@
       <form class="cta-form" id="estimate-form" action="/estimate" method="POST">
         <input type="hidden" name="redirect" value="/">
         <div class="form-field">
-          <label for="cta-name">Name <span class="required">*</span></label>
-          <input id="cta-name" name="name" type="text" autocomplete="name" required>
+          <label for="cta-name">Name <span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+          <input id="cta-name" name="name" type="text" autocomplete="name" required maxlength="100">
         </div>
         <div class="form-row">
           <div class="form-field">
-            <label for="cta-email">Email <span class="required">*</span></label>
-            <input id="cta-email" name="email" type="email" autocomplete="email" required>
+            <label for="cta-email">Email <span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
+            <input id="cta-email" name="email" type="email" autocomplete="email" required maxlength="254">
           </div>
           <div class="form-field">
             <label for="cta-phone">Phone</label>
-            <input id="cta-phone" name="phone" type="tel" autocomplete="tel">
+            <input id="cta-phone" name="phone" type="tel" autocomplete="tel" maxlength="20">
           </div>
         </div>
         <div class="form-field">
@@ -218,7 +218,7 @@
         </div>
         <div class="form-field">
           <label for="cta-desc">Tell us about your project</label>
-          <textarea id="cta-desc" name="description" rows="5" placeholder="Location, what needs done, and any details that help"></textarea>
+          <textarea id="cta-desc" name="description" rows="5" maxlength="2000" placeholder="Location, what needs done, and any details that help"></textarea>
         </div>
         <button class="cta-submit-btn" type="submit">Send Message</button>
         <p class="form-note">Goes straight to our inbox. We usually respond the same day.</p>

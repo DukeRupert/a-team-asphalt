@@ -30,7 +30,7 @@
 <!-- NAV -->
 <nav aria-label="Main">
   <a href="/" class="nav-logo-block">
-    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt, LLC" class="nav-logo-img" width="120" height="auto">
+    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt, LLC — Asphalt contractor in Sumner, WA" class="nav-logo-img" width="120" height="auto">
   </a>
   <ul class="nav-links">
     <li><a href="/"{{if eq .CurrentPage "/"}} aria-current="page"{{end}}>Home</a></li>
@@ -71,7 +71,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt, LLC" class="footer-logo-img" width="140" height="auto">
+      <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt, LLC — Asphalt contractor in Sumner, WA" class="footer-logo-img" width="140" height="auto">
       <div class="footer-tagline">Serving the Puget Sound Since 1995</div>
     </div>
     <div class="footer-contact">
@@ -169,11 +169,15 @@
     var success = document.getElementById('form-success');
 
     if (form) {
-        form.addEventListener('submit', function() {
+        var submitting = false;
+        form.addEventListener('submit', function(e) {
+            if (submitting) { e.preventDefault(); return; }
+            submitting = true;
             var btn = form.querySelector('.cta-submit-btn');
-            if (btn.disabled) return false;
-            btn.disabled = true;
-            btn.textContent = 'Sending\u2026';
+            if (btn) {
+                btn.disabled = true;
+                btn.textContent = 'Sending\u2026';
+            }
         });
     }
 
@@ -181,6 +185,7 @@
         if (form && success) {
             form.hidden = true;
             success.hidden = false;
+            success.setAttribute('role', 'status');
         }
         history.replaceState(null, '', window.location.pathname);
     }

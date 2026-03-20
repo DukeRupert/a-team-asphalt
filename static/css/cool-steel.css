@@ -18,6 +18,7 @@
   --steel-900:   #0E1517;
 
   --red:         #C8102E;
+  --red-rgb:     200, 16, 46;
   --red-dk:      #9E0B22;
   --red-hover:   #E01233;
   --red-light:   #F9E5E8;
@@ -42,14 +43,20 @@
   --type-display: clamp(36px, 6vw, 64px);
   --type-title:   clamp(22px, 3vw, 32px);
   --type-body:    16px;
+  --type-ui:      14px;
   --type-nav:     13px;
   --type-label:   11px;
   --type-small:   12px;
 
   /* Tracking */
-  --track-label:  0.2em;
-  --track-nav:    0.15em;
-  --track-display: 0.04em;
+  --track-label:    0.2em;
+  --track-eyebrow:  0.35em;
+  --track-nav:      0.15em;
+  --track-display:  0.04em;
+
+  /* Timing */
+  --duration-fast: var(--duration-fast);
+  --duration-med:  0.25s;
 
   /* Layout */
   --page-max:    1280px;
@@ -138,7 +145,7 @@ nav {
   text-transform: uppercase;
   color: var(--steel-400);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
   height: 100%;
   position: relative;
 }
@@ -168,12 +175,12 @@ nav {
   align-items: center;
   padding: 0 1.5rem;
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 14px;
+  font-size: var(--type-ui);
   font-weight: 600;
   color: var(--steel-600);
   text-decoration: none;
   border-left: 1px solid var(--border);
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .nav-phone:hover { color: var(--steel-800); }
 .nav-cta {
@@ -189,7 +196,7 @@ nav {
   text-transform: uppercase;
   text-decoration: none;
   border: none;
-  transition: background 0.15s;
+  transition: background var(--duration-fast);
   clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%, 0 0);
 }
 .nav-cta:hover { background: var(--red-hover); }
@@ -204,7 +211,7 @@ nav {
   border: none;
   border-left: 1px solid var(--border);
   cursor: pointer;
-  transition: opacity 0.15s;
+  transition: opacity var(--duration-fast);
 }
 .nav-mode-switch:hover { opacity: 0.85; }
 
@@ -216,7 +223,7 @@ nav {
   text-transform: uppercase;
   color: var(--steel-400);
   opacity: 0.5;
-  transition: opacity 0.15s, color 0.15s;
+  transition: opacity var(--duration-fast), color var(--duration-fast);
 }
 .mode-label-active {
   opacity: 1;
@@ -344,7 +351,7 @@ nav {
   border-left: 3px solid transparent;
   opacity: 0;
   transform: translateX(-8px);
-  transition: color 0.15s, background 0.15s, border-left-color 0.2s,
+  transition: color var(--duration-fast), background var(--duration-fast), border-left-color 0.2s,
               opacity 0.3s cubic-bezier(0.22, 0.61, 0.36, 1),
               transform 0.3s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
@@ -361,7 +368,7 @@ nav {
 
 .nav-mobile-menu:not(.open) a {
   transition-delay: 0s;
-  transition-duration: 0.15s;
+  transition-duration: var(--duration-fast);
 }
 
 .nav-mobile-menu a:hover {
@@ -417,7 +424,7 @@ nav {
 a.hero-credential {
   text-decoration: none;
   color: inherit;
-  transition: background 0.15s;
+  transition: background var(--duration-fast);
 }
 a.hero-credential:hover {
   background: var(--steel-50);
@@ -461,6 +468,7 @@ a.hero-credential .credential-label::after {
   font-weight: 700;
   color: var(--steel-800);
   letter-spacing: 0.02em;
+  overflow-wrap: break-word;
 }
 .credential-accent {
   color: var(--red);
@@ -472,7 +480,11 @@ a.hero-credential .credential-label::after {
 .hero-image-area {
   flex: 1;
   position: relative;
-  background: url('/static/img/hero-driveway.webp') center / cover no-repeat;
+  background-color: var(--dark-bg);
+  background-image: url('/static/img/hero-driveway.webp');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-image: image-set(
     url('/static/img/hero-driveway.webp') type('image/webp'),
     url('/static/img/hero-driveway.jpeg') type('image/jpeg')
@@ -489,20 +501,6 @@ a.hero-credential .credential-label::after {
     color-mix(in srgb, var(--dark-bg) 50%, transparent) 100%
   );
 }
-/* Geometric swoop accent */
-.hero-image-area::after {
-  content: '';
-  position: absolute;
-  right: 8%;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 280px;
-  height: 280px;
-  border: 3px solid var(--red);
-  clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
-  opacity: 0.1;
-}
-
 .hero-content {
   position: relative;
   max-width: var(--page-max);
@@ -524,7 +522,7 @@ a.hero-credential .credential-label::after {
   font-family: 'Oswald', sans-serif;
   font-size: var(--type-label);
   font-weight: 600;
-  letter-spacing: 0.35em;
+  letter-spacing: var(--track-eyebrow);
   text-transform: uppercase;
   color: var(--red);
   margin-bottom: 1rem;
@@ -561,16 +559,6 @@ a.hero-credential .credential-label::after {
 
 /* Red accent on the "A" */
 .hero-word-1 { color: var(--red); }
-
-.hero-tagline {
-  font-family: 'Oswald', sans-serif;
-  font-weight: 400;
-  font-style: italic;
-  font-size: clamp(14px, 2vw, 18px);
-  color: var(--dark-text);
-  letter-spacing: 0.05em;
-  margin-bottom: 1.25rem;
-}
 
 /* Red stripe divider */
 .hero-rule {
@@ -611,14 +599,14 @@ a.hero-credential .credential-label::after {
   background: var(--red);
   color: var(--white);
   font-family: 'Oswald', sans-serif;
-  font-size: 14px;
+  font-size: var(--type-ui);
   font-weight: 600;
   letter-spacing: var(--track-nav);
   text-transform: uppercase;
   padding: 0.85rem 2rem;
   border: none;
   cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
+  transition: background var(--duration-fast), transform var(--duration-fast);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -631,14 +619,14 @@ a.hero-credential .credential-label::after {
   background: transparent;
   color: var(--steel-800);
   font-family: 'Oswald', sans-serif;
-  font-size: 14px;
+  font-size: var(--type-ui);
   font-weight: 600;
   letter-spacing: var(--track-nav);
   text-transform: uppercase;
   padding: 0.85rem 2rem;
   border: 1px solid var(--steel-600);
   cursor: pointer;
-  transition: border-color 0.15s, color 0.15s, background 0.15s;
+  transition: border-color var(--duration-fast), color var(--duration-fast), background var(--duration-fast);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -646,13 +634,19 @@ a.hero-credential .credential-label::after {
 }
 .btn-secondary:hover { border-color: var(--steel-900); color: var(--steel-900); background: rgba(0, 0, 0, 0.03); }
 
-/* btn-secondary on dark backgrounds — light text so it's visible */
-.hero-actions .btn-secondary,
+/* btn-secondary on dark backgrounds — high-visibility treatment */
+.hero-actions .btn-secondary {
+  color: var(--dark-headline);
+  border-color: var(--dark-headline);
+  border-width: 2px;
+}
+.hero-actions .btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
 .svc-callout-actions .btn-secondary {
   color: var(--dark-text);
   border-color: var(--dark-text);
 }
-.hero-actions .btn-secondary:hover,
 .svc-callout-actions .btn-secondary:hover {
   color: var(--dark-headline);
   border-color: var(--dark-headline);
@@ -690,7 +684,7 @@ a.hero-credential .credential-label::after {
   font-family: 'Oswald', sans-serif;
   font-size: var(--type-label);
   font-weight: 600;
-  letter-spacing: 0.35em;
+  letter-spacing: var(--track-eyebrow);
   text-transform: uppercase;
   color: var(--red);
   margin-bottom: 1rem;
@@ -747,6 +741,7 @@ a.hero-credential .credential-label::after {
   text-decoration: none;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 .service-card:hover { background: var(--steel-50); }
 
@@ -804,7 +799,7 @@ a.hero-credential .credential-label::after {
 }
 
 .service-desc {
-  font-size: 14px;
+  font-size: var(--type-ui);
   color: var(--steel-400);
   line-height: 1.7;
   flex: 1;
@@ -820,34 +815,36 @@ a.hero-credential .credential-label::after {
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--red);
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .service-link::after {
   content: ' →';
   margin-left: 0.4em;
-  transition: margin-left 0.15s;
+  transition: margin-left var(--duration-fast);
 }
 .service-card:hover .service-link { color: var(--red-hover); }
 .service-card:hover .service-link::after { margin-left: 0.7em; }
 
 .services-footer {
-  margin-top: 2rem;
+  margin-top: 2.5rem;
   text-align: right;
 }
 .services-all-link {
   font-family: 'Oswald', sans-serif;
-  font-size: var(--type-nav);
+  font-size: var(--type-ui);
   font-weight: 600;
   letter-spacing: var(--track-nav);
   text-transform: uppercase;
-  color: var(--steel-400);
+  color: var(--steel-800);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
+  border-bottom: 2px solid var(--red);
+  padding-bottom: 0.25rem;
 }
 .services-all-link:hover { color: var(--steel-900); }
 .services-all-link::after {
   content: ' →';
-  transition: margin-left 0.15s;
+  transition: margin-left var(--duration-fast);
 }
 .services-all-link:hover::after { margin-left: 0.3em; }
 
@@ -1019,7 +1016,6 @@ a.hero-credential .credential-label::after {
   border-left: 4px solid var(--red);
   padding: 1rem 1.5rem;
   background: var(--red-light);
-  border-radius: 0 4px 4px 0;
 }
 
 .manifesto-text {
@@ -1040,6 +1036,21 @@ a.hero-credential .credential-label::after {
   font-weight: 600;
 }
 
+.manifesto-about-link {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-ui);
+  font-weight: 600;
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+  color: var(--red);
+  text-decoration: none;
+  margin-top: 0.5rem;
+  transition: color var(--duration-fast);
+}
+.manifesto-about-link:hover { color: var(--red-hover); }
+
 /* Credentials — stat blocks with red top border */
 .manifesto-credentials {
   grid-column: 1 / -1;
@@ -1047,7 +1058,7 @@ a.hero-credential .credential-label::after {
   gap: 0;
   background: var(--white);
   border: 1px solid var(--steel-200);
-  border-radius: 4px;
+  clip-path: var(--clip-btn-lg);
   overflow: hidden;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
@@ -1119,10 +1130,10 @@ a.hero-credential .credential-label::after {
 .cta-form-panel {
   background: var(--white);
   border: 1px solid var(--steel-200);
-  border-radius: 6px;
   padding: 2rem;
   position: relative;
   overflow: hidden;
+  clip-path: var(--clip-btn-lg);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 /* Red gradient top bar */
@@ -1185,11 +1196,11 @@ a.hero-credential .credential-label::after {
   border-radius: 3px;
   color: var(--steel-800);
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 14px;
+  font-size: var(--type-ui);
   padding: 0.7rem 0.9rem;
   width: 100%;
   outline: none;
-  transition: border-color 0.15s;
+  transition: border-color var(--duration-fast);
   -webkit-appearance: none;
 }
 
@@ -1231,13 +1242,13 @@ a.hero-credential .credential-label::after {
   color: var(--white);
   border: none;
   font-family: 'Oswald', sans-serif;
-  font-size: 14px;
+  font-size: var(--type-ui);
   font-weight: 600;
   letter-spacing: var(--track-nav);
   text-transform: uppercase;
   padding: 1rem 1.5rem;
   cursor: pointer;
-  transition: background 0.15s, transform 0.15s;
+  transition: background var(--duration-fast), transform var(--duration-fast);
   clip-path: var(--clip-btn-lg);
 }
 .cta-submit-btn:hover {
@@ -1559,7 +1570,6 @@ a.hero-credential .credential-label::after {
   background: var(--white);
   border: 1px solid var(--steel-200);
   border-left: 3px solid var(--red);
-  border-radius: 4px;
   padding: 2rem 2.25rem;
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
@@ -1599,7 +1609,7 @@ a.hero-credential .credential-label::after {
   letter-spacing: 0.03em;
   color: var(--steel-900);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .contact-card-phone:hover {
   color: var(--red);
@@ -1613,7 +1623,7 @@ a.hero-credential .credential-label::after {
   font-weight: 600;
   color: var(--steel-600);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .contact-card-email:hover {
   color: var(--steel-900);
@@ -1713,7 +1723,7 @@ footer {
   color: var(--dark-text);
   opacity: 0.5;
   text-decoration: none;
-  transition: opacity 0.15s, color 0.15s;
+  transition: opacity var(--duration-fast), color var(--duration-fast);
 }
 .footer-links a:hover { opacity: 1; color: var(--dark-headline); }
 
@@ -1725,17 +1735,17 @@ footer {
 }
 .footer-phone {
   font-family: 'Source Sans 3', sans-serif;
-  font-size: 14px;
+  font-size: var(--type-ui);
   font-weight: 600;
   color: var(--dark-text);
   text-decoration: none;
 }
 .footer-phone:hover { color: var(--dark-headline); }
 .footer-email {
-  font-size: 14px;
+  font-size: var(--type-ui);
   color: var(--dark-body);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .footer-email:hover { color: var(--dark-headline); }
 .footer-location {
@@ -1766,7 +1776,7 @@ footer {
 .footer-social-link {
   color: var(--dark-text);
   opacity: 0.5;
-  transition: opacity 0.15s;
+  transition: opacity var(--duration-fast);
 }
 .footer-social-link:hover { opacity: 0.8; }
 .footer-social-disabled {
@@ -1855,7 +1865,6 @@ button:focus:not(:focus-visible) {
   .hero-image-area {
     order: 1;
   }
-  .hero-image-area::after { display: none; }
   .hero-credential-featured {
     flex-basis: 100%;
     border-right: none;
@@ -1982,6 +1991,48 @@ button:focus:not(:focus-visible) {
 }
 
 /* ── SERVICE DETAIL PAGE ── */
+
+/* Breadcrumb */
+.sd-breadcrumb {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 1rem var(--page-pad) 0;
+}
+.sd-breadcrumb-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-small);
+  font-weight: 500;
+  letter-spacing: var(--track-nav);
+  text-transform: uppercase;
+}
+.sd-breadcrumb-list li {
+  display: flex;
+  align-items: center;
+}
+.sd-breadcrumb-list li + li::before {
+  content: '/';
+  margin: 0 0.6em;
+  color: var(--steel-200);
+  font-weight: 400;
+}
+.sd-breadcrumb-list a {
+  color: var(--steel-400);
+  text-decoration: none;
+  transition: color var(--duration-fast);
+}
+.sd-breadcrumb-list a:hover {
+  color: var(--red);
+}
+.sd-breadcrumb-list [aria-current="page"] {
+  color: var(--steel-800);
+}
+
 .sd-hero {
   position: relative;
   z-index: 1;
@@ -2017,7 +2068,7 @@ button:focus:not(:focus-visible) {
   text-transform: uppercase;
   color: var(--steel-400);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .sd-hero-cat-link:hover { color: var(--steel-900); }
 .sd-hero-headline {
@@ -2169,7 +2220,7 @@ button:focus:not(:focus-visible) {
   margin-bottom: 0.5rem;
 }
 .sd-why-card-desc {
-  font-size: 14px;
+  font-size: var(--type-ui);
   color: var(--steel-600);
   line-height: 1.7;
 }
@@ -2310,7 +2361,7 @@ button:focus:not(:focus-visible) {
   background: var(--white);
   padding: 1.5rem 1.5rem;
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background var(--duration-fast);
   display: flex;
   flex-direction: column;
 }
@@ -2398,7 +2449,7 @@ button:focus:not(:focus-visible) {
   padding: 1rem 1.5rem;
   border-right: 1px solid var(--border-lt);
   text-decoration: none;
-  transition: background 0.15s;
+  transition: background var(--duration-fast);
 }
 .svc-jumpnav-item:last-child { border-right: none; }
 .svc-jumpnav-item:hover { background: var(--red-light); }
@@ -2417,7 +2468,7 @@ button:focus:not(:focus-visible) {
   letter-spacing: var(--track-nav);
   text-transform: uppercase;
   color: var(--steel-600);
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .svc-jumpnav-item:hover .svc-jumpnav-label { color: var(--steel-900); }
 
@@ -2437,8 +2488,8 @@ button:focus:not(:focus-visible) {
       -55deg,
       transparent,
       transparent 40px,
-      rgba(200, 16, 46, 0.015) 40px,
-      rgba(200, 16, 46, 0.015) 41px
+      rgba(var(--red-rgb),0.015) 40px,
+      rgba(var(--red-rgb),0.015) 41px
     );
 }
 .svc-hero-content {
@@ -2509,7 +2560,7 @@ button:focus:not(:focus-visible) {
   font-size: 22px;
 }
 .svc-hero-card-desc {
-  font-size: 14px;
+  font-size: var(--type-ui);
   color: var(--dark-text);
   line-height: 1.7;
   flex: 1;
@@ -2603,8 +2654,8 @@ button:focus:not(:focus-visible) {
       -55deg,
       transparent,
       transparent 8px,
-      rgba(200, 16, 46, 0.03) 8px,
-      rgba(200, 16, 46, 0.03) 9px
+      rgba(var(--red-rgb),0.03) 8px,
+      rgba(var(--red-rgb),0.03) 9px
     ),
     var(--steel-100);
 }
@@ -2614,8 +2665,8 @@ button:focus:not(:focus-visible) {
       -55deg,
       transparent,
       transparent 8px,
-      rgba(200, 16, 46, 0.03) 8px,
-      rgba(200, 16, 46, 0.03) 9px
+      rgba(var(--red-rgb),0.03) 8px,
+      rgba(var(--red-rgb),0.03) 9px
     ),
     var(--white);
 }
@@ -2672,12 +2723,12 @@ button:focus:not(:focus-visible) {
   text-transform: uppercase;
   color: var(--red);
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .svc-item-cta::after {
   content: ' →';
   margin-left: 0.4em;
-  transition: margin-left 0.15s;
+  transition: margin-left var(--duration-fast);
 }
 .svc-item-cta:hover {
   color: var(--red-hover);
@@ -2702,7 +2753,7 @@ button:focus:not(:focus-visible) {
   font-size: 10px;
   margin-top: 0.75rem;
   opacity: 0.8;
-  transition: color 0.15s, opacity 0.15s;
+  transition: color var(--duration-fast), opacity var(--duration-fast);
 }
 .svc-item-cta-muted:hover {
   color: var(--red);
@@ -2713,10 +2764,10 @@ button:focus:not(:focus-visible) {
 a.svc-hero-card {
   text-decoration: none;
   color: inherit;
-  transition: background 0.15s;
+  transition: background var(--duration-fast);
 }
 a.svc-hero-card:hover {
-  background: rgba(200, 16, 46, 0.04);
+  background: rgba(var(--red-rgb),0.04);
 }
 
 /* Snow callout dual actions */
@@ -2730,7 +2781,7 @@ a.svc-hero-card:hover {
 .svc-item-name a {
   color: inherit;
   text-decoration: none;
-  transition: color 0.15s;
+  transition: color var(--duration-fast);
 }
 .svc-item-name a:hover {
   color: var(--steel-900);
@@ -2753,8 +2804,8 @@ a.svc-hero-card:hover {
       -55deg,
       transparent,
       transparent 40px,
-      rgba(200, 16, 46, 0.02) 40px,
-      rgba(200, 16, 46, 0.02) 41px
+      rgba(var(--red-rgb),0.02) 40px,
+      rgba(var(--red-rgb),0.02) 41px
     );
 }
 .svc-callout-inner {
@@ -2940,7 +2991,7 @@ a.svc-hero-card:hover {
   .nav-mobile-menu { transition: none; }
   .nav-mobile-menu::before { transition: none; }
   .nav-mobile-menu a {
-    transition: color 0.15s, background 0.15s;
+    transition: color var(--duration-fast), background var(--duration-fast);
     opacity: 1;
     transform: none;
   }

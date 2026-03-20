@@ -163,16 +163,18 @@ var validRedirects = map[string]bool{
 
 // Estimate handles the estimate request form submission.
 func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
+	// Limit request body to 64KB to prevent abuse.
+	r.Body = http.MaxBytesReader(w, r.Body, 64<<10)
 	if err := r.ParseForm(); err != nil {
 		http.Error(w, "Bad Request", http.StatusBadRequest)
 		return
 	}
 
-	name := strings.TrimSpace(r.FormValue("name"))
-	phone := strings.TrimSpace(r.FormValue("phone"))
-	email := strings.TrimSpace(r.FormValue("email"))
-	projectType := strings.TrimSpace(r.FormValue("project_type"))
-	description := strings.TrimSpace(r.FormValue("description"))
+	name := truncate(strings.TrimSpace(r.FormValue("name")), 100)
+	phone := truncate(strings.TrimSpace(r.FormValue("phone")), 20)
+	email := truncate(strings.TrimSpace(r.FormValue("email")), 254)
+	projectType := truncate(strings.TrimSpace(r.FormValue("project_type")), 100)
+	description := truncate(strings.TrimSpace(r.FormValue("description")), 2000)
 
 	if name == "" || (phone == "" && email == "") {
 		http.Error(w, "Missing required fields", http.StatusBadRequest)
@@ -202,4 +204,16 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 		redirect = dest
 	}
 	http.Redirect(w, r, redirect+"?submitted=1", http.StatusSeeOther)
+}
+
+// truncate returns s cut to at most max bytes on a rune boundary.
+func truncate(s string, max int) string {
+	if len(s) <= max {
+		return s
+	}
+	// Walk back to avoid splitting a multi-byte rune.
+	for max > 0 && max < len(s) && s[max]>>6 == 2 {
+		max--
+	}
+	return s[:max]
 }
