@@ -1804,6 +1804,23 @@ footer {
 }
 .footer-cta:hover { color: var(--red-hover); }
 
+.footer-social {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+.footer-social-link {
+  color: var(--dark-text);
+  opacity: 0.4;
+  transition: opacity var(--duration-fast);
+}
+.footer-social-link:hover { opacity: 0.8; }
+.footer-social-disabled {
+  opacity: 0.2;
+  pointer-events: none;
+  cursor: default;
+}
+
 .footer-bottom {
   max-width: var(--page-max);
   margin: 0 auto;
