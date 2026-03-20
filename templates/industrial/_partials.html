@@ -23,7 +23,7 @@
 <!-- NAV -->
 <nav aria-label="Main">
   <a href="/" class="nav-logo-block">
-    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt Co." class="nav-logo-img" width="120" height="auto">
+    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt, LLC" class="nav-logo-img" width="120" height="auto">
   </a>
   <ul class="nav-links">
     <li><a href="/"{{if eq .CurrentPage "/"}} aria-current="page"{{end}}>Home</a></li>
@@ -129,25 +129,6 @@
         setTheme(!isDark());
       });
     });
-
-    // Trust bar scroll-driven gradient shift
-    var trustBar = document.querySelector('.trust-bar');
-    if (trustBar && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        var ticking = false;
-        window.addEventListener('scroll', function() {
-            if (!ticking) {
-                ticking = true;
-                requestAnimationFrame(function() {
-                    var rect = trustBar.getBoundingClientRect();
-                    var vh = window.innerHeight;
-                    var progress = 1 - (rect.bottom / (vh + rect.height));
-                    progress = Math.max(0, Math.min(1, progress));
-                    trustBar.style.backgroundPosition = (progress * 100) + '% 0%';
-                    ticking = false;
-                });
-            }
-        }, { passive: true });
-    }
 
     // Mobile nav toggle
     var toggle = document.getElementById('nav-toggle');
