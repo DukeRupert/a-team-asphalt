@@ -519,9 +519,9 @@ a.hero-credential .credential-label::after {
   40%  { transform: scale(1.04); }
   100% { transform: scale(1); }
 }
-.hero-word-1 { animation: emphatic 0.5s cubic-bezier(0.22, 0.61, 0.36, 1) 0.75s both; }
-.hero-word-2 { animation: emphatic 0.55s cubic-bezier(0.22, 0.61, 0.36, 1) 1.1s both; }
-.hero-word-3 { animation: emphatic 0.65s cubic-bezier(0.22, 0.61, 0.36, 1) 1.5s both; }
+.hero-word-1 { animation: emphatic 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 0.8s both; }
+.hero-word-2 { animation: emphatic 0.6s cubic-bezier(0.22, 0.61, 0.36, 1) 1.5s both; }
+.hero-word-3 { animation: emphatic 0.7s cubic-bezier(0.22, 0.61, 0.36, 1) 2.2s both; }
 
 /* Red accent on the "A" */
 .hero-word-1 { color: var(--red); }
@@ -688,8 +688,7 @@ a.hero-credential .credential-label::after {
 /* Service cards — industrial style */
 .services-grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
-  grid-template-rows: auto auto;
+  grid-template-columns: repeat(3, 1fr);
   gap: 1px;
   background: var(--border-lt);
   border: 1px solid var(--border-lt);
@@ -721,28 +720,6 @@ a.hero-credential .credential-label::after {
 }
 .service-card:hover::before { opacity: 0.5; }
 
-/* Featured first card */
-.service-card:first-child {
-  grid-row: 1 / 3;
-  padding: 2.5rem 2rem;
-}
-.service-card:first-child::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 3px;
-  height: 100%;
-  background: var(--red);
-}
-.service-card:first-child .service-name {
-  font-size: 28px;
-  margin-bottom: 1rem;
-}
-.service-card:first-child .service-desc {
-  font-size: var(--type-body);
-  max-width: 360px;
-}
 
 .service-name {
   font-family: 'Bebas Neue', sans-serif;
@@ -759,8 +736,102 @@ a.hero-credential .credential-label::after {
   line-height: 1.7;
 }
 
-/* Chrome plate — hidden in dark mode, shown in light mode */
-.chrome-plate { display: none; }
+/* ── TRUST BAR ── */
+.trust-bar {
+  position: relative;
+  z-index: 1;
+  background: var(--black);
+  border-top: 1px solid var(--border-lt);
+  border-bottom: 1px solid var(--border-lt);
+}
+
+.trust-bar-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2.5rem var(--page-pad);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.trust-stat {
+  text-align: center;
+  flex: 1;
+}
+
+.trust-stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(32px, 4vw, 48px);
+  color: var(--white);
+  letter-spacing: 0.02em;
+  line-height: 1;
+}
+
+.trust-stat-num span {
+  color: var(--red);
+}
+
+.trust-stat-value {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(20px, 2.5vw, 28px);
+  color: var(--white);
+  letter-spacing: 0.04em;
+  line-height: 1;
+}
+
+.trust-stat-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
+  color: var(--silver);
+  opacity: 0.6;
+  margin-top: 0.5rem;
+}
+
+.trust-divider {
+  width: 1px;
+  height: 48px;
+  background: var(--border-lt);
+}
+
+/* ── SERVICE AREA ── */
+.service-area {
+  position: relative;
+  z-index: 1;
+  background: var(--asphalt);
+}
+
+.service-area-inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: var(--section-pad) var(--page-pad);
+}
+
+.service-area-content {
+  max-width: 640px;
+}
+
+.service-area-headline {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: var(--type-display);
+  color: var(--white);
+  letter-spacing: var(--track-display);
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+.service-area-body {
+  font-size: var(--type-body);
+  color: var(--silver);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+.service-area-body:last-of-type {
+  margin-bottom: 2rem;
+}
 
 /* ── MANIFESTO ── */
 .manifesto {
@@ -1116,8 +1187,29 @@ footer {
   text-decoration: none;
 }
 .footer-phone:hover { color: var(--white); }
+.footer-email {
+  font-size: 14px;
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+.footer-email:hover { color: var(--white); }
 .footer-location {
   font-size: var(--type-small);
+  color: var(--silver);
+  opacity: 0.4;
+}
+
+.footer-license {
+  display: flex;
+  align-items: center;
+}
+.footer-lic-label {
+  font-family: 'Oswald', sans-serif;
+  font-size: var(--type-label);
+  font-weight: 600;
+  letter-spacing: var(--track-label);
+  text-transform: uppercase;
   color: var(--silver);
   opacity: 0.4;
 }
@@ -1217,11 +1309,15 @@ button:focus:not(:focus-visible) {
 
   .services-grid {
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
   }
-  .service-card:first-child {
-    grid-row: auto;
-    grid-column: 1 / -1;
+
+  .trust-bar-inner {
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .trust-divider {
+    display: none;
   }
 
   .manifesto-inner {
@@ -1267,6 +1363,11 @@ button:focus:not(:focus-visible) {
 
   .services-grid {
     grid-template-columns: 1fr;
+  }
+
+  .trust-bar-inner {
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .manifesto-credentials {
