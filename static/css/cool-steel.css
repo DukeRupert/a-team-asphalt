@@ -646,6 +646,19 @@ a.hero-credential .credential-label::after {
 }
 .btn-secondary:hover { border-color: var(--steel-900); color: var(--steel-900); background: rgba(0, 0, 0, 0.03); }
 
+/* btn-secondary on dark backgrounds — light text so it's visible */
+.hero-actions .btn-secondary,
+.svc-callout-actions .btn-secondary {
+  color: var(--dark-text);
+  border-color: var(--dark-text);
+}
+.hero-actions .btn-secondary:hover,
+.svc-callout-actions .btn-secondary:hover {
+  color: var(--dark-headline);
+  border-color: var(--dark-headline);
+  background: rgba(255, 255, 255, 0.05);
+}
+
 /* ── SWOOP DIVIDER ── */
 .swoop-divider {
   position: relative;
@@ -2845,12 +2858,19 @@ a.svc-hero-card:hover {
 
 /* ── SERVICES PAGE RESPONSIVE ── */
 @media (max-width: 960px) {
+  .svc-jumpnav {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
   .svc-jumpnav-inner {
-    flex-wrap: wrap;
+    display: flex;
+    flex-wrap: nowrap;
+    min-width: max-content;
   }
   .svc-jumpnav-item {
-    flex: 1 1 33%;
-    min-width: 0;
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 0.875rem 1.25rem;
   }
   .svc-hero-grid {
     grid-template-columns: 1fr;
@@ -2885,12 +2905,11 @@ a.svc-hero-card:hover {
 
 @media (max-width: 600px) {
   .svc-jumpnav-item {
-    flex: 1 1 50%;
     padding: 0.75rem 1rem;
     gap: 0.5rem;
   }
   .svc-jumpnav-num { font-size: 18px; }
-  .svc-jumpnav-label { font-size: 10px; }
+  .svc-jumpnav-label { font-size: 11px; }
 
   .svc-hero-number { font-size: 64px; }
   .svc-hero-grid { clip-path: none; }
