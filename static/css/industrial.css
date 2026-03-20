@@ -1668,6 +1668,53 @@ footer {
   letter-spacing: var(--track-display);
 }
 
+/* Firefly signature */
+.footer-signature {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 2rem var(--page-pad) 2rem;
+}
+.sig-divider {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+}
+.sig-divider-rule {
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+}
+.sig-divider-inner {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+}
+.sig-divider-glyph {
+  font-size: 11px;
+  line-height: 1;
+  color: rgba(250, 250, 248, 0.20);
+}
+.sig-divider-text {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: rgba(250, 250, 248, 0.78);
+}
+.sig-divider-text a {
+  color: var(--red);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--duration-fast);
+}
+.sig-divider-text a:hover {
+  border-bottom-color: var(--red);
+}
+
 /* ── SKIP LINK ── */
 .skip-link {
   position: absolute;
@@ -2860,6 +2907,13 @@ a.svc-hero-card:hover {
     margin-left: 0;
     border-top: none;
   }
+}
+
+@media (max-width: 768px) {
+  .sig-divider-rule { display: none; }
+  .sig-divider { justify-content: center; }
+  .sig-divider-inner { flex-shrink: 1; }
+  .sig-divider-text { white-space: normal; text-align: center; }
 }
 
 @media (prefers-reduced-motion: reduce) {
