@@ -1857,22 +1857,26 @@ button:focus:not(:focus-visible) {
 
 /* ── SERVICE DETAIL PAGE ── */
 
-/* Breadcrumb */
+/* Breadcrumb — stamped label strip */
 .sd-breadcrumb {
-  max-width: var(--page-max);
-  margin: 0 auto;
-  padding: 1rem var(--page-pad) 0;
+  position: relative;
+  z-index: 1;
+  background: var(--charcoal);
+  border-bottom: 1px solid var(--border-lt);
 }
 .sd-breadcrumb-list {
   list-style: none;
   margin: 0;
   padding: 0;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0.75rem var(--page-pad);
   display: flex;
   align-items: center;
   gap: 0;
   font-family: 'Oswald', sans-serif;
   font-size: var(--type-small);
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: var(--track-nav);
   text-transform: uppercase;
 }
@@ -1881,10 +1885,15 @@ button:focus:not(:focus-visible) {
   align-items: center;
 }
 .sd-breadcrumb-list li + li::before {
-  content: '/';
-  margin: 0 0.6em;
-  color: var(--charcoal);
-  font-weight: 400;
+  content: '';
+  display: inline-block;
+  width: 0;
+  height: 0;
+  margin: 0 0.75em;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  border-left: 5px solid var(--red);
+  opacity: 0.5;
 }
 .sd-breadcrumb-list a {
   color: var(--silver);
@@ -1892,10 +1901,10 @@ button:focus:not(:focus-visible) {
   transition: color var(--duration-fast);
 }
 .sd-breadcrumb-list a:hover {
-  color: var(--red);
+  color: var(--white);
 }
 .sd-breadcrumb-list [aria-current="page"] {
-  color: var(--chrome);
+  color: var(--white);
 }
 
 .sd-hero {
