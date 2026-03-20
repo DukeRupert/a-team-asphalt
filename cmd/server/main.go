@@ -39,6 +39,11 @@ func main() {
 	// Static files
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
+	// robots.txt at root
+	mux.HandleFunc("GET /robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/robots.txt")
+	})
+
 	// Form handlers
 	mux.HandleFunc("POST /estimate", h.Estimate)
 
@@ -48,6 +53,9 @@ func main() {
 	mux.HandleFunc("GET /services", h.Services)
 	mux.HandleFunc("GET /contact", h.Contact)
 	mux.HandleFunc("GET /placard", h.Placard)
+	mux.HandleFunc("GET /placard/services", h.PlacardServices)
+	mux.HandleFunc("GET /placard/about", h.PlacardAbout)
+	mux.HandleFunc("GET /placard/contact", h.PlacardContact)
 
 	fmt.Printf("Server starting on http://localhost:%s\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, mux))

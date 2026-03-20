@@ -24,9 +24,11 @@ func (h *Handlers) renderConcept(w http.ResponseWriter, r *http.Request, concept
 	data := templates.PageData{
 		Concept:     concept,
 		CurrentPage: r.URL.Path,
+		Params:      map[string]string{},
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, concept, page, data); err != nil {
+		log.Printf("ERROR rendering %s/%s: %v", concept, page, err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }
@@ -42,22 +44,57 @@ func (h *Handlers) Home(w http.ResponseWriter, r *http.Request) {
 
 // About renders the about page.
 func (h *Handlers) About(w http.ResponseWriter, r *http.Request) {
-	h.render(w, r, "home")
+	h.render(w, r, "about")
 }
 
 // Services renders the services page.
 func (h *Handlers) Services(w http.ResponseWriter, r *http.Request) {
-	h.render(w, r, "home")
+	h.render(w, r, "services")
 }
 
-// Contact renders the contact page.
+// Contact renders the contact page with optional service query parameter.
 func (h *Handlers) Contact(w http.ResponseWriter, r *http.Request) {
-	h.render(w, r, "home")
+	data := templates.PageData{
+		Concept:     "industrial",
+		CurrentPage: r.URL.Path,
+		Params:      map[string]string{},
+	}
+	if svc := r.URL.Query().Get("service"); svc != "" {
+		data.Params["service"] = svc
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	if err := h.tmpl.Render(w, "industrial", "contact", data); err != nil {
+		log.Printf("ERROR rendering industrial/contact: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
 }
 
 // Placard renders the placard concept home page.
 func (h *Handlers) Placard(w http.ResponseWriter, r *http.Request) {
 	h.renderConcept(w, r, "placard", "home")
+}
+
+// PlacardServices renders the placard services page.
+func (h *Handlers) PlacardServices(w http.ResponseWriter, r *http.Request) {
+	h.renderConcept(w, r, "placard", "services")
+}
+
+// PlacardAbout renders the placard about page.
+func (h *Handlers) PlacardAbout(w http.ResponseWriter, r *http.Request) {
+	h.renderConcept(w, r, "placard", "about")
+}
+
+// PlacardContact renders the placard contact page.
+func (h *Handlers) PlacardContact(w http.ResponseWriter, r *http.Request) {
+	h.renderConcept(w, r, "placard", "contact")
+}
+
+// validRedirects lists allowed redirect targets for form submissions.
+var validRedirects = map[string]bool{
+	"/":               true,
+	"/contact":         true,
+	"/placard":         true,
+	"/placard/contact": true,
 }
 
 // Estimate handles the estimate request form submission.
@@ -73,7 +110,7 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 	projectType := strings.TrimSpace(r.FormValue("project_type"))
 	description := strings.TrimSpace(r.FormValue("description"))
 
-	if name == "" || phone == "" || projectType == "" {
+	if name == "" || (phone == "" && email == "") {
 		http.Error(w, "Missing required fields", http.StatusBadRequest)
 		return
 	}
@@ -97,8 +134,8 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 
 	// Redirect back to the originating page
 	redirect := "/"
-	if dest := r.FormValue("redirect"); dest == "/" || dest == "/placard" {
+	if dest := r.FormValue("redirect"); validRedirects[dest] {
 		redirect = dest
 	}
-	http.Redirect(w, r, redirect+"?submitted=1#contact", http.StatusSeeOther)
+	http.Redirect(w, r, redirect+"?submitted=1", http.StatusSeeOther)
 }

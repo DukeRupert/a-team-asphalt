@@ -1,0 +1,201 @@
+{{define "head-styles"}}
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/industrial.css" id="theme-dark">
+<link rel="stylesheet" href="/static/css/cool-steel.css" id="theme-light" disabled>
+<script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
+<script>
+// Resolve theme before first paint to avoid FOUC
+(function() {
+  var saved = localStorage.getItem('ateam-theme');
+  var prefersDark = !window.matchMedia('(prefers-color-scheme: light)').matches;
+  var useDark = saved ? saved === 'dark' : prefersDark;
+  if (!useDark) {
+    document.getElementById('theme-dark').disabled = true;
+    document.getElementById('theme-light').disabled = false;
+  }
+})();
+</script>
+{{end}}
+
+{{define "nav"}}
+<!-- NAV -->
+<nav aria-label="Main">
+  <a href="/" class="nav-logo-block">
+    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt Co." class="nav-logo-img" width="120" height="auto">
+  </a>
+  <ul class="nav-links">
+    <li><a href="/"{{if eq .CurrentPage "/"}} aria-current="page"{{end}}>Home</a></li>
+    <li><a href="/services"{{if eq .CurrentPage "/services"}} aria-current="page"{{end}}>Services</a></li>
+    <li><a href="/about"{{if eq .CurrentPage "/about"}} aria-current="page"{{end}}>About Us</a></li>
+    <li><a href="/contact"{{if eq .CurrentPage "/contact"}} aria-current="page"{{end}}>Contact Us</a></li>
+  </ul>
+  <div class="nav-end">
+    <button class="nav-mode-switch" id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
+      <span class="mode-label mode-label-dark">Dark</span>
+      <span class="mode-track"><span class="mode-thumb"></span></span>
+      <span class="mode-label mode-label-light">Light</span>
+    </button>
+    <a href="tel:+12533651283" class="nav-phone">(253) 365-1283</a>
+    <a href="/contact" class="nav-cta">Get a Free Estimate</a>
+  </div>
+  <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mobile-menu" id="nav-menu" aria-hidden="true">
+    <a href="/">Home</a>
+    <a href="/services">Services</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact Us</a>
+    <button class="nav-mobile-mode-switch" id="theme-toggle-mobile" type="button" aria-label="Toggle light/dark mode">
+      <span class="mode-label mode-label-dark">Dark</span>
+      <span class="mode-track"><span class="mode-thumb"></span></span>
+      <span class="mode-label mode-label-light">Light</span>
+    </button>
+    <a href="tel:+12533651283" class="nav-mobile-phone">(253) 365-1283</a>
+    <a href="/contact" class="nav-mobile-cta">Get a Free Estimate</a>
+  </div>
+</nav>
+{{end}}
+
+{{define "footer"}}
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt, LLC" class="footer-logo-img" width="140" height="auto">
+      <div class="footer-tagline">Serving the Puget Sound Since 1995</div>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:+12533651283" class="footer-phone">(253) 365-1283</a>
+      <a href="mailto:info@ateamasphalt.com" class="footer-email">info@ateamasphalt.com</a>
+      <span class="footer-location">Sumner, WA</span>
+    </div>
+    <div class="footer-license">
+      <span class="footer-lic-label">LIC: TEAMAAL855J1</span>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="footer-social-link footer-social-disabled" aria-label="Instagram (coming soon)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+      </a>
+      <a href="#" class="footer-social-link footer-social-disabled" aria-label="Facebook (coming soon)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 A-Team Asphalt, LLC. All rights reserved.</span>
+  </div>
+</footer>
+{{end}}
+
+{{define "scripts"}}
+<script>
+(function() {
+    // Theme switching
+    var darkSheet = document.getElementById('theme-dark');
+    var lightSheet = document.getElementById('theme-light');
+
+    function isDark() {
+      return darkSheet && !darkSheet.disabled;
+    }
+
+    function setTheme(dark) {
+      if (!darkSheet || !lightSheet) return;
+      darkSheet.disabled = !dark;
+      lightSheet.disabled = dark;
+      localStorage.setItem('ateam-theme', dark ? 'dark' : 'light');
+      document.querySelectorAll('.mode-label-dark').forEach(function(el) {
+        el.classList.toggle('mode-label-active', dark);
+      });
+      document.querySelectorAll('.mode-label-light').forEach(function(el) {
+        el.classList.toggle('mode-label-active', !dark);
+      });
+    }
+
+    // Set initial active states
+    var dark = isDark();
+    document.querySelectorAll('.mode-label-dark').forEach(function(el) {
+      el.classList.toggle('mode-label-active', dark);
+    });
+    document.querySelectorAll('.mode-label-light').forEach(function(el) {
+      el.classList.toggle('mode-label-active', !dark);
+    });
+
+    // Bind both toggle buttons
+    document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        setTheme(!isDark());
+      });
+    });
+
+    // Trust bar scroll-driven gradient shift
+    var trustBar = document.querySelector('.trust-bar');
+    if (trustBar && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        var ticking = false;
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                ticking = true;
+                requestAnimationFrame(function() {
+                    var rect = trustBar.getBoundingClientRect();
+                    var vh = window.innerHeight;
+                    var progress = 1 - (rect.bottom / (vh + rect.height));
+                    progress = Math.max(0, Math.min(1, progress));
+                    trustBar.style.backgroundPosition = (progress * 100) + '% 0%';
+                    ticking = false;
+                });
+            }
+        }, { passive: true });
+    }
+
+    // Mobile nav toggle
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+        function setMenuState(open) {
+            toggle.classList.toggle('active', open);
+            menu.classList.toggle('open', open);
+            menu.setAttribute('aria-hidden', !open);
+            toggle.setAttribute('aria-expanded', open);
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        }
+        toggle.addEventListener('click', function() {
+            setMenuState(!menu.classList.contains('open'));
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                setMenuState(false);
+            });
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                setMenuState(false);
+                toggle.focus();
+            }
+        });
+    }
+
+    // Estimate form
+    var form = document.getElementById('estimate-form');
+    var success = document.getElementById('form-success');
+
+    if (form) {
+        form.addEventListener('submit', function() {
+            var btn = form.querySelector('.cta-submit-btn');
+            if (btn.disabled) return false;
+            btn.disabled = true;
+            btn.textContent = 'Sending\u2026';
+        });
+    }
+
+    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+        if (form && success) {
+            form.hidden = true;
+            success.hidden = false;
+        }
+        history.replaceState(null, '', window.location.pathname);
+    }
+})();
+</script>
+{{end}}

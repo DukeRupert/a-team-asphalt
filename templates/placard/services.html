@@ -1,0 +1,33 @@
+{{define "services"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — A-Team Asphalt</title>
+<meta name="description" content="Full-service asphalt and concrete contractor. Paving, sealcoating, grading, site work, striping, and snow removal in the Puget Sound area.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/placard.css">
+<script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+  <section class="page-hero">
+    <div class="section-eyebrow">Services</div>
+    <h1>We do the full job. Not just the easy part.</h1>
+    <p>From site prep to final stripe, A-Team handles every phase. No subs, no hand-offs, no surprises on the invoice.</p>
+  </section>
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}

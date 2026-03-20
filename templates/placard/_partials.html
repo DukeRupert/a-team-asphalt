@@ -1,0 +1,120 @@
+{{define "nav"}}
+<!-- NAV -->
+<nav aria-label="Main">
+  <a href="/placard" class="nav-logo-block">
+    <div class="nav-wordmark">
+      <span class="nav-wordmark-name">A-Team Asphalt</span>
+      <span class="nav-wordmark-lic">Lic. #TEAMAAL855J1</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="/placard"{{if eq .CurrentPage "/placard"}} aria-current="page"{{end}}>Home</a></li>
+    <li><a href="/placard/services"{{if eq .CurrentPage "/placard/services"}} aria-current="page"{{end}}>Services</a></li>
+    <li><a href="/placard/about"{{if eq .CurrentPage "/placard/about"}} aria-current="page"{{end}}>About Us</a></li>
+    <li><a href="/placard/contact"{{if eq .CurrentPage "/placard/contact"}} aria-current="page"{{end}}>Contact Us</a></li>
+  </ul>
+  <div class="nav-end">
+    <a href="tel:+12533651283" class="nav-phone">(253) 365-1283</a>
+    <a href="/placard/contact" class="nav-cta">Get a Free Estimate</a>
+  </div>
+  <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div class="nav-mobile-menu" id="nav-menu" aria-hidden="true">
+    <a href="/placard">Home</a>
+    <a href="/placard/services">Services</a>
+    <a href="/placard/about">About Us</a>
+    <a href="/placard/contact">Contact Us</a>
+    <a href="tel:+12533651283" class="nav-mobile-phone">(253) 365-1283</a>
+    <a href="/placard/contact" class="nav-mobile-cta">Get a Free Estimate</a>
+  </div>
+</nav>
+{{end}}
+
+{{define "footer"}}
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-name">A-Team Asphalt, LLC</div>
+      <div class="footer-tagline">Serving the Puget Sound Since 1995</div>
+    </div>
+    <div class="footer-contact">
+      <a href="tel:+12533651283" class="footer-phone">(253) 365-1283</a>
+      <a href="mailto:info@ateamasphalt.com" class="footer-email">info@ateamasphalt.com</a>
+      <span class="footer-location">Sumner, WA</span>
+    </div>
+    <div class="footer-license">
+      <span class="footer-lic-label">LIC: TEAMAAL855J1</span>
+    </div>
+    <div class="footer-social">
+      <a href="#" class="footer-social-link footer-social-disabled" aria-label="Instagram (coming soon)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5"/></svg>
+      </a>
+      <a href="#" class="footer-social-link footer-social-disabled" aria-label="Facebook (coming soon)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span class="footer-copy">&copy; 2026 A-Team Asphalt, LLC. All rights reserved.</span>
+  </div>
+</footer>
+{{end}}
+
+{{define "scripts"}}
+<script>
+(function() {
+    // Mobile nav toggle
+    var toggle = document.getElementById('nav-toggle');
+    var menu = document.getElementById('nav-menu');
+    if (toggle && menu) {
+        function setMenuState(open) {
+            toggle.classList.toggle('active', open);
+            menu.classList.toggle('open', open);
+            menu.setAttribute('aria-hidden', !open);
+            toggle.setAttribute('aria-expanded', open);
+            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        }
+        toggle.addEventListener('click', function() {
+            setMenuState(!menu.classList.contains('open'));
+        });
+        menu.querySelectorAll('a').forEach(function(link) {
+            link.addEventListener('click', function() {
+                setMenuState(false);
+            });
+        });
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && menu.classList.contains('open')) {
+                setMenuState(false);
+                toggle.focus();
+            }
+        });
+    }
+
+    // Estimate form
+    var form = document.getElementById('estimate-form');
+    var success = document.getElementById('form-success');
+
+    // Double-submit protection
+    if (form) {
+        form.addEventListener('submit', function() {
+            var btn = form.querySelector('.cta-submit-btn');
+            if (btn.disabled) return false;
+            btn.disabled = true;
+            btn.textContent = 'Sending\u2026';
+        });
+    }
+
+    // Show success state after form submission
+    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+        if (form && success) {
+            form.hidden = true;
+            success.hidden = false;
+        }
+        history.replaceState(null, '', window.location.pathname);
+    }
+})();
+</script>
+{{end}}

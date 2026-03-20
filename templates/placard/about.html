@@ -1,0 +1,32 @@
+{{define "about"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — A-Team Asphalt</title>
+<meta name="description" content="Family-owned asphalt contractor serving the Puget Sound since 1995. Meet Don and Gary — the crew that quotes the job does the job.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/placard.css">
+<script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+  <section class="page-hero">
+    <div class="section-eyebrow">About A-Team Asphalt</div>
+    <h1>Thirty years. Same crew. Same standards.</h1>
+  </section>
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}

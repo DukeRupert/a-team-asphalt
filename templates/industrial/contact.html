@@ -1,0 +1,143 @@
+{{define "contact"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — A-Team Asphalt | Sumner, WA</title>
+<meta name="description" content="Get a free estimate from A-Team Asphalt. Call (253) 365-1283 or send us a message. Serving the Puget Sound area.">
+<link rel="preload" as="image" type="image/webp" href="/static/img/fresh-asphalt-driveway.webp">
+{{template "head-styles" .}}
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+
+<!-- HERO — full-bleed with trust bar -->
+<section class="contact-hero">
+  <div class="contact-hero-inner">
+    <div class="section-eyebrow">Contact</div>
+    <h1 class="contact-hero-headline">Let's get it paved.</h1>
+    <p class="contact-hero-sub">Free estimates. Straight answers. No obligation.</p>
+  </div>
+  <div class="contact-hero-trust">
+    <div class="contact-hero-trust-inner">
+      <div class="trust-badge">
+        <span class="trust-badge-label">Licensed</span>
+        <span class="trust-badge-value">TEAMAAL855J1</span>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-badge-label">Insured</span>
+        <span class="trust-badge-value">$2M Policy</span>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-badge-label">BBB Rating</span>
+        <span class="trust-badge-value trust-badge-accent">A+</span>
+      </div>
+      <div class="trust-badge">
+        <span class="trust-badge-label">In Business</span>
+        <span class="trust-badge-value">Since 1995</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
+
+<!-- CONTACT INFO + FORM -->
+<section class="contact-section" aria-label="Contact information and form">
+  <div class="contact-inner">
+
+    <div class="contact-info">
+      <h2 class="contact-info-headline">Talk to us directly.</h2>
+      <p class="contact-info-sub">Same crew that quotes the job does the job. Call or email either of us.</p>
+
+      <div class="contact-card">
+        <h3 class="contact-card-name">Gary Jorgensen</h3>
+        <div class="contact-card-role">Co-Owner</div>
+        <div class="contact-card-details">
+          <a href="tel:+12533651283" class="contact-card-phone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (253) 365-1283
+          </a>
+          <a href="mailto:gary@ateamasphalt.com" class="contact-card-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            gary@ateamasphalt.com
+          </a>
+        </div>
+      </div>
+
+      <div class="contact-card">
+        <h3 class="contact-card-name">Don Lee</h3>
+        <div class="contact-card-role">Co-Owner</div>
+        <div class="contact-card-details">
+          <a href="tel:+12063699799" class="contact-card-phone">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (206) 369-9799
+          </a>
+          <a href="mailto:don@ateamasphalt.com" class="contact-card-email">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            don@ateamasphalt.com
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="cta-form-panel">
+      <div class="cta-form-label">Send us a message</div>
+      <form class="cta-form" id="estimate-form" action="/estimate" method="POST">
+        <input type="hidden" name="redirect" value="/contact">
+        <div class="form-field">
+          <label for="cta-name">Name <span class="required">*</span></label>
+          <input id="cta-name" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-row">
+          <div class="form-field">
+            <label for="cta-email">Email <span class="required">*</span></label>
+            <input id="cta-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <div class="form-field">
+            <label for="cta-phone">Phone</label>
+            <input id="cta-phone" name="phone" type="tel" autocomplete="tel">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="cta-type">Project type</label>
+          <select id="cta-type" name="project_type">
+            <option value="" disabled {{if not (index .Params "service")}}selected{{end}}>Select one (optional)</option>
+            <option {{if eq (index .Params "service") "paving"}}selected{{end}}>Asphalt paving</option>
+            <option {{if eq (index .Params "service") "sealcoating"}}selected{{end}}>Sealcoating / repair</option>
+            <option {{if eq (index .Params "service") "sitework"}}selected{{end}}>Grading / site work</option>
+            <option {{if eq (index .Params "service") "concrete"}}selected{{end}}>Concrete / pavers / hardscape</option>
+            <option {{if eq (index .Params "service") "striping"}}selected{{end}}>Striping &amp; marking</option>
+            <option {{if eq (index .Params "service") "snow"}}selected{{end}}>Snow plowing</option>
+            <option {{if eq (index .Params "service") "other"}}selected{{end}}>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="cta-desc">Tell us about your project</label>
+          <textarea id="cta-desc" name="description" rows="5" placeholder="Address, scope, any details that help us give you an accurate number"></textarea>
+        </div>
+        <button class="cta-submit-btn" type="submit">Send Message</button>
+      </form>
+      <p class="form-note">This form goes directly to info@ateamasphalt.com. We'll get back to you fast.</p>
+      <div class="cta-success" id="form-success" hidden>
+        <div class="cta-success-heading">Message received.</div>
+        <p>We'll get back to you within one business day — usually sooner.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}

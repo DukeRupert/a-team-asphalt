@@ -1,0 +1,33 @@
+{{define "contact"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Us — A-Team Asphalt</title>
+<meta name="description" content="Get a free estimate from A-Team Asphalt. Call (253) 365-1283 or send us a message. Serving the Puget Sound area.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/placard.css">
+<script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+  <section class="page-hero">
+    <div class="section-eyebrow">Contact</div>
+    <h1>Contact us now. Let's get it paved.</h1>
+    <p>Free estimates. Straight answers. No obligation.</p>
+  </section>
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}

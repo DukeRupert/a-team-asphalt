@@ -16,6 +16,7 @@ type Templates struct {
 type PageData struct {
 	Concept     string // "placard"
 	CurrentPage string
+	Params      map[string]string // query parameters
 }
 
 // Concepts lists valid concept names in display order.

@@ -4,48 +4,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A-Team Asphalt — Puyallup, WA | Paving, Sealcoating &amp; Site Work</title>
-<meta name="description" content="Licensed asphalt paving contractor in Puyallup, WA. Driveways, parking lots, sealcoating, grading & site work. Owner on every job since 2015. Free estimates: (253) 365-1283.">
+<title>A-Team Asphalt — Puget Sound Asphalt &amp; Concrete</title>
+<meta name="description" content="Licensed asphalt paving contractor in Sumner, WA. Driveways, parking lots, sealcoating, grading & site work. Owner on every job since 1995. Free estimates: (253) 365-1283.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Zilla+Slab:ital,wght@0,700;1,700&family=Oswald:wght@500;600;700&family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/static/css/placard.css">
 <link rel="preload" as="image" type="image/webp" href="/static/img/hero-driveway.webp">
 <script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
-
 </head>
 <body>
 
 <a href="#main" class="skip-link">Skip to content</a>
 
-<!-- NAV -->
-<nav aria-label="Main">
-  <a href="#" class="nav-logo-block">
-    <div class="nav-wordmark">
-      <span class="nav-wordmark-name">A-Team Asphalt</span>
-      <span class="nav-wordmark-lic">Lic. #TEAMAAL855J1</span>
-    </div>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#services">Services</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-  <div class="nav-end">
-    <a href="tel:+12533651283" class="nav-phone">(253) 365-1283</a>
-    <a href="#contact" class="nav-cta">Get Estimate</a>
-  </div>
-  <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
-    <span></span><span></span><span></span>
-  </button>
-  <div class="nav-mobile-menu" id="nav-menu" aria-hidden="true">
-    <a href="#services">Services</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-    <a href="tel:+12533651283" class="nav-mobile-phone">(253) 365-1283</a>
-    <a href="#contact" class="nav-mobile-cta">Get Estimate</a>
-  </div>
-</nav>
+{{template "nav" .}}
 
 <!-- HERO -->
 <section class="hero" id="main">
@@ -75,7 +47,7 @@
       <div class="hero-eyebrow">
         <span class="eyebrow-badge">In the trade since '95</span>
         <span class="eyebrow-sep">&middot;</span>
-        <span>Puyallup, WA</span>
+        <span>Sumner, WA</span>
       </div>
 
       <h1 class="hero-headline">
@@ -93,8 +65,8 @@
       </p>
 
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">Get a free estimate</a>
-        <a href="#services" class="btn-secondary">Our services</a>
+        <a href="/placard/contact" class="btn-primary">Get a free estimate</a>
+        <a href="/placard/services" class="btn-secondary">Our services</a>
       </div>
     </div>
   </div>
@@ -215,83 +187,8 @@
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div class="footer-brand">
-      <div class="footer-name">A-Team Asphalt</div>
-      <div class="footer-tagline">"As good as the best, different than the rest"</div>
-    </div>
-    <ul class="footer-links">
-      <li><a href="#services">Services</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="footer-contact">
-      <a href="tel:+12533651283" class="footer-phone">(253) 365-1283</a>
-      <span class="footer-location">Puyallup, WA 98371</span>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">&copy; 2026 A-Team Asphalt, LLC &middot; WA Lic. #TEAMAAL855J1 &middot; UBI #603447810</span>
-  </div>
-</footer>
-
-
-<script>
-(function() {
-    // Mobile nav toggle
-    var toggle = document.getElementById('nav-toggle');
-    var menu = document.getElementById('nav-menu');
-    if (toggle && menu) {
-        function setMenuState(open) {
-            toggle.classList.toggle('active', open);
-            menu.classList.toggle('open', open);
-            menu.setAttribute('aria-hidden', !open);
-            toggle.setAttribute('aria-expanded', open);
-            toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
-        }
-        toggle.addEventListener('click', function() {
-            setMenuState(!menu.classList.contains('open'));
-        });
-        menu.querySelectorAll('a').forEach(function(link) {
-            link.addEventListener('click', function() {
-                setMenuState(false);
-            });
-        });
-        // Close on Escape
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && menu.classList.contains('open')) {
-                setMenuState(false);
-                toggle.focus();
-            }
-        });
-    }
-
-    // Estimate form
-    var form = document.getElementById('estimate-form');
-    var success = document.getElementById('form-success');
-
-    // Double-submit protection
-    if (form) {
-        form.addEventListener('submit', function() {
-            var btn = form.querySelector('.cta-submit-btn');
-            if (btn.disabled) return false;
-            btn.disabled = true;
-            btn.textContent = 'Sending\u2026';
-        });
-    }
-
-    // Show success state after form submission
-    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
-        if (form && success) {
-            form.hidden = true;
-            success.hidden = false;
-        }
-        history.replaceState(null, '', window.location.pathname + '#contact');
-    }
-})();
-</script>
+{{template "footer" .}}
+{{template "scripts" .}}
 </body>
 </html>
 {{end}}

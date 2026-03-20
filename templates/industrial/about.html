@@ -1,0 +1,110 @@
+{{define "about"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us — A-Team Asphalt | Sumner, WA</title>
+<meta name="description" content="Family-owned asphalt contractor serving the Puget Sound since 1995. Meet Don and Gary — the crew that quotes the job does the job.">
+<link rel="preload" as="image" type="image/webp" href="/static/img/before-after-asphalt.webp">
+{{template "head-styles" .}}
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+
+<!-- PAGE HERO — full-bleed with work photo -->
+<section class="about-hero">
+  <div class="about-hero-inner">
+    <div class="section-eyebrow">About A-Team Asphalt</div>
+    <h1 class="about-hero-headline">Thirty years.<span class="hero-break"></span>Same crew.<span class="hero-break"></span>Same standards.</h1>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
+
+<!-- ORIGIN STORY -->
+<section class="manifesto">
+  <div class="manifesto-inner">
+    <div class="manifesto-header">
+      <div class="section-eyebrow">Our Story</div>
+      <h2 class="manifesto-headline">Built from the ground up.</h2>
+    </div>
+    <div class="manifesto-body-area">
+      <div class="manifesto-text">
+        <p>A-Team Asphalt started in 1995. Not with a marketing plan — with a truck, a crew, and a reputation for showing up and doing it right.</p>
+        <p>Don and Gary are the foundation of this company. Second-generation tradesmen who grew up in the trade and have spent three decades learning exactly where other contractors cut corners. They built A-Team on the opposite premise: <strong>do it right the first time, stand behind the work, and give customers a straight answer</strong> even when it's not the one they were hoping for.</p>
+        <p>Thirty years later, the Puget Sound knows the name. That didn't happen by accident.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
+
+<!-- MEET THE OWNERS — side-by-side -->
+<section class="about-team">
+  <div class="about-team-inner">
+    <div class="about-team-photo">
+      <img src="/static/img/don-and-gary-2.webp" alt="Don and Gary, co-owners of A-Team Asphalt" width="600" height="800" loading="lazy">
+    </div>
+    <div class="about-team-content">
+      <div class="section-eyebrow">The Team</div>
+      <h2 class="about-team-headline">Don &amp; Gary</h2>
+      <div class="about-team-bio">
+        <p>Don and Gary are second-generation tradesmen who have been in the asphalt trade since 1995. They answer the phone, quote the job, and show up to make sure it's done right. That's been true since day one, and it hasn't changed.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
+
+<!-- WHY A-TEAM -->
+<section class="about-why">
+  <div class="about-why-inner">
+    <div class="about-why-header">
+      <div class="section-eyebrow">Why We're Different</div>
+      <h2 class="about-why-headline">We're not the biggest. We're the best.</h2>
+    </div>
+    <div class="about-why-grid">
+      <div class="about-why-card">
+        <h3>The same crew that quotes the job does the job.</h3>
+        <p>No subs, no strangers showing up with equipment you've never seen. Don and Gary are on the job. You know who you're dealing with from start to finish.</p>
+      </div>
+      <div class="about-why-card">
+        <h3>We tell you what your job actually needs.</h3>
+        <p>If sealcoating will hold for another two seasons, we'll say so. If you need a full tearout, we'll say that too. We're not in the business of selling you more than your pavement needs.</p>
+      </div>
+      <div class="about-why-card">
+        <h3>We've been doing this for thirty years.</h3>
+        <p>Washington freeze-thaw cycles, heavy commercial traffic, residential driveways, full site prep jobs — we've done it all. That experience shows up in the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
+
+<!-- BOTTOM CTA -->
+<section class="cta-section cta-simple">
+  <div class="cta-simple-inner">
+    <h2 class="cta-headline">Let's talk about your project.</h2>
+    <div class="cta-actions">
+      <a href="tel:+12533651283" class="btn-secondary">(253) 365-1283</a>
+      <a href="/contact" class="btn-primary">Get a Free Estimate</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}
