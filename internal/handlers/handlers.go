@@ -1,14 +1,18 @@
 package handlers
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"strings"
+	"time"
 
 	"github.com/dukerupert/a-team-asphalt/internal/mailer"
 	"github.com/dukerupert/a-team-asphalt/internal/services"
 	"github.com/dukerupert/a-team-asphalt/internal/templates"
 )
+
+const baseURL = "https://ateamasphalt.com"
 
 // Handlers holds dependencies for HTTP handlers.
 type Handlers struct {
@@ -23,9 +27,11 @@ func New(tmpl *templates.Templates, m *mailer.Mailer) *Handlers {
 
 func (h *Handlers) renderConcept(w http.ResponseWriter, r *http.Request, concept, page string) {
 	data := templates.PageData{
-		Concept:     concept,
-		CurrentPage: r.URL.Path,
-		Params:      map[string]string{},
+		Concept:       concept,
+		CurrentPage:   r.URL.Path,
+		CanonicalPath: r.URL.Path,
+		BaseURL:       baseURL,
+		Params:        map[string]string{},
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, concept, page, data); err != nil {
@@ -56,9 +62,11 @@ func (h *Handlers) Services(w http.ResponseWriter, r *http.Request) {
 // Contact renders the contact page with optional service query parameter.
 func (h *Handlers) Contact(w http.ResponseWriter, r *http.Request) {
 	data := templates.PageData{
-		Concept:     "industrial",
-		CurrentPage: r.URL.Path,
-		Params:      map[string]string{},
+		Concept:       "industrial",
+		CurrentPage:   r.URL.Path,
+		CanonicalPath: "/contact",
+		BaseURL:       baseURL,
+		Params:        map[string]string{},
 	}
 	if svc := r.URL.Query().Get("service"); svc != "" {
 		data.Params["service"] = svc
@@ -79,10 +87,12 @@ func (h *Handlers) ServiceDetail(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	data := templates.PageData{
-		Concept:     "industrial",
-		CurrentPage: "/services",
-		Params:      map[string]string{},
-		Service:     svc,
+		Concept:       "industrial",
+		CurrentPage:   "/services",
+		CanonicalPath: r.URL.Path,
+		BaseURL:       baseURL,
+		Params:        map[string]string{},
+		Service:       svc,
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, "industrial", "service-detail", data); err != nil {
@@ -109,6 +119,38 @@ func (h *Handlers) PlacardAbout(w http.ResponseWriter, r *http.Request) {
 // PlacardContact renders the placard contact page.
 func (h *Handlers) PlacardContact(w http.ResponseWriter, r *http.Request) {
 	h.renderConcept(w, r, "placard", "contact")
+}
+
+// Sitemap generates a sitemap.xml with all public pages.
+func (h *Handlers) Sitemap(w http.ResponseWriter, r *http.Request) {
+	now := time.Now().Format("2006-01-02")
+	w.Header().Set("Content-Type", "application/xml; charset=utf-8")
+
+	fmt.Fprint(w, `<?xml version="1.0" encoding="UTF-8"?>`)
+	fmt.Fprint(w, `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`)
+
+	// Static pages with priorities
+	static := []struct {
+		path     string
+		priority string
+	}{
+		{"/", "1.0"},
+		{"/services", "0.9"},
+		{"/about", "0.7"},
+		{"/contact", "0.8"},
+	}
+	for _, p := range static {
+		fmt.Fprintf(w, `<url><loc>%s%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>`,
+			baseURL, p.path, now, p.priority)
+	}
+
+	// Service detail pages
+	for _, svc := range services.All() {
+		fmt.Fprintf(w, `<url><loc>%s/services/%s</loc><lastmod>%s</lastmod><priority>0.8</priority></url>`,
+			baseURL, svc.Slug, now)
+	}
+
+	fmt.Fprint(w, `</urlset>`)
 }
 
 // validRedirects lists allowed redirect targets for form submissions.

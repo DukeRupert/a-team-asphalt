@@ -47,6 +47,9 @@ func main() {
 		})
 	}
 
+	// Sitemap
+	mux.HandleFunc("GET /sitemap.xml", h.Sitemap)
+
 	// Form handlers
 	mux.HandleFunc("POST /estimate", h.Estimate)
 

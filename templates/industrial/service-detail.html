@@ -6,6 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{.Service.Name}} — A-Team Asphalt | Sumner, WA</title>
 <meta name="description" content="{{.Service.MetaDesc}}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="A-Team Asphalt">
+<meta property="og:title" content="{{.Service.Name}} — A-Team Asphalt | Sumner, WA">
+<meta property="og:description" content="{{.Service.MetaDesc}}">
+<meta property="og:url" content="{{.BaseURL}}{{.CanonicalPath}}">
+<meta property="og:image" content="{{if .Service.PhotoURL}}{{.BaseURL}}{{.Service.PhotoURL}}{{else}}{{.BaseURL}}/static/logos/ateam-logo-clean-200w.png{{end}}">
 {{template "head-styles" .}}
 </head>
 <body>

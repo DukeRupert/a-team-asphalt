@@ -6,6 +6,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>A-Team Asphalt — Sumner, WA | Paving, Sealcoating &amp; Site Work</title>
 <meta name="description" content="Licensed asphalt &amp; concrete contractor in Sumner, WA. Driveways, parking lots, sealcoating, grading &amp; site work. Serving the Puget Sound since 1995. Free estimates: (253) 365-1283.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="A-Team Asphalt">
+<meta property="og:title" content="A-Team Asphalt — Sumner, WA | Paving, Sealcoating &amp; Site Work">
+<meta property="og:description" content="Licensed asphalt &amp; concrete contractor in Sumner, WA. Driveways, parking lots, sealcoating, grading &amp; site work. Serving the Puget Sound since 1995.">
+<meta property="og:url" content="{{.BaseURL}}{{.CanonicalPath}}">
+<meta property="og:image" content="{{.BaseURL}}/static/logos/ateam-logo-clean-200w.png">
 <link rel="preload" as="image" type="image/webp" href="/static/img/hero-driveway.webp">
 {{template "head-styles" .}}
 </head>
@@ -75,26 +81,26 @@
   </div>
 
   <div class="services-grid">
-    <a href="/services/asphalt-paving" class="service-card service-card-featured">
+    <a href="/services/asphalt-paving" class="service-card service-card-featured" aria-label="Learn more about Asphalt Paving">
       <div class="service-card-num" aria-hidden="true">01</div>
       <h3 class="service-name">Asphalt Paving</h3>
       <p class="service-desc">Driveways, parking lots, and roads — prepped right, laid to spec, compacted properly. This is what we do every day.</p>
-      <span class="service-link">Learn more</span>
+      <span class="service-link" aria-hidden="true">Learn more</span>
     </a>
-    <a href="/services/sealcoating" class="service-card">
+    <a href="/services/sealcoating" class="service-card" aria-label="Learn more about Sealcoating">
       <h3 class="service-name">Sealcoating</h3>
       <p class="service-desc">Two coats standard. Protects your pavement from UV, water, and Washington winters.</p>
-      <span class="service-link">Learn more</span>
+      <span class="service-link" aria-hidden="true">Learn more</span>
     </a>
-    <a href="/services/parking-lot-paving" class="service-card">
+    <a href="/services/parking-lot-paving" class="service-card" aria-label="Learn more about Parking Lot Paving">
       <h3 class="service-name">Parking Lot Paving</h3>
       <p class="service-desc">New construction, full replacement, and ongoing maintenance for commercial properties.</p>
-      <span class="service-link">Learn more</span>
+      <span class="service-link" aria-hidden="true">Learn more</span>
     </a>
-    <a href="/services/driveway-paving" class="service-card">
+    <a href="/services/driveway-paving" class="service-card" aria-label="Learn more about Driveway Paving">
       <h3 class="service-name">Driveway Paving</h3>
       <p class="service-desc">Residential installs and replacements. Proper base, proper grade, proper drainage.</p>
-      <span class="service-link">Learn more</span>
+      <span class="service-link" aria-hidden="true">Learn more</span>
     </a>
   </div>
 
@@ -117,6 +123,22 @@
         <p>A-Team Asphalt has been paving the Puget Sound since 1995. Don and Gary are second-generation tradesmen who've done this long enough to know where other contractors cut corners — and why they don't.</p>
         <p><strong>Family-owned. Same crew that quotes the job does the job.</strong> That's not a marketing line. It's just how we work.</p>
         <p>Based in Sumner. Serving Seattle, Bellevue, Tacoma, Puyallup, and the surrounding area.</p>
+        <a href="/about" class="manifesto-about-link">Meet the crew →</a>
+      </div>
+    </div>
+
+    <div class="manifesto-credentials">
+      <div class="credential">
+        <div class="credential-label">In Business</div>
+        <div class="credential-value">30+ Years</div>
+      </div>
+      <div class="credential">
+        <div class="credential-label">Ownership</div>
+        <div class="credential-value">Family-Owned</div>
+      </div>
+      <div class="credential">
+        <div class="credential-label">Service Area</div>
+        <div class="credential-value">Puget Sound</div>
       </div>
     </div>
   </div>
@@ -214,6 +236,63 @@
 
 {{template "footer" .}}
 {{template "scripts" .}}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://ateamasphalt.com/#business",
+  "name": "A-Team Asphalt, LLC",
+  "description": "Licensed asphalt and concrete contractor serving the Puget Sound area since 1995. Paving, sealcoating, grading, site work, striping, and snow removal.",
+  "url": "https://ateamasphalt.com",
+  "telephone": "+1-253-365-1283",
+  "email": "info@ateamasphalt.com",
+  "image": "https://ateamasphalt.com/static/logos/ateam-logo-clean-200w.png",
+  "foundingDate": "1995",
+  "priceRange": "$$",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Sumner",
+    "addressRegion": "WA",
+    "postalCode": "98390",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 47.2032,
+    "longitude": -122.2404
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Sumner", "sameAs": "https://en.wikipedia.org/wiki/Sumner,_Washington"},
+    {"@type": "City", "name": "Puyallup"},
+    {"@type": "City", "name": "Auburn"},
+    {"@type": "City", "name": "Bonney Lake"},
+    {"@type": "City", "name": "Tacoma"},
+    {"@type": "City", "name": "Seattle"},
+    {"@type": "City", "name": "Bellevue"},
+    {"@type": "City", "name": "Federal Way"},
+    {"@type": "City", "name": "Kent"},
+    {"@type": "City", "name": "Renton"}
+  ],
+  "sameAs": [
+    "https://www.bbb.org/us/wa/sumner/profile/asphalt/a-team-asphalt-llc-1296-1000035436"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Asphalt & Concrete Services",
+    "itemListElement": [
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Asphalt Paving & Installation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Asphalt Repair & Patching"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Concrete Installation & Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Asphalt Milling & Overlay"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Sealcoating"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Crack Filling"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Parking Lot Striping"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Grading & Excavation"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Snow Removal & De-Icing"}}
+    ]
+  }
+}
+</script>
 </body>
 </html>
 {{end}}

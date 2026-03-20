@@ -16,10 +16,12 @@ type Templates struct {
 
 // PageData is the data passed to every page template.
 type PageData struct {
-	Concept     string            // "placard"
-	CurrentPage string
-	Params      map[string]string    // query parameters
-	Service     *services.Service    // populated on service detail pages
+	Concept       string            // "placard"
+	CurrentPage   string
+	CanonicalPath string              // URL path for canonical/OG (no query params)
+	BaseURL       string              // e.g. "https://ateamasphalt.com"
+	Params        map[string]string   // query parameters
+	Service       *services.Service   // populated on service detail pages
 }
 
 // Concepts lists valid concept names in display order.

@@ -1,2 +1,4 @@
 User-agent: *
 Disallow: /placard
+
+Sitemap: https://ateamasphalt.com/sitemap.xml
