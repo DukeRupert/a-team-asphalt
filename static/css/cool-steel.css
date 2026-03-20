@@ -614,6 +614,7 @@ a.hero-credential .credential-label::after {
   clip-path: var(--clip-btn-lg);
 }
 .btn-primary:hover { background: var(--red-hover); transform: translateY(-1px); }
+.btn-primary:active { transform: translateY(2px); transition-duration: 0.05s; }
 
 .btn-secondary {
   background: transparent;
@@ -633,6 +634,7 @@ a.hero-credential .credential-label::after {
   clip-path: var(--clip-btn);
 }
 .btn-secondary:hover { border-color: var(--steel-900); color: var(--steel-900); background: rgba(0, 0, 0, 0.03); }
+.btn-secondary:active { transform: translateY(2px); transition-duration: 0.05s; }
 
 /* btn-secondary on dark backgrounds — high-visibility treatment */
 .hero-actions .btn-secondary {
@@ -759,6 +761,22 @@ a.hero-credential .credential-label::after {
   transition: opacity 0.25s ease;
 }
 .service-card:hover::before { opacity: 0.6; }
+
+/* Left-edge accent reveal on hover */
+.service-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: var(--red);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.25s ease;
+}
+.service-card:hover::after { transform: scaleY(1); }
+.service-card-featured::after { display: none; }
 
 /* Featured card */
 .service-card-featured {
@@ -1274,12 +1292,54 @@ a.hero-credential .credential-label::after {
   padding: 2rem 0 0;
   text-align: center;
 }
+.cta-success-check {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 1.25rem;
+}
+.cta-success-check circle {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 2;
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  animation: checkCircle 0.5s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+.cta-success-check path {
+  fill: none;
+  stroke: var(--red);
+  stroke-width: 3;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: checkMark 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.35s forwards;
+}
+@keyframes checkCircle {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes checkMark {
+  to { stroke-dashoffset: 0; }
+}
 .cta-success-heading {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 28px;
   color: var(--steel-800);
   letter-spacing: var(--track-display);
   margin-bottom: 0.75rem;
+}
+.cta-success-aside {
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: var(--type-small);
+  color: var(--steel-200);
+  font-style: italic;
+  margin-top: 1rem;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  animation: fadeInQuiet 0.4s ease 1.2s forwards;
+}
+@keyframes fadeInQuiet {
+  to { opacity: 1; }
 }
 .cta-success p {
   font-size: var(--type-body);
@@ -3113,5 +3173,9 @@ a.svc-hero-card:hover {
     transform: none;
   }
   .service-card::before { transition: none; }
+  .service-card::after { transition: none; }
+  .cta-success-check circle,
+  .cta-success-check path { animation: none; stroke-dashoffset: 0; }
+  .cta-success-aside { animation: none; opacity: 1; }
   .trust-bar { background-size: 100% 100% !important; }
 }
