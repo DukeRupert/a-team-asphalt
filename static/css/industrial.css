@@ -1921,6 +1921,16 @@ button:focus:not(:focus-visible) {
   gap: 4rem;
   align-items: center;
 }
+.sd-hero-inner-full {
+  grid-template-columns: 1fr;
+  max-width: 720px;
+}
+.sd-hero-inner-full .sd-hero-headline {
+  font-size: clamp(40px, 6vw, 72px);
+}
+.sd-hero-inner-full .sd-hero-tagline {
+  max-width: 600px;
+}
 .sd-hero-eyebrow {
   display: flex;
   align-items: center;
@@ -2291,10 +2301,6 @@ button:focus:not(:focus-visible) {
   .sd-hero-actions {
     flex-direction: column;
     max-width: 280px;
-  }
-  .sd-hero-actions .btn-secondary {
-    margin-left: 0;
-    border-top: none;
   }
   .sd-why-grid {
     clip-path: none;
