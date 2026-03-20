@@ -13,6 +13,7 @@ type Service struct {
 	WhyUs       []WhyPoint
 	ContactType string // pre-fills contact form project_type
 	PhotoDesc   string // describes ideal stock photo for HTML comment
+	PhotoURL    string // path to hero image (e.g. "/static/img/asphalt-paving-800.webp"), empty = placeholder
 
 	// Optional sections — populated for SEO landing pages, empty for standard services.
 	HeroEyebrow    string         // overrides default category eyebrow (e.g. "Driveway Paving · Puget Sound, WA")
@@ -95,6 +96,7 @@ var order = []Service{
 		},
 		ContactType: "Asphalt paving",
 		PhotoDesc:   "Fresh hot-mix asphalt being laid on a residential driveway or commercial lot. Roller compactor visible, crew in hi-vis gear, steam rising from black surface. PNW setting.",
+		PhotoURL:    "/static/img/asphalt-paving-800.webp",
 	},
 	{
 		Slug:        "asphalt-repair",
@@ -148,6 +150,7 @@ var order = []Service{
 		},
 		ContactType: "Concrete / pavers / hardscape",
 		PhotoDesc:   "Fresh concrete being poured or finished — smooth wet surface with forms visible. Worker with float or trowel. Residential or commercial setting.",
+		PhotoURL:    "/static/img/concrete-pour-800.webp",
 	},
 	{
 		Slug:        "milling-overlay",
@@ -198,6 +201,7 @@ var order = []Service{
 		CustomCTABody: "Call us. We'll come out, look at the base condition, and give you a straight answer — milling and overlay, full replacement, or just maintenance. No obligation.",
 		ContactType:   "Asphalt paving",
 		PhotoDesc:     "Milling machine removing top layer of asphalt, exposing rough textured base. Fresh overlay being laid in background or adjacent area.",
+		PhotoURL:      "/static/img/asphalt-paving-800.webp",
 	},
 	{
 		Slug:        "driveway-paving",
@@ -246,6 +250,7 @@ var order = []Service{
 		CustomCTABody: "Call or fill out the form. We'll come out, look at what you've got, and tell you exactly what it needs — and whether repair or replacement makes more sense.",
 		ContactType:   "Asphalt paving",
 		PhotoDesc:     "Fresh asphalt driveway being laid at a residential home. Clean edges, roller compactor, crew working. PNW residential neighborhood with trees.",
+		PhotoURL:      "/static/img/fresh-asphalt-800.webp",
 	},
 	{
 		Slug:        "parking-lot-paving",
@@ -298,6 +303,7 @@ var order = []Service{
 		CustomCTABody: "We work with commercial property owners and managers regularly. Call us or fill out the form — we'll schedule a site visit, assess what your lot actually needs, and give you a straight quote. No obligation.",
 		ContactType:   "Asphalt paving",
 		PhotoDesc:     "Aerial or wide shot of a freshly paved commercial parking lot. Clean black asphalt, fresh striping, ADA stalls visible. Commercial building in background.",
+		PhotoURL:      "/static/img/asphalt-paving-800.webp",
 	},
 
 	// ── 02 · MAINTENANCE & PROTECTION ──
@@ -327,6 +333,7 @@ var order = []Service{
 		},
 		ContactType: "Sealcoating / repair",
 		PhotoDesc:   "Worker applying sealcoat with squeegee or spray rig. Wet glossy black surface contrasting with unsealed faded gray asphalt. Driveway or small lot.",
+		PhotoURL:    "/static/img/fresh-asphalt-800.webp",
 	},
 	{
 		Slug:        "crack-filling",

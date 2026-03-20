@@ -37,7 +37,11 @@
         </div>
       </div>
       <div class="sd-hero-image">
+        {{if .Service.PhotoURL}}
+        <img src="{{.Service.PhotoURL}}" alt="{{.Service.Name}}" class="sd-hero-img" loading="eager" width="800" height="534">
+        {{else}}
         <div class="svc-image-placeholder" aria-hidden="true"></div>
+        {{end}}
       </div>
     </div>
   </section>
