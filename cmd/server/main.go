@@ -39,10 +39,13 @@ func main() {
 	// Static files
 	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
 
-	// robots.txt at root
-	mux.HandleFunc("GET /robots.txt", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, "static/robots.txt")
-	})
+	// Root-level files (robots, favicon, manifest)
+	for _, f := range []string{"robots.txt", "favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-192x192.png", "web-app-manifest-512x512.png"} {
+		file := f // capture for closure
+		mux.HandleFunc("GET /"+file, func(w http.ResponseWriter, r *http.Request) {
+			http.ServeFile(w, r, "static/"+file)
+		})
+	}
 
 	// Form handlers
 	mux.HandleFunc("POST /estimate", h.Estimate)
