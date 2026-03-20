@@ -1,5 +1,7 @@
 package services
 
+import "strings"
+
 // Service holds all content for a single service detail page.
 type Service struct {
 	Slug        string
@@ -43,6 +45,15 @@ type RelatedLink struct {
 	Name string
 	Slug string
 	Desc string
+}
+
+// PhotoJPEG returns the JPEG fallback URL for the hero image.
+// Replaces .webp extension with .jpeg. Returns empty if no photo.
+func (s Service) PhotoJPEG() string {
+	if s.PhotoURL == "" {
+		return ""
+	}
+	return strings.TrimSuffix(s.PhotoURL, ".webp") + ".jpeg"
 }
 
 // BySlug returns the service matching the given slug, or nil.

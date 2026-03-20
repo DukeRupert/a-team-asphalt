@@ -48,12 +48,15 @@
         <p class="sd-hero-tagline">{{.Service.Tagline}}</p>
         <div class="sd-hero-actions">
           <a href="/contact?service={{.Service.ContactType}}" class="btn-primary">Get a Free Estimate</a>
-          <a href="tel:+12533651283" class="btn-secondary">(253) 365-1283</a>
+          <a href="tel:+12533651283" class="btn-secondary" aria-label="Call us at (253) 365-1283">(253) 365-1283</a>
         </div>
       </div>
       <div class="sd-hero-image">
         {{if .Service.PhotoURL}}
-        <img src="{{.Service.PhotoURL}}" alt="{{.Service.PhotoDesc}}" class="sd-hero-img" loading="eager" width="800" height="534">
+        <picture>
+          <source srcset="{{.Service.PhotoURL}}" type="image/webp">
+          <img src="{{.Service.PhotoJPEG}}" alt="{{.Service.PhotoDesc}}" class="sd-hero-img" loading="eager" width="800" height="534">
+        </picture>
         {{else}}
         <div class="svc-image-placeholder" aria-hidden="true"></div>
         {{end}}
@@ -167,10 +170,10 @@
       <div class="section-eyebrow">Related Services</div>
       <div class="sd-related-grid">
         {{range .Service.RelatedServices}}
-        <a href="/services/{{.Slug}}" class="sd-related-card">
+        <a href="/services/{{.Slug}}" class="sd-related-card" aria-label="Learn more about {{.Name}}">
           <h3 class="sd-related-name">{{.Name}}</h3>
           <p class="sd-related-desc">{{.Desc}}</p>
-          <span class="svc-item-cta">Learn more</span>
+          <span class="svc-item-cta" aria-hidden="true">Learn more</span>
         </a>
         {{end}}
       </div>

@@ -1953,7 +1953,7 @@ button:focus:not(:focus-visible) {
 }
 .sd-hero-actions {
   display: flex;
-  gap: 0;
+  gap: 0.75rem;
 }
 .sd-hero-image {
   border: 1px solid var(--border-lt);
