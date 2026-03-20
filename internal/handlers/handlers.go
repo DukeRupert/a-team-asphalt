@@ -6,6 +6,7 @@ import (
 	"strings"
 
 	"github.com/dukerupert/a-team-asphalt/internal/mailer"
+	"github.com/dukerupert/a-team-asphalt/internal/services"
 	"github.com/dukerupert/a-team-asphalt/internal/templates"
 )
 
@@ -65,6 +66,27 @@ func (h *Handlers) Contact(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, "industrial", "contact", data); err != nil {
 		log.Printf("ERROR rendering industrial/contact: %v", err)
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
+}
+
+// ServiceDetail renders an individual service page by slug.
+func (h *Handlers) ServiceDetail(w http.ResponseWriter, r *http.Request) {
+	slug := r.PathValue("slug")
+	svc := services.BySlug(slug)
+	if svc == nil {
+		http.NotFound(w, r)
+		return
+	}
+	data := templates.PageData{
+		Concept:     "industrial",
+		CurrentPage: "/services",
+		Params:      map[string]string{},
+		Service:     svc,
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	if err := h.tmpl.Render(w, "industrial", "service-detail", data); err != nil {
+		log.Printf("ERROR rendering service-detail for %s: %v", slug, err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 	}
 }

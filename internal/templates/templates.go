@@ -5,6 +5,8 @@ import (
 	"html/template"
 	"io"
 	"path/filepath"
+
+	"github.com/dukerupert/a-team-asphalt/internal/services"
 )
 
 // Templates holds parsed template sets, one per concept.
@@ -14,9 +16,10 @@ type Templates struct {
 
 // PageData is the data passed to every page template.
 type PageData struct {
-	Concept     string // "placard"
+	Concept     string            // "placard"
 	CurrentPage string
-	Params      map[string]string // query parameters
+	Params      map[string]string    // query parameters
+	Service     *services.Service    // populated on service detail pages
 }
 
 // Concepts lists valid concept names in display order.
