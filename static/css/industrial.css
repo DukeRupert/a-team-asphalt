@@ -1752,11 +1752,11 @@ footer {
   letter-spacing: var(--track-label);
   text-transform: uppercase;
   color: var(--silver);
-  opacity: 0.4;
+  opacity: 0.7;
   text-decoration: none;
   transition: opacity var(--duration-fast);
 }
-.footer-lic-link:hover { opacity: 0.7; }
+.footer-lic-link:hover { opacity: 1; }
 
 .footer-contact {
   display: flex;
@@ -1783,7 +1783,12 @@ footer {
 .footer-location {
   font-size: var(--type-small);
   color: var(--silver);
-  opacity: 0.4;
+  opacity: 0.7;
+}
+.footer-address {
+  font-size: var(--type-small);
+  color: var(--silver);
+  opacity: 0.7;
 }
 .footer-cta {
   margin-top: 0.5rem;
@@ -1823,7 +1828,7 @@ footer {
 .footer-copy {
   font-size: var(--type-label);
   color: var(--silver);
-  opacity: 0.3;
+  opacity: 0.7;
   letter-spacing: var(--track-display);
 }
 
