@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Brochure site for A-Team Asphalt LLC, a family-owned asphalt contractor in Sumner, WA (30+ years, co-owned by Gary Jorgensen and Don Lee). Go server-side rendered with `html/template`, no frontend framework, no external Go dependencies.
+Brochure site for A-Team Asphalt Co., a family-owned asphalt contractor in Sumner, WA (30+ years, co-owned by Gary Jorgensen and Don Lee). Go server-side rendered with `html/template`, no frontend framework, no external Go dependencies.
 
 ## Commands
 

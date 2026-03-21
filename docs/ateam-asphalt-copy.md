@@ -15,7 +15,7 @@
 
 ### Footer
 ```
-A-Team Asphalt, LLC
+A-Team Asphalt Co.
 Serving the Puget Sound Since 1995
 
 (253) 365-1283
@@ -28,7 +28,7 @@ LIC: TEAMAAL855J1
 [Instagram icon — disabled]
 [Facebook icon — disabled]
 
-© 2026 A-Team Asphalt, LLC. All rights reserved.
+© 2026 A-Team Asphalt Co.. All rights reserved.
 ```
 
 ---
