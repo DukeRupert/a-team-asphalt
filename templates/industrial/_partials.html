@@ -9,8 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/static/css/industrial.css" id="theme-dark">
-<link rel="stylesheet" href="/static/css/cool-steel.css" id="theme-light" disabled>
+<link rel="stylesheet" href="/static/css/industrial.css">
 <script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXXS7D06B"></script>
 <script>
@@ -18,18 +17,6 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
   gtag('config', 'G-QPXXS7D06B');
-</script>
-<script>
-// Resolve theme before first paint to avoid FOUC
-(function() {
-  var saved = localStorage.getItem('ateam-theme');
-  var prefersDark = !window.matchMedia('(prefers-color-scheme: light)').matches;
-  var useDark = saved ? saved === 'dark' : prefersDark;
-  if (!useDark) {
-    document.getElementById('theme-dark').disabled = true;
-    document.getElementById('theme-light').disabled = false;
-  }
-})();
 </script>
 {{end}}
 
@@ -46,11 +33,6 @@
     <li><a href="/contact"{{if eq .CurrentPage "/contact"}} aria-current="page"{{end}}>Contact Us</a></li>
   </ul>
   <div class="nav-end">
-    <button class="nav-mode-switch" id="theme-toggle" type="button" aria-label="Toggle light/dark mode">
-      <span class="mode-label mode-label-dark">Dark</span>
-      <span class="mode-track"><span class="mode-thumb"></span></span>
-      <span class="mode-label mode-label-light">Light</span>
-    </button>
     <a href="tel:+12533651283" class="nav-phone">(253) 365-1283</a>
     <a href="/contact" class="nav-cta">Get a Free Estimate</a>
   </div>
@@ -62,11 +44,6 @@
     <a href="/services">Services</a>
     <a href="/about">About Us</a>
     <a href="/contact">Contact Us</a>
-    <button class="nav-mobile-mode-switch" id="theme-toggle-mobile" type="button" aria-label="Toggle light/dark mode">
-      <span class="mode-label mode-label-dark">Dark</span>
-      <span class="mode-track"><span class="mode-thumb"></span></span>
-      <span class="mode-label mode-label-light">Light</span>
-    </button>
     <a href="tel:+12533651283" class="nav-mobile-phone">(253) 365-1283</a>
     <a href="/contact" class="nav-mobile-cta">Get a Free Estimate</a>
   </div>
@@ -120,43 +97,6 @@
 {{define "scripts"}}
 <script>
 (function() {
-    // Theme switching
-    var darkSheet = document.getElementById('theme-dark');
-    var lightSheet = document.getElementById('theme-light');
-
-    function isDark() {
-      return darkSheet && !darkSheet.disabled;
-    }
-
-    function setTheme(dark) {
-      if (!darkSheet || !lightSheet) return;
-      darkSheet.disabled = !dark;
-      lightSheet.disabled = dark;
-      localStorage.setItem('ateam-theme', dark ? 'dark' : 'light');
-      document.querySelectorAll('.mode-label-dark').forEach(function(el) {
-        el.classList.toggle('mode-label-active', dark);
-      });
-      document.querySelectorAll('.mode-label-light').forEach(function(el) {
-        el.classList.toggle('mode-label-active', !dark);
-      });
-    }
-
-    // Set initial active states
-    var dark = isDark();
-    document.querySelectorAll('.mode-label-dark').forEach(function(el) {
-      el.classList.toggle('mode-label-active', dark);
-    });
-    document.querySelectorAll('.mode-label-light').forEach(function(el) {
-      el.classList.toggle('mode-label-active', !dark);
-    });
-
-    // Bind both toggle buttons
-    document.querySelectorAll('#theme-toggle, #theme-toggle-mobile').forEach(function(btn) {
-      btn.addEventListener('click', function() {
-        setTheme(!isDark());
-      });
-    });
-
     // Mobile nav toggle
     var toggle = document.getElementById('nav-toggle');
     var menu = document.getElementById('nav-menu');
