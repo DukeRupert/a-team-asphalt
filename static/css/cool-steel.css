@@ -514,6 +514,14 @@ a.hero-credential .credential-label::after {
   gap: 0;
 }
 
+/* Hero logo */
+.hero-logo {
+  width: 220px;
+  height: auto;
+  margin-bottom: 1.5rem;
+  filter: drop-shadow(0 4px 24px rgba(0, 0, 0, 0.45));
+}
+
 /* Eyebrow */
 .hero-eyebrow {
   display: inline-flex;
@@ -2115,6 +2123,11 @@ button:focus:not(:focus-visible) {
   }
   .manifesto-credentials .credential:last-child {
     border-bottom: none;
+  }
+
+  .hero-logo {
+    width: 160px;
+    margin-bottom: 1.25rem;
   }
 
   .hero-headline {

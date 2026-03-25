@@ -13,6 +13,7 @@
 <meta property="og:url" content="{{.BaseURL}}{{.CanonicalPath}}">
 <meta property="og:image" content="{{.BaseURL}}/static/logos/ateam-logo-clean-200w.png">
 <link rel="preload" as="image" type="image/webp" href="/static/img/hero-driveway.webp">
+<link rel="preload" as="image" href="/static/logos/ateam-logo-sticker-500w.png">
 {{template "head-styles" .}}
 </head>
 <body>
@@ -48,6 +49,12 @@
 
   <div class="hero-image-area">
     <div class="hero-content">
+      <img src="/static/logos/ateam-logo-sticker-500w.png"
+           srcset="/static/logos/ateam-logo-sticker-200w.png 200w, /static/logos/ateam-logo-sticker-500w.png 500w"
+           sizes="(max-width: 600px) 160px, 220px"
+           alt="A-Team Asphalt Co."
+           class="hero-logo"
+           width="500" height="auto">
       <div class="hero-eyebrow">
         <span class="eyebrow-badge">Puget Sound Asphalt &amp; Concrete</span>
       </div>
