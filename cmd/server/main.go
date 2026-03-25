@@ -32,7 +32,13 @@ func main() {
 		log.Println("WARN: POSTMARK_TOKEN not set — estimate emails disabled")
 	}
 
-	h := handlers.New(tmpl, m)
+	turnstileSiteKey := os.Getenv("TURNSTILE_SITE_KEY")
+	turnstileSecret := os.Getenv("TURNSTILE_SECRET_KEY")
+	if turnstileSiteKey == "" || turnstileSecret == "" {
+		log.Println("WARN: TURNSTILE_SITE_KEY or TURNSTILE_SECRET_KEY not set — Turnstile disabled")
+	}
+
+	h := handlers.New(tmpl, m, turnstileSiteKey, turnstileSecret)
 
 	mux := http.NewServeMux()
 

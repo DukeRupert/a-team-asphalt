@@ -1,9 +1,11 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
+	"net/url"
 	"strings"
 	"time"
 
@@ -16,23 +18,31 @@ const baseURL = "https://ateamasphalt.com"
 
 // Handlers holds dependencies for HTTP handlers.
 type Handlers struct {
-	tmpl   *templates.Templates
-	mailer *mailer.Mailer // nil if not configured
+	tmpl             *templates.Templates
+	mailer           *mailer.Mailer // nil if not configured
+	turnstileSiteKey string         // Cloudflare Turnstile site key
+	turnstileSecret  string         // Cloudflare Turnstile secret key
 }
 
 // New creates a new Handlers instance.
-func New(tmpl *templates.Templates, m *mailer.Mailer) *Handlers {
-	return &Handlers{tmpl: tmpl, mailer: m}
+func New(tmpl *templates.Templates, m *mailer.Mailer, turnstileSiteKey, turnstileSecret string) *Handlers {
+	return &Handlers{
+		tmpl:             tmpl,
+		mailer:           m,
+		turnstileSiteKey: turnstileSiteKey,
+		turnstileSecret:  turnstileSecret,
+	}
 }
 
 func (h *Handlers) renderConcept(w http.ResponseWriter, r *http.Request, concept, page string) {
 	data := templates.PageData{
-		Concept:       concept,
-		CurrentPage:   r.URL.Path,
-		CanonicalPath: r.URL.Path,
-		BaseURL:       baseURL,
-		Params:        map[string]string{},
-		Year:          time.Now().Year(),
+		Concept:          concept,
+		CurrentPage:      r.URL.Path,
+		CanonicalPath:    r.URL.Path,
+		BaseURL:          baseURL,
+		Params:           map[string]string{},
+		Year:             time.Now().Year(),
+		TurnstileSiteKey: h.turnstileSiteKey,
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, concept, page, data); err != nil {
@@ -63,12 +73,13 @@ func (h *Handlers) Services(w http.ResponseWriter, r *http.Request) {
 // Contact renders the contact page with optional service query parameter.
 func (h *Handlers) Contact(w http.ResponseWriter, r *http.Request) {
 	data := templates.PageData{
-		Concept:       "industrial",
-		CurrentPage:   r.URL.Path,
-		CanonicalPath: "/contact",
-		BaseURL:       baseURL,
-		Params:        map[string]string{},
-		Year:          time.Now().Year(),
+		Concept:          "industrial",
+		CurrentPage:      r.URL.Path,
+		CanonicalPath:    "/contact",
+		BaseURL:          baseURL,
+		Params:           map[string]string{},
+		Year:             time.Now().Year(),
+		TurnstileSiteKey: h.turnstileSiteKey,
 	}
 	if svc := r.URL.Query().Get("service"); svc != "" {
 		data.Params["service"] = svc
@@ -207,6 +218,20 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Cloudflare Turnstile verification
+	if h.turnstileSecret != "" {
+		token := r.FormValue("cf-turnstile-response")
+		if token == "" || !h.verifyTurnstile(token, r.RemoteAddr) {
+			log.Printf("Turnstile verification failed for %s", r.RemoteAddr)
+			redirect := "/"
+			if dest := r.FormValue("redirect"); validRedirects[dest] {
+				redirect = dest
+			}
+			http.Redirect(w, r, redirect+"?error=captcha", http.StatusSeeOther)
+			return
+		}
+	}
+
 	name := truncate(strings.TrimSpace(r.FormValue("name")), 100)
 	phone := truncate(strings.TrimSpace(r.FormValue("phone")), 20)
 	email := truncate(strings.TrimSpace(r.FormValue("email")), 254)
@@ -246,6 +271,30 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 		redirect = dest
 	}
 	http.Redirect(w, r, redirect+"?submitted=1", http.StatusSeeOther)
+}
+
+// verifyTurnstile validates a Turnstile token with Cloudflare's siteverify API.
+func (h *Handlers) verifyTurnstile(token, remoteIP string) bool {
+	resp, err := http.PostForm("https://challenges.cloudflare.com/turnstile/v0/siteverify",
+		url.Values{
+			"secret":   {h.turnstileSecret},
+			"response": {token},
+			"remoteip": {remoteIP},
+		})
+	if err != nil {
+		log.Printf("Turnstile API error: %v", err)
+		return false
+	}
+	defer resp.Body.Close()
+
+	var result struct {
+		Success bool `json:"success"`
+	}
+	if err := json.NewDecoder(resp.Body).Decode(&result); err != nil {
+		log.Printf("Turnstile response decode error: %v", err)
+		return false
+	}
+	return result.Success
 }
 
 // truncate returns s cut to at most max bytes on a rune boundary.

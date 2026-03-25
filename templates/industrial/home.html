@@ -247,6 +247,7 @@
           <label for="cta-desc">Tell us about your project</label>
           <textarea id="cta-desc" name="description" rows="5" maxlength="2000" placeholder="Location, what needs done, and any details that help"></textarea>
         </div>
+        {{if .TurnstileSiteKey}}<div class="cf-turnstile" data-sitekey="{{.TurnstileSiteKey}}" data-theme="dark"></div>{{end}}
         <button class="cta-submit-btn" type="submit">Send Message</button>
         <p class="form-note">Goes straight to our inbox. We usually respond the same day.</p>
       </form>
@@ -273,6 +274,7 @@
 
 {{template "footer" .}}
 {{template "scripts" .}}
+{{if .TurnstileSiteKey}}<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>{{end}}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",

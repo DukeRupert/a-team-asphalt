@@ -162,7 +162,7 @@
         history.replaceState(null, '', window.location.pathname);
     }
 
-    if (params.get('error') === 'missing') {
+    if (params.get('error') === 'missing' || params.get('error') === 'captcha') {
         var errEl = document.getElementById('form-error');
         if (errEl) { errEl.hidden = false; }
         history.replaceState(null, '', window.location.pathname);
