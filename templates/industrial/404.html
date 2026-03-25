@@ -1,0 +1,39 @@
+{{define "404"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found — A-Team Asphalt</title>
+<meta name="description" content="The page you're looking for doesn't exist. Head back to the homepage or give us a call.">
+<meta name="robots" content="noindex">
+{{template "head-styles" .}}
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+
+<section class="error-hero">
+  <div class="error-hero-inner">
+    <div class="error-code" aria-hidden="true">404</div>
+    <h1 class="error-headline">Wrong turn.</h1>
+    <p class="error-body">The page you're looking for doesn't exist or has been moved.</p>
+    <div class="error-actions">
+      <a href="/" class="btn-primary">Back to Home</a>
+      <a href="tel:+12533651283" class="btn-secondary">(253) 365-1283</a>
+    </div>
+    <p class="error-aside">Or check out our <a href="/services">services</a> or <a href="/contact">contact us</a> directly.</p>
+  </div>
+</section>
+
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}

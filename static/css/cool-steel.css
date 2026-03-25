@@ -1978,6 +1978,52 @@ footer {
 }
 .privacy-inner a:hover { opacity: 0.8; }
 
+/* 404 error page */
+.error-hero {
+  background: var(--bg-dark);
+  padding: 8rem var(--page-pad) 6rem;
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.error-hero-inner { max-width: 36rem; margin: 0 auto; }
+.error-code {
+  font-family: var(--font-display);
+  font-size: clamp(5rem, 15vw, 10rem);
+  color: var(--red);
+  line-height: 1;
+  opacity: 0.3;
+}
+.error-headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  color: var(--text-light);
+  line-height: 1.1;
+  margin: 0.5rem 0 1rem;
+}
+.error-body {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  color: var(--silver);
+  margin-bottom: 2rem;
+}
+.error-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+.error-aside {
+  font-family: var(--font-body);
+  font-size: var(--type-small);
+  color: var(--silver);
+  opacity: 0.7;
+}
+.error-aside a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
+
 /* Firefly signature */
 .footer-signature {
   max-width: var(--page-max);

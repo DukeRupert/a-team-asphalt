@@ -83,7 +83,7 @@ func (h *Handlers) ServiceDetail(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
 	svc := services.BySlug(slug)
 	if svc == nil {
-		http.NotFound(w, r)
+		h.NotFound(w, r)
 		return
 	}
 	data := templates.PageData{
@@ -98,6 +98,23 @@ func (h *Handlers) ServiceDetail(w http.ResponseWriter, r *http.Request) {
 	if err := h.tmpl.Render(w, "industrial", "service-detail", data); err != nil {
 		log.Printf("ERROR rendering service-detail for %s: %v", slug, err)
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
+}
+
+// NotFound renders a branded 404 page.
+func (h *Handlers) NotFound(w http.ResponseWriter, r *http.Request) {
+	data := templates.PageData{
+		Concept:       "industrial",
+		CurrentPage:   "",
+		CanonicalPath: r.URL.Path,
+		BaseURL:       baseURL,
+		Params:        map[string]string{},
+	}
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+	w.WriteHeader(http.StatusNotFound)
+	if err := h.tmpl.Render(w, "industrial", "404", data); err != nil {
+		log.Printf("ERROR rendering 404: %v", err)
+		http.Error(w, "Not Found", http.StatusNotFound)
 	}
 }
 

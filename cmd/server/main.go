@@ -65,6 +65,9 @@ func main() {
 	mux.HandleFunc("GET /placard/about", h.PlacardAbout)
 	mux.HandleFunc("GET /placard/contact", h.PlacardContact)
 
+	// Catch-all 404 for unmatched routes
+	mux.HandleFunc("/", h.NotFound)
+
 	fmt.Printf("Server starting on http://localhost:%s\n", port)
 	log.Fatal(http.ListenAndServe(":"+port, mux))
 }
