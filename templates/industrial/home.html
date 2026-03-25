@@ -206,6 +206,10 @@
       <div class="cta-form-label">Send us a message</div>
       <form class="cta-form" id="estimate-form" action="/estimate" method="POST">
         <input type="hidden" name="redirect" value="/">
+        <div class="form-field-hp" aria-hidden="true">
+          <label for="cta-company">Company</label>
+          <input id="cta-company" name="company" type="text" tabindex="-1" autocomplete="off">
+        </div>
         <div class="form-field">
           <label for="cta-name">Name <span class="required" aria-hidden="true">*</span><span class="sr-only">(required)</span></label>
           <input id="cta-name" name="name" type="text" autocomplete="name" required maxlength="100">

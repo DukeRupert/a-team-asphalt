@@ -193,6 +193,16 @@ func (h *Handlers) Estimate(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Honeypot field — if filled, it's a bot.
+	if r.FormValue("company") != "" {
+		redirect := "/"
+		if dest := r.FormValue("redirect"); validRedirects[dest] {
+			redirect = dest
+		}
+		http.Redirect(w, r, redirect+"?submitted=1", http.StatusSeeOther)
+		return
+	}
+
 	name := truncate(strings.TrimSpace(r.FormValue("name")), 100)
 	phone := truncate(strings.TrimSpace(r.FormValue("phone")), 20)
 	email := truncate(strings.TrimSpace(r.FormValue("email")), 254)
