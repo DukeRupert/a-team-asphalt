@@ -1803,7 +1803,7 @@ footer {
   margin: 0 auto;
   padding: 3rem var(--page-pad);
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-columns: 1fr auto auto;
   gap: 3rem;
   align-items: start;
   border-bottom: 1px solid var(--dark-border);
@@ -1839,6 +1839,22 @@ footer {
   transition: opacity var(--duration-fast);
 }
 .footer-lic-link:hover { opacity: 1; }
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.footer-nav a {
+  font-family: var(--font-label);
+  font-size: var(--type-label);
+  text-transform: uppercase;
+  letter-spacing: var(--track-display);
+  color: var(--silver);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-nav a:hover { color: var(--text-light); }
 
 .footer-contact {
   display: flex;

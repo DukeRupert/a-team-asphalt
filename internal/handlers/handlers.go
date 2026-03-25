@@ -32,6 +32,7 @@ func (h *Handlers) renderConcept(w http.ResponseWriter, r *http.Request, concept
 		CanonicalPath: r.URL.Path,
 		BaseURL:       baseURL,
 		Params:        map[string]string{},
+		Year:          time.Now().Year(),
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, concept, page, data); err != nil {
@@ -67,6 +68,7 @@ func (h *Handlers) Contact(w http.ResponseWriter, r *http.Request) {
 		CanonicalPath: "/contact",
 		BaseURL:       baseURL,
 		Params:        map[string]string{},
+		Year:          time.Now().Year(),
 	}
 	if svc := r.URL.Query().Get("service"); svc != "" {
 		data.Params["service"] = svc
@@ -93,6 +95,7 @@ func (h *Handlers) ServiceDetail(w http.ResponseWriter, r *http.Request) {
 		BaseURL:       baseURL,
 		Params:        map[string]string{},
 		Service:       svc,
+		Year:          time.Now().Year(),
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	if err := h.tmpl.Render(w, "industrial", "service-detail", data); err != nil {
@@ -109,6 +112,7 @@ func (h *Handlers) NotFound(w http.ResponseWriter, r *http.Request) {
 		CanonicalPath: r.URL.Path,
 		BaseURL:       baseURL,
 		Params:        map[string]string{},
+		Year:          time.Now().Year(),
 	}
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	w.WriteHeader(http.StatusNotFound)

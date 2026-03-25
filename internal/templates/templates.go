@@ -22,6 +22,7 @@ type PageData struct {
 	BaseURL       string              // e.g. "https://ateamasphalt.com"
 	Params        map[string]string   // query parameters
 	Service       *services.Service   // populated on service detail pages
+	Year          int                 // current year for copyright
 }
 
 // Concepts lists valid concept names in display order.
