@@ -86,7 +86,7 @@ var order = []Service{
 		Tagline:     "New pavement that lasts — because we do the prep other crews skip.",
 		Category:    "Asphalt & Concrete",
 		CategoryNum: "01",
-		MetaDesc:    "Professional asphalt paving for driveways, parking lots, and roads in the Puget Sound area. Proper base prep, laid to spec, compacted right. Free estimates: (253) 365-1283.",
+		MetaDesc:    "Professional asphalt paving for driveways, parking lots, and roads. Serving Auburn, Tacoma, Puyallup, and the Puget Sound. Free estimates: (253) 365-1283.",
 		Pitch: []string{
 			"New driveways, parking lots, and roads. We prep the base correctly, lay to spec, and compact it properly — because that's what makes asphalt last twenty years instead of five.",
 			"Every paving job starts with proper base work. We don't show up and pour over whatever's there. We grade it, compact it, and make sure water goes where it should before the first load of hot-mix arrives.",
@@ -108,6 +108,7 @@ var order = []Service{
 		ContactType: "Asphalt paving",
 		PhotoDesc:   "Fresh hot-mix asphalt being laid on a residential driveway or commercial lot. Roller compactor visible, crew in hi-vis gear, steam rising from black surface. PNW setting.",
 		PhotoURL:    "/static/img/asphalt-paving-800.webp",
+		ServiceArea: "We provide asphalt paving and installation throughout the Puget Sound — Auburn, Tacoma, Puyallup, Federal Way, SeaTac, Kent, Covington, Maple Valley, Bellevue, and the greater Seattle area.",
 	},
 	{
 		Slug:        "asphalt-repair",
@@ -115,7 +116,7 @@ var order = []Service{
 		Tagline:     "Honest assessment — we'll tell you what needs replaced and what doesn't.",
 		Category:    "Asphalt & Concrete",
 		CategoryNum: "01",
-		MetaDesc:    "Asphalt repair and patching in the Puget Sound area. Potholes, cracks, and failing sections fixed right. No upsell to replacement when repair will do. Free estimates.",
+		MetaDesc:    "Asphalt repair and patching — potholes, cracks, and failing sections fixed right. Serving Auburn, Tacoma, Puyallup, and the Puget Sound. Free estimates.",
 		Pitch: []string{
 			"Potholes, cracks, and failing sections. We'll tell you what actually needs to come out and what can be patched. No upsell to replacement when repair will do.",
 			"Not every damaged surface needs a full tearout. We assess the base condition and give you a straight answer about what repair will hold and what's too far gone. You get the fix that fits the problem.",
@@ -134,6 +135,7 @@ var order = []Service{
 		},
 		ContactType: "Asphalt paving",
 		PhotoDesc:   "Close-up of asphalt patching in progress — fresh black hot-mix next to existing weathered pavement. Hand tools or small roller visible.",
+		ServiceArea: "We provide asphalt repair and patching throughout the Puget Sound — Auburn, Tacoma, Puyallup, Federal Way, SeaTac, Kent, Covington, Maple Valley, Bellevue, and the greater Seattle area.",
 	},
 	{
 		Slug:        "concrete",
@@ -553,7 +555,7 @@ var order = []Service{
 		Tagline:     "Proper drainage starts with proper grading.",
 		Category:    "Site Work",
 		CategoryNum: "03",
-		MetaDesc:    "Professional grading and excavation for paving projects in the Puget Sound area. Proper slopes for drainage and stable pavement. Free estimates.",
+		MetaDesc:    "Professional grading and excavation for paving projects. Serving Auburn, Tacoma, Puyallup, and the Puget Sound. Free estimates: (253) 365-1283.",
 		Pitch: []string{
 			"Proper grading is why pavement drains and stays stable. We grade it right before we pave it.",
 			"If water pools on your pavement, the grade is wrong. We establish the right slopes for drainage, compact the subgrade to prevent settling, and make sure the surface you're paving over is solid and uniform. This is where pavement longevity starts.",
@@ -573,6 +575,7 @@ var order = []Service{
 		ContactType: "Grading / site work",
 		PhotoDesc:   "Skid-steer or grader working on exposed earth, establishing grade. Laser level or string lines visible. Prepared subgrade surface.",
 		PhotoURL:    "/static/img/site-work-800.webp",
+		ServiceArea: "We provide grading and excavation throughout the Puget Sound — Auburn, Tacoma, Puyallup, Federal Way, SeaTac, Kent, Covington, Maple Valley, Bellevue, and the greater Seattle area.",
 	},
 	{
 		Slug:        "base-work",
@@ -580,7 +583,7 @@ var order = []Service{
 		Tagline:     "Where most pavement failures start. We don't skip it.",
 		Category:    "Site Work",
 		CategoryNum: "03",
-		MetaDesc:    "Crushed rock base preparation for asphalt paving in the Puget Sound area. Proper base work that prevents premature pavement failure.",
+		MetaDesc:    "Crushed rock base preparation for asphalt paving. Serving Auburn, Tacoma, Puyallup, and the Puget Sound area. Free estimates: (253) 365-1283.",
 		Pitch: []string{
 			"Base preparation is where most pavement failures start. We don't skip it.",
 			"Crushed rock base is the foundation your asphalt sits on. Wrong depth, wrong material, or poor compaction and the pavement fails in years instead of decades. We install the right depth of properly graded crushed rock and compact it to spec before any asphalt goes down.",
@@ -600,6 +603,7 @@ var order = []Service{
 		ContactType: "Grading / site work",
 		PhotoDesc:   "Crushed rock base being spread and compacted. Vibratory roller or plate compactor on gravel surface. Prepared base ready for paving.",
 		PhotoURL:    "/static/img/site-work-800.webp",
+		ServiceArea: "We provide rocking and base work throughout the Puget Sound — Auburn, Tacoma, Puyallup, Federal Way, SeaTac, Kent, Covington, Maple Valley, Bellevue, and the greater Seattle area.",
 	},
 
 	// ── 04 · STRIPING, SIGNAGE & SAFETY ──
@@ -661,7 +665,7 @@ var order = []Service{
 		Tagline:     "Protect storefronts and commercial property.",
 		Category:    "Striping, Signage & Safety",
 		CategoryNum: "04",
-		MetaDesc:    "Bollard installation and repair for commercial properties in the Puget Sound area. Protective posts for storefronts, parking structures, and property lines.",
+		MetaDesc:    "Bollard installation and repair for commercial properties. Serving Auburn, Tacoma, Puyallup, and the Puget Sound. Free estimates: (253) 365-1283.",
 		Pitch: []string{
 			"Protective bollards for storefronts, parking structures, and commercial property. Install, repair, or replace.",
 			"Bollards protect buildings, pedestrians, and infrastructure from vehicle impact. We install new bollard systems, repair damaged posts, and replace bollards that have done their job. Concrete-set or surface-mount, painted or bare — matched to your property's needs.",
@@ -680,6 +684,7 @@ var order = []Service{
 		ContactType: "Striping & marking",
 		PhotoDesc:   "Yellow-painted steel bollards in front of a commercial storefront or parking structure. Clean installation, fresh paint.",
 		PhotoURL:    "/static/img/striped-lot-800.webp",
+		ServiceArea: "We provide bollard installation and repair throughout the Puget Sound — Auburn, Tacoma, Puyallup, Federal Way, SeaTac, Kent, Covington, Maple Valley, Bellevue, and the greater Seattle area.",
 	},
 	{
 		Slug:        "signage",
@@ -687,7 +692,7 @@ var order = []Service{
 		Tagline:     "Parking, directional, and safety signage — installed right.",
 		Category:    "Striping, Signage & Safety",
 		CategoryNum: "04",
-		MetaDesc:    "Parking lot signage installation in the Puget Sound area. Directional, safety, and regulatory signs for commercial properties.",
+		MetaDesc:    "Parking lot signage installation for commercial properties. Serving Auburn, Tacoma, Puyallup, and the Puget Sound. Free estimates: (253) 365-1283.",
 		Pitch: []string{
 			"Parking, directional, and safety signage installed alongside your paving project or standalone.",
 			"Signs get hit, fade, and fall over. We install new signage and replace what's damaged. Handicap signs, stop signs, directional signs, speed limit signs — everything a commercial lot needs to be safe and compliant.",
@@ -706,6 +711,7 @@ var order = []Service{
 		ContactType: "Striping & marking",
 		PhotoDesc:   "Handicap parking sign properly installed on a post in a freshly paved and striped commercial lot.",
 		PhotoURL:    "/static/img/striped-lot-800.webp",
+		ServiceArea: "We provide signage installation throughout the Puget Sound — Auburn, Tacoma, Puyallup, Federal Way, SeaTac, Kent, Covington, Maple Valley, Bellevue, and the greater Seattle area.",
 	},
 
 	// ── 05 · YEAR-ROUND ──
