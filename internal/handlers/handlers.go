@@ -101,6 +101,11 @@ func (h *Handlers) ServiceDetail(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+// Privacy renders the privacy policy page.
+func (h *Handlers) Privacy(w http.ResponseWriter, r *http.Request) {
+	h.render(w, r, "privacy")
+}
+
 // Placard renders the placard concept home page.
 func (h *Handlers) Placard(w http.ResponseWriter, r *http.Request) {
 	h.renderConcept(w, r, "placard", "home")
@@ -138,6 +143,7 @@ func (h *Handlers) Sitemap(w http.ResponseWriter, r *http.Request) {
 		{"/services", "0.9"},
 		{"/about", "0.7"},
 		{"/contact", "0.8"},
+		{"/privacy", "0.3"},
 	}
 	for _, p := range static {
 		fmt.Fprintf(w, `<url><loc>%s%s</loc><lastmod>%s</lastmod><priority>%s</priority></url>`,

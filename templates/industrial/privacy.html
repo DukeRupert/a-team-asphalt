@@ -1,0 +1,90 @@
+{{define "privacy"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Privacy Policy — A-Team Asphalt | Sumner, WA</title>
+<meta name="description" content="Privacy policy for A-Team Asphalt Co. Learn how we handle your information when you use our website or contact us for an estimate.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="A-Team Asphalt">
+<meta property="og:title" content="Privacy Policy — A-Team Asphalt | Sumner, WA">
+<meta property="og:description" content="Privacy policy for A-Team Asphalt Co. Learn how we handle your information when you use our website or contact us for an estimate.">
+<meta property="og:url" content="{{.BaseURL}}{{.CanonicalPath}}">
+<meta property="og:image" content="{{.BaseURL}}/static/logos/ateam-logo-clean-200w.png">
+{{template "head-styles" .}}
+</head>
+<body>
+
+<a href="#main" class="skip-link">Skip to content</a>
+
+{{template "nav" .}}
+
+<main id="main">
+
+<section class="privacy-hero">
+  <div class="privacy-hero-inner">
+    <div class="section-eyebrow">Legal</div>
+    <h1 class="privacy-hero-headline">Privacy Policy</h1>
+    <p class="privacy-hero-sub">Last updated: March 24, 2026</p>
+  </div>
+</section>
+
+<div class="swoop-divider" aria-hidden="true"></div>
+
+<section class="privacy-content">
+  <div class="privacy-inner">
+
+    <h2>Who we are</h2>
+    <p>A-Team Asphalt Co. is a family-owned asphalt and concrete contractor based in Sumner, WA. This policy explains how we collect, use, and protect information when you visit our website at ateamasphalt.com.</p>
+
+    <h2>Information we collect</h2>
+    <h3>Contact form submissions</h3>
+    <p>When you submit our estimate request form, we collect the information you provide: your name, email address, phone number, project type, and project description. This information is sent directly to our team via email so we can respond to your inquiry. We do not store form submissions in a database.</p>
+
+    <h3>Analytics</h3>
+    <p>We use two analytics tools to understand how visitors use our site:</p>
+    <ul>
+      <li><strong>Plausible Analytics</strong> — a privacy-focused analytics tool that does not use cookies, does not collect personal data, and does not track individual visitors across sites. All data is aggregated. <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Plausible's data policy</a>.</li>
+      <li><strong>Google Analytics</strong> — used to measure site traffic and usage patterns. Google Analytics uses cookies to collect anonymized interaction data. You can opt out by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener">Google Analytics Opt-out Browser Add-on</a>.</li>
+    </ul>
+
+    <h2>Cookies</h2>
+    <p>This website uses cookies only through Google Analytics. Plausible Analytics is cookieless. No other cookies are set by this website. We do not use advertising cookies or tracking pixels.</p>
+
+    <h2>How we use your information</h2>
+    <p>We use the information you provide through our contact form solely to respond to your estimate request and communicate with you about your project. We do not sell, rent, or share your personal information with third parties.</p>
+
+    <h2>Third-party services</h2>
+    <p>Our website uses the following third-party services:</p>
+    <ul>
+      <li><strong>Postmark</strong> — to deliver estimate request emails to our team</li>
+      <li><strong>Google Fonts</strong> — to serve web fonts (Bebas Neue, Oswald, Source Sans 3)</li>
+      <li><strong>Google Analytics</strong> — for website traffic analysis</li>
+      <li><strong>Plausible Analytics</strong> — for privacy-focused website analytics</li>
+    </ul>
+
+    <h2>Data retention</h2>
+    <p>Contact form submissions are delivered via email and retained only as long as needed to respond to your inquiry. We do not maintain a separate database of form submissions.</p>
+
+    <h2>Your rights</h2>
+    <p>You may contact us at any time to request information about the data we hold related to you, or to request its deletion.</p>
+
+    <h2>Contact</h2>
+    <p>If you have questions about this privacy policy, contact us:</p>
+    <ul>
+      <li>Email: <a href="mailto:info@ateamasphalt.com">info@ateamasphalt.com</a></li>
+      <li>Phone: <a href="tel:+12533651283">(253) 365-1283</a></li>
+      <li>Address: 3280 B Street NW, Unit C, Auburn, WA 98001</li>
+    </ul>
+
+  </div>
+</section>
+
+</main>
+
+{{template "footer" .}}
+{{template "scripts" .}}
+</body>
+</html>
+{{end}}

@@ -59,6 +59,7 @@ func main() {
 	mux.HandleFunc("GET /services", h.Services)
 	mux.HandleFunc("GET /services/{slug}", h.ServiceDetail)
 	mux.HandleFunc("GET /contact", h.Contact)
+	mux.HandleFunc("GET /privacy", h.Privacy)
 	mux.HandleFunc("GET /placard", h.Placard)
 	mux.HandleFunc("GET /placard/services", h.PlacardServices)
 	mux.HandleFunc("GET /placard/about", h.PlacardAbout)
