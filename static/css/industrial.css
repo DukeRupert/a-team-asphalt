@@ -2193,8 +2193,13 @@ button:focus:not(:focus-visible) {
 
   .trust-bar-inner {
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: 1.5rem 0;
     justify-content: center;
+    padding: 2rem var(--page-pad);
+  }
+  .trust-stat {
+    flex: 0 0 50%;
+    text-align: center;
   }
   .trust-divider {
     display: none;
