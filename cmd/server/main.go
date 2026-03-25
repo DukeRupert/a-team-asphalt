@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"github.com/dukerupert/a-team-asphalt/internal/handlers"
 	"github.com/dukerupert/a-team-asphalt/internal/mailer"
@@ -42,8 +43,23 @@ func main() {
 
 	mux := http.NewServeMux()
 
-	// Static files
-	mux.Handle("GET /static/", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	// Static files with cache headers
+	staticFS := http.FileServer(http.Dir("static"))
+	mux.Handle("GET /static/", http.StripPrefix("/static/", http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		// Fonts and images are cache-busted by filename — cache for 1 year
+		// CSS may change more often — cache for 1 week
+		path := r.URL.Path
+		switch {
+		case strings.HasSuffix(path, ".woff2"), strings.HasSuffix(path, ".woff"),
+			strings.HasSuffix(path, ".webp"), strings.HasSuffix(path, ".png"),
+			strings.HasSuffix(path, ".jpg"), strings.HasSuffix(path, ".jpeg"),
+			strings.HasSuffix(path, ".svg"), strings.HasSuffix(path, ".ico"):
+			w.Header().Set("Cache-Control", "public, max-age=31536000, immutable")
+		case strings.HasSuffix(path, ".css"), strings.HasSuffix(path, ".js"):
+			w.Header().Set("Cache-Control", "public, max-age=604800")
+		}
+		staticFS.ServeHTTP(w, r)
+	})))
 
 	// Root-level files (robots, favicon, manifest)
 	for _, f := range []string{"robots.txt", "favicon.ico", "favicon.svg", "favicon-96x96.png", "apple-touch-icon.png", "site.webmanifest", "web-app-manifest-192x192.png", "web-app-manifest-512x512.png"} {

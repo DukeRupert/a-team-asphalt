@@ -7,9 +7,10 @@
 <meta name="apple-mobile-web-app-title" content="A-Team Asphalt">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="theme-color" content="#181A1B">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;500;600;700&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="font" type="font/woff2" href="/static/fonts/bebas-neue-latin-400.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/static/fonts/oswald-latin-variable.woff2" crossorigin>
+<link rel="preload" as="font" type="font/woff2" href="/static/fonts/source-sans-3-latin-variable.woff2" crossorigin>
+<link rel="stylesheet" href="/static/css/fonts.css">
 <link rel="stylesheet" href="/static/css/industrial.css">
 <script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXXS7D06B"></script>
@@ -25,7 +26,7 @@
 <!-- NAV -->
 <nav aria-label="Main">
   <a href="/" class="nav-logo-block">
-    <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt Co. — Asphalt contractor in Auburn, WA" class="nav-logo-img" width="120" height="65">
+    <img src="/static/logos/ateam-logo-clean-200w.webp" alt="A-Team Asphalt Co. — Asphalt contractor in Auburn, WA" class="nav-logo-img" width="120" height="65">
   </a>
   <ul class="nav-links">
     <li><a href="/"{{if eq .CurrentPage "/"}} aria-current="page"{{end}}>Home</a></li>
@@ -56,7 +57,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="/static/logos/ateam-logo-clean-200w.png" alt="A-Team Asphalt Co. — Asphalt contractor in Auburn, WA" class="footer-logo-img" width="140">
+      <img src="/static/logos/ateam-logo-clean-200w.webp" alt="A-Team Asphalt Co. — Asphalt contractor in Auburn, WA" class="footer-logo-img" width="140">
       <div class="footer-tagline">Serving the Puget Sound Since 1995</div>
       <a href="https://secure.lni.wa.gov/verify/Detail.aspx?UBI=603447810" class="footer-lic-link" target="_blank" rel="noopener">LIC: TEAMAAL855J1<span class="sr-only"> (opens in new tab)</span></a>
     </div>
