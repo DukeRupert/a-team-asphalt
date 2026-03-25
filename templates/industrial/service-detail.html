@@ -12,6 +12,10 @@
 <meta property="og:description" content="{{.Service.MetaDesc}}">
 <meta property="og:url" content="{{.BaseURL}}{{.CanonicalPath}}">
 <meta property="og:image" content="{{if .Service.PhotoURL}}{{.BaseURL}}{{.Service.PhotoURL}}{{else}}{{.BaseURL}}/static/logos/ateam-logo-clean-200w.png{{end}}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{.Service.Name}} — A-Team Asphalt | Sumner, WA">
+<meta name="twitter:description" content="{{.Service.MetaDesc}}">
+<meta name="twitter:image" content="{{if .Service.PhotoURL}}{{.BaseURL}}{{.Service.PhotoURL}}{{else}}{{.BaseURL}}/static/logos/ateam-logo-clean-200w.png{{end}}">
 {{template "head-styles" .}}
 </head>
 <body>
