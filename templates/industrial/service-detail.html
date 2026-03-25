@@ -54,7 +54,7 @@
       <div class="sd-hero-image">
         <picture>
           <source srcset="{{.Service.PhotoURL}}" type="image/webp">
-          <img src="{{.Service.PhotoJPEG}}" alt="{{.Service.PhotoDesc}}" class="sd-hero-img" loading="eager" width="800" height="534">
+          <img src="{{.Service.PhotoJPEG}}" alt="{{.Service.PhotoDesc}}" class="sd-hero-img" loading="eager" fetchpriority="high" width="800" height="534">
         </picture>
       </div>
       {{end}}
