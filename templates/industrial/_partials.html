@@ -41,7 +41,7 @@
   <button class="nav-mobile-toggle" id="nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-menu">
     <span></span><span></span><span></span>
   </button>
-  <div class="nav-mobile-menu" id="nav-menu" aria-hidden="true">
+  <div class="nav-mobile-menu" id="nav-menu" inert>
     <a href="/">Home</a>
     <a href="/services">Services</a>
     <a href="/about">About Us</a>
@@ -114,7 +114,7 @@
         function setMenuState(open) {
             toggle.classList.toggle('active', open);
             menu.classList.toggle('open', open);
-            menu.setAttribute('aria-hidden', !open);
+            menu.inert = !open;
             toggle.setAttribute('aria-expanded', open);
             toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
         }
