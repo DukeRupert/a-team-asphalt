@@ -409,6 +409,11 @@ nav {
   display: flex;
   background: var(--white);
   border-bottom: 1px solid var(--border);
+  order: 2;
+}
+
+.hero-image-area {
+  order: 1;
 }
 
 .hero-credential {
@@ -2157,10 +2162,6 @@ button:focus:not(:focus-visible) {
   .hero { min-height: auto; }
   .hero-credentials {
     flex-wrap: wrap;
-    order: 2;
-  }
-  .hero-image-area {
-    order: 1;
   }
   .hero-credential-featured {
     flex-basis: 100%;
