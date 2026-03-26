@@ -10,8 +10,66 @@
 <link rel="preload" as="font" type="font/woff2" href="/static/fonts/bebas-neue-latin-400.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/static/fonts/oswald-latin-variable.woff2" crossorigin>
 <link rel="preload" as="font" type="font/woff2" href="/static/fonts/source-sans-3-latin-variable.woff2" crossorigin>
-<link rel="stylesheet" href="/static/css/fonts.css">
-<link rel="stylesheet" href="/static/css/industrial.css">
+<style>
+@font-face{font-family:'Bebas Neue';font-style:normal;font-weight:400;font-display:swap;src:url(/static/fonts/bebas-neue-latin-400.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:400;font-display:swap;src:url(/static/fonts/oswald-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:500;font-display:swap;src:url(/static/fonts/oswald-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:600;font-display:swap;src:url(/static/fonts/oswald-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Oswald';font-style:normal;font-weight:700;font-display:swap;src:url(/static/fonts/oswald-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:300;font-display:swap;src:url(/static/fonts/source-sans-3-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:400;font-display:swap;src:url(/static/fonts/source-sans-3-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Source Sans 3';font-style:normal;font-weight:600;font-display:swap;src:url(/static/fonts/source-sans-3-latin-variable.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--black:#111111;--black-rgb:17,17,17;--asphalt:#1A1A1A;--charcoal:#2E2E2E;--red:#C8102E;--red-rgb:200,16,46;--red-dk:#9E0B22;--red-hover:#E01233;--silver:#C0C0C0;--chrome:#E8E8E8;--white:#F5F5F5;--border:rgba(255,255,255,0.06);--border-lt:rgba(255,255,255,0.12);--type-hero:clamp(56px,10vw,120px);--type-display:clamp(36px,6vw,64px);--type-title:clamp(22px,3vw,32px);--type-body:16px;--type-ui:14px;--type-nav:13px;--type-label:11px;--type-small:12px;--track-label:0.2em;--track-eyebrow:0.35em;--track-nav:0.15em;--track-display:0.04em;--duration-fast:0.15s;--duration-med:0.25s;--page-max:1280px;--page-pad:clamp(1.5rem,5vw,4rem);--section-pad:clamp(4rem,8vw,7rem);--clip-btn:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));--clip-btn-lg:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,14px 100%,0 calc(100% - 14px))}
+html{scroll-behavior:smooth}
+body{font-family:'Source Sans 3',sans-serif;font-weight:400;font-size:var(--type-body);background:var(--asphalt);color:var(--chrome);-webkit-font-smoothing:antialiased;overflow-x:hidden;line-height:1.6}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.06'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:0.35}
+nav{position:sticky;top:0;z-index:100;background:var(--black);height:56px;display:flex;align-items:stretch;border-bottom:2px solid var(--red)}
+.nav-logo-block{display:flex;align-items:center;padding:0 1.75rem;text-decoration:none;gap:0.75rem}
+.nav-logo-img{height:32px;width:auto;filter:invert(1) hue-rotate(180deg)}
+.nav-links{display:flex;list-style:none;height:100%;margin-left:1rem}
+.nav-links a{display:flex;align-items:center;padding:0 1.25rem;font-family:'Oswald',sans-serif;font-size:var(--type-nav);font-weight:600;letter-spacing:var(--track-nav);text-transform:uppercase;color:var(--silver);text-decoration:none;height:100%;position:relative}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--white)}
+.nav-end{margin-left:auto;display:flex;align-items:stretch}
+.nav-phone{display:flex;align-items:center;padding:0 1.5rem;font-family:'Source Sans 3',sans-serif;font-size:var(--type-ui);font-weight:600;color:var(--silver);text-decoration:none;border-left:1px solid var(--border-lt)}
+.nav-cta{display:flex;align-items:center;padding:0 2rem;background:var(--red);color:var(--white);font-family:'Oswald',sans-serif;font-size:12px;font-weight:700;letter-spacing:var(--track-nav);text-transform:uppercase;text-decoration:none;border:none;clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%,0 0)}
+.nav-mobile-toggle{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:56px;height:56px;background:none;border:none;border-left:1px solid var(--border-lt);cursor:pointer;margin-left:auto}
+.nav-mobile-toggle span{display:block;width:22px;height:2px;background:var(--silver)}
+.nav-mobile-menu{display:flex;flex-direction:column;position:absolute;top:56px;left:0;right:0;z-index:99;background:var(--black);border-bottom:2px solid var(--red);clip-path:inset(0 0 100% 0);pointer-events:none}
+.hero{position:relative;z-index:1;display:flex;flex-direction:column;min-height:calc(100vh - 58px)}
+.hero-credentials{display:flex;background:var(--charcoal);border-bottom:1px solid var(--border);order:2}
+.hero-image-area{order:1;flex:1;position:relative;background-color:var(--black);background-image:url('/static/img/hero-driveway.webp');background-position:center;background-size:cover;background-repeat:no-repeat}
+.hero-image-area::before{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(var(--black-rgb),0.94) 0%,rgba(var(--black-rgb),0.82) 45%,rgba(var(--black-rgb),0.5) 100%)}
+.hero-content{position:relative;max-width:var(--page-max);width:100%;height:100%;margin:0 auto;padding:var(--section-pad) var(--page-pad);display:flex;flex-direction:column;justify-content:center;gap:0}
+.hero-logo{width:220px;height:auto;margin-bottom:1.5rem;align-self:center;filter:drop-shadow(0 4px 24px rgba(0,0,0,0.45))}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;font-family:'Oswald',sans-serif;font-size:var(--type-label);font-weight:600;letter-spacing:var(--track-eyebrow);text-transform:uppercase;color:var(--red);margin-bottom:1rem}
+.eyebrow-badge{color:var(--red)}
+.hero-headline{font-family:'Bebas Neue',sans-serif;font-size:var(--type-hero);line-height:0.92;letter-spacing:var(--track-display);color:var(--white);margin-bottom:1rem}
+.hero-word{display:inline-block}
+.hero-word-1{color:var(--red)}
+.hero-rule{width:64px;height:3px;background:linear-gradient(to right,var(--red),var(--red-dk));margin-bottom:1.25rem}
+.hero-body{font-size:var(--type-body);color:var(--silver);line-height:1.7;max-width:480px;margin-bottom:1.75rem}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.hero-credential{flex:1;padding:1.25rem 2rem;border-right:1px solid var(--border);display:flex;flex-direction:column;justify-content:center}
+.hero-credential:last-child{border-right:none}
+a.hero-credential{text-decoration:none;color:inherit}
+.hero-credential-featured{flex:1.6;position:relative}
+.hero-credential-featured::after{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--red)}
+.hero-credential-featured .credential-value{font-size:24px;letter-spacing:0.04em}
+.credential-label{font-family:'Oswald',sans-serif;font-size:var(--type-label);font-weight:600;letter-spacing:var(--track-label);text-transform:uppercase;color:#9A9A9A;margin-bottom:0.3rem}
+.credential-value{font-family:'Oswald',sans-serif;font-size:18px;font-weight:700;color:var(--white);letter-spacing:0.02em;overflow-wrap:break-word}
+.credential-accent{color:var(--red);font-size:28px;font-weight:700}
+.btn-primary{background:var(--red);color:var(--white);font-family:'Oswald',sans-serif;font-size:var(--type-ui);font-weight:600;letter-spacing:var(--track-nav);text-transform:uppercase;padding:0.85rem 2rem;border:none;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:0.4rem;clip-path:var(--clip-btn-lg)}
+.btn-secondary{background:transparent;color:var(--silver);font-family:'Oswald',sans-serif;font-size:var(--type-ui);font-weight:600;letter-spacing:var(--track-nav);text-transform:uppercase;padding:0.85rem 2rem;border:1px solid var(--silver);cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;clip-path:var(--clip-btn)}
+.hero-actions .btn-secondary{color:var(--white);border-color:var(--white);border-width:2px}
+.skip-link{position:absolute;top:-100%;left:var(--page-pad);z-index:200;background:var(--red);color:var(--white);font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:var(--track-nav);text-transform:uppercase;text-decoration:none;padding:0.75rem 1.5rem;clip-path:var(--clip-btn)}
+.skip-link:focus{top:0.5rem}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media(max-width:960px){.hero{min-height:auto}.hero-credentials{flex-wrap:wrap}.hero-credential-featured{flex-basis:100%;border-right:none;border-bottom:1px solid var(--border)}.hero-credential{padding:1rem 1.5rem}.hero-content{padding:3rem var(--page-pad) 2.5rem}.nav-links{display:none}.nav-end{display:none}.nav-mobile-toggle{display:flex}}
+@media(max-width:600px){body::before{display:none}.hero-credentials{flex-direction:column}.hero-credential{border-right:none;border-bottom:1px solid var(--border)}.hero-credential:last-child{border-bottom:none}.hero-credential-featured{flex-basis:auto;border-right:none}.hero-logo{width:160px}}
+</style>
+<link rel="stylesheet" href="/static/css/industrial.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="/static/css/industrial.css"></noscript>
 <script defer data-domain="ateamasphalt.com" src="https://plausible.angmar.dev/js/script.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QPXXS7D06B"></script>
 <script>
@@ -57,7 +115,7 @@
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <img src="/static/logos/ateam-logo-clean-200w.webp" alt="A-Team Asphalt Co. — Asphalt contractor in Auburn, WA" class="footer-logo-img" width="140">
+      <img src="/static/logos/ateam-logo-clean-140w.webp" alt="A-Team Asphalt Co. — Asphalt contractor in Auburn, WA" class="footer-logo-img" width="140" height="76">
       <div class="footer-tagline">Serving the Puget Sound Since 1995</div>
       <a href="https://secure.lni.wa.gov/verify/Detail.aspx?UBI=603447810" class="footer-lic-link" target="_blank" rel="noopener">LIC: TEAMAAL855J1<span class="sr-only"> (opens in new tab)</span></a>
     </div>
