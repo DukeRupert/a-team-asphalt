@@ -69,6 +69,13 @@ func main() {
 		})
 	}
 
+	// Health check
+	mux.HandleFunc("GET /health", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "text/plain")
+		w.WriteHeader(http.StatusOK)
+		fmt.Fprint(w, "ok")
+	})
+
 	// Sitemap
 	mux.HandleFunc("GET /sitemap.xml", h.Sitemap)
 

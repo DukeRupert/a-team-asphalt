@@ -131,7 +131,7 @@ var order = []Service{
 		WhyUs: []WhyPoint{
 			{Title: "No unnecessary upsells", Desc: "If a patch will hold, we'll patch it. We tell you the truth about what your pavement needs."},
 			{Title: "Same-crew quality", Desc: "Repairs get the same materials and compaction standards as our new installs."},
-			{Title: "30 years of reading pavement", Desc: "We know what's a surface problem and what's a base failure. That saves you money."},
+			{Title: "30+ years of reading pavement", Desc: "We know what's a surface problem and what's a base failure. That saves you money."},
 		},
 		ContactType: "Asphalt paving",
 		PhotoDesc:   "Close-up of asphalt patching in progress — fresh black hot-mix next to existing weathered pavement. Hand tools or small roller visible.",
