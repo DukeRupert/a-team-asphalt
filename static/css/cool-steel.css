@@ -2052,51 +2052,73 @@ footer {
 }
 .error-aside a { color: var(--red); text-decoration: underline; text-underline-offset: 2px; }
 
-/* Firefly signature */
+/* FlintCraft Studio signature */
 .footer-signature {
   max-width: var(--page-max);
   margin: 0 auto;
   padding: 2rem var(--page-pad) 2rem;
-}
-.sig-divider {
   display: flex;
-  align-items: center;
-  gap: 14px;
-  width: 100%;
+  justify-content: center;
 }
-.sig-divider-rule {
-  flex: 1;
-  height: 1px;
-  background: rgba(255, 255, 255, 0.08);
-}
-.sig-divider-inner {
+.fc-signature {
   display: inline-flex;
   align-items: center;
-  gap: 9px;
-  flex-shrink: 0;
-}
-.sig-divider-glyph {
-  font-size: 11px;
-  line-height: 1;
-  color: rgba(250, 250, 248, 0.20);
-}
-.sig-divider-text {
-  font-family: 'Source Sans 3', sans-serif;
-  font-size: 0.6875rem;
-  font-weight: 600;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  color: rgba(250, 250, 248, 0.78);
-}
-.sig-divider-text a {
-  color: var(--red);
+  gap: 0.5rem;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  transition: border-color var(--duration-fast);
+  opacity: 0.6;
+  transition: opacity 200ms ease;
+  border: none;
+  outline-offset: 4px;
 }
-.sig-divider-text a:hover {
-  border-bottom-color: var(--red);
+.fc-signature:hover,
+.fc-signature:focus-visible { opacity: 1; }
+.fc-signature:focus-visible {
+  outline: 2px solid currentColor;
+  border-radius: 2px;
+}
+.fc-signature__mark {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+.fc-signature__mark img {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  max-width: none;
+  object-fit: contain;
+  filter: var(--fc-mark-filter, none);
+}
+.fc-signature__text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.1rem;
+}
+.fc-signature__name {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.fc-signature__tagline {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.625rem;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+}
+.fc-signature--dark { color: #ffffff; }
+.fc-signature--dark .fc-signature__mark img { --fc-mark-filter: none; }
+.fc-signature--light { color: #1a1e2b; }
+.fc-signature--light .fc-signature__mark img { --fc-mark-filter: none; }
+@media (prefers-reduced-motion: reduce) {
+  .fc-signature { transition: none; }
 }
 
 /* ── SKIP LINK ── */
@@ -3320,12 +3342,6 @@ a.svc-hero-card:hover {
   }
 }
 
-@media (max-width: 768px) {
-  .sig-divider-rule { display: none; }
-  .sig-divider { justify-content: center; }
-  .sig-divider-inner { flex-shrink: 1; }
-  .sig-divider-text { white-space: normal; text-align: center; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
